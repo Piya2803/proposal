@@ -66,11 +66,11 @@ body{
   to{ left:110%; }
 }
 
-/* CENTER AREA */
+/* CENTER WRAPPER */
 .center-box{
   position:relative;
-  width:360px;
-  height:360px;
+  width:520px;   /* BIGGER AREA */
+  height:520px;
   display:flex;
   justify-content:center;
   align-items:center;
@@ -98,12 +98,14 @@ body{
   font-size:14px;
   box-shadow:0 4px 10px rgba(0,0,0,0.15);
 }
+
+/* BUTTON POSITIONS – FAR FROM PHOTO */
 #love{ background:#ff4d6d; top:0; left:50%; transform:translateX(-50%); }
-#hug{ background:#ff85b3; top:30%; right:0; }
-#gift{ background:#ff66aa; bottom:30%; right:0; }
+#hug{ background:#ff85b3; top:25%; right:0; }
+#gift{ background:#ff66aa; bottom:25%; right:0; }
 #surprise{ background:#ff3385; bottom:0; left:50%; transform:translateX(-50%); }
-#kiss{ background:#ff99c1; bottom:30%; left:0; }
-#smile{ background:#ff66cc; top:30%; left:0; }
+#kiss{ background:#ff99c1; bottom:25%; left:0; }
+#smile{ background:#ff66cc; top:25%; left:0; }
 
 /* MODAL */
 .modal-bg{
@@ -176,7 +178,7 @@ body{
     <button class="btn" id="kiss">Kiss 😘</button>
     <button class="btn" id="smile">Smile 😄</button>
 
-    <!-- CENTER TEDDY -->
+    <!-- CENTER TEDDY (SAME IMAGE) -->
     <img id="centerTeddy" src="61-qJABL20L._AC_SL1100_.jpg" alt="My Teddy">
 
   </div>
@@ -192,7 +194,7 @@ body{
 </div>
 
 <script>
-const correctPassword = "ilovepiya";
+const correctPassword = "ilovepiya"; // 🔐 UPDATED
 
 function checkPassword(){
   if(password.value === correctPassword){
@@ -215,11 +217,11 @@ function closeModal(){
 }
 
 /* BUTTON ACTIONS */
-love.onclick=()=>openModal("Love 💖","Tum meri cutest teddy ho 🧸💕");
+love.onclick=()=>openModal("Love 💖","Tum meri sabse pyaari teddy ho 🧸💕");
 hug.onclick=()=>openModal("Hug 🤗","Ek tight hug sirf tumhare liye 💖");
-gift.onclick=()=>openModal("Gift 🎁","Chhota sa teddy gift 🧸");
-surprise.onclick=()=>openModal("Surprise 😍","Teddy ki barish ho rahi hai 💕");
-kiss.onclick=()=>openModal("Kiss 😘","Ek sweet teddy kiss 💖");
+gift.onclick=()=>openModal("Gift 🎁","Cute teddy surprise 🧸");
+surprise.onclick=()=>openModal("Surprise 😍","Teddy ki barish shuru 💕");
+kiss.onclick=()=>openModal("Kiss 😘","Sweet teddy kiss 💖");
 smile.onclick=()=>openModal("Smile 😄","Tumhari smile meri duniya hai 🧸");
 
 /* TEDDY RAIN */
@@ -232,7 +234,7 @@ function startTeddyRain(){
     teddy.style.animationDuration=(3+Math.random()*2)+"s";
     document.body.appendChild(teddy);
     setTimeout(()=>teddy.remove(),5000);
-  },400);
+  },450);
 }
 </script>
 
