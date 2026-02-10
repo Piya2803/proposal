@@ -2,29 +2,44 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Ultimate Teddy Day 🧸</title>
+  <title>Teddy Day Fun 🧸</title>
   <style>
     body {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
       margin: 0;
       padding: 0;
-      background: linear-gradient(to bottom, #ffe6f0, #fff0f5);
-      min-height: 100vh;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(to top, #fff0f5, #ffe6f0);
       overflow-x: hidden;
-      position: relative;
       text-align: center;
+      min-height: 100vh;
+      position: relative;
     }
 
-    .teddy-container {
+    /* Cloud background */
+    .cloud {
+      position: absolute;
+      width: 150px;
+      top: 20%;
+      left: 10%;
+      opacity: 0.3;
+      animation: moveClouds linear infinite;
+    }
+
+    @keyframes moveClouds {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(1200px); }
+    }
+
+    /* Teddy on cloud */
+    .teddy-cloud-container {
       position: relative;
       display: inline-block;
-      margin-top: 50px;
+      margin-top: 80px;
     }
 
     #teddy {
-      width: 250px;
+      width: 200px;
       border-radius: 50%;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
       transition: transform 0.3s;
     }
 
@@ -34,11 +49,11 @@
 
     .speech-bubble {
       position: absolute;
-      top: -90px;
+      top: -100px;
       left: 50%;
       transform: translateX(-50%);
       background: #fff0f5;
-      padding: 15px 20px;
+      padding: 15px 25px;
       border-radius: 30px;
       font-size: 16px;
       color: #ff3366;
@@ -47,9 +62,18 @@
       line-height: 1.4;
     }
 
+    /* Buttons */
+    .btn-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 30px;
+      gap: 15px;
+    }
+
     .btn {
-      padding: 12px 25px;
-      margin: 10px;
+      flex: 1 1 120px;
+      padding: 15px 20px;
       font-size: 16px;
       border: none;
       border-radius: 50px;
@@ -57,6 +81,7 @@
       color: white;
       transition: transform 0.2s, box-shadow 0.2s;
       box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      min-width: 120px;
     }
 
     .btn:hover {
@@ -65,7 +90,7 @@
     }
 
     #love { background-color: #ff66aa; }
-    #hug { background-color: #ff99cc; }
+    #hug { background-color: #ff99cc; color: #333; }
     #gift { background-color: #ff66cc; }
     #surprise { background-color: #ff3399; }
 
@@ -76,6 +101,7 @@
       min-height: 30px;
     }
 
+    /* Floating teddies/hearts */
     .floating {
       width: 50px;
       position: absolute;
@@ -89,6 +115,7 @@
       100% { transform: translateY(400px) rotate(-15deg); opacity:0; }
     }
 
+    /* Comments */
     #comments {
       max-width: 500px;
       margin: 50px auto 30px;
@@ -139,16 +166,39 @@
       border-radius: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
+
+    @media(max-width: 600px){
+      .speech-bubble {
+        font-size: 14px;
+        max-width: 180px;
+        top: -90px;
+      }
+      #teddy {
+        width: 150px;
+      }
+      .btn {
+        flex: 1 1 100%;
+        min-width: auto;
+      }
+    }
+
   </style>
 </head>
 <body>
 
-  <div class="teddy-container">
-    <img id="teddy" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Cute Teddy Bear">
-    <div class="speech-bubble" id="speech">Hi! Ready for some Teddy Day fun? 🧸💖</div>
+  <!-- Cloud background -->
+  <img src="images/cloud.png" class="cloud" style="top:10%; left:5%;">
+  <img src="images/cloud.png" class="cloud" style="top:30%; left:50%;">
+  <img src="images/cloud.png" class="cloud" style="top:50%; left:20%;">
+
+  <!-- Teddy on cloud -->
+  <div class="teddy-cloud-container">
+    <img id="teddy" src="images/teddy.png" alt="Cute Teddy Bear">
+    <div class="speech-bubble" id="speech">Heyyy! Ready for Teddy Day masti? 🧸💖</div>
   </div>
 
-  <div>
+  <!-- Buttons -->
+  <div class="btn-container">
     <button class="btn" id="love">Love it! 💕</button>
     <button class="btn" id="hug">Hug 🧸</button>
     <button class="btn" id="gift">Gift 🎁</button>
@@ -157,6 +207,7 @@
 
   <div id="feedback"></div>
 
+  <!-- Comments -->
   <div id="comments">
     <h2>Leave a Cute Note</h2>
     <input type="text" id="name" placeholder="Your Name">
@@ -169,13 +220,33 @@
     const speech = document.getElementById('speech');
     const feedback = document.getElementById('feedback');
 
+    // Bubbly Hinglish messages
+    const messages = [
+      "Heyyy! Ready for Teddy Day masti? 🧸💖",
+      "Awww! Yeh teddy tumhare liye aa gaya! 😍🐻",
+      "Hug chahiye? 🤗 Yeh teddy ready hai!",
+      "Chhota sa surprise tumhare liye! 🎁💝",
+      "Dekhooo! Teddies tumhare upar baras rahe hai! ☁️🧸😂",
+      "Tumhare smile ke liye ek teddy aur cute emoji! 😘🐻💕",
+      "Oye hoye! Kitna cute lag raha hai na tum? 😳💖🧸"
+    ];
+    let msgIndex = 0;
+
+    setInterval(() => {
+      msgIndex = (msgIndex + 1) % messages.length;
+      speech.innerText = messages[msgIndex];
+    }, 5000);
+
+    // Floating teddies/hearts
     function createFloating(type="heart") {
       const img = document.createElement('img');
-      if(type==="teddy") img.src="https://cdn-icons-png.flaticon.com/512/616/616408.png"; // teddy
-      else img.src="https://cdn-icons-png.flaticon.com/512/833/833472.png"; // heart
-      img.className="floating";
+      img.className = "floating";
       img.style.left = Math.random()*window.innerWidth + "px";
       img.style.animationDuration = (4 + Math.random()*3) + "s";
+
+      if(type==="teddy") img.src="images/teddy.png";
+      else img.src="images/heart.png";
+
       document.body.appendChild(img);
       setTimeout(()=>img.remove(),7000);
     }
@@ -186,52 +257,59 @@
       }
     }
 
+    // Button interactions with bubbly Hinglish
     document.getElementById('love').onclick = () => {
-      speech.innerText="Yay! I love your excitement! 💕🧸";
-      feedback.innerText="You clicked Love it!";
+      speech.innerText = "Aww! Tumhe teddy pasand aaya! 😍🧸💖";
+      feedback.innerText = "Love it! 💕 Tumhare liye extra hugs!";
       confetti(15);
     }
 
     document.getElementById('hug').onclick = () => {
-      speech.innerText="A warm teddy hug just for you! 🤗🧸";
-      feedback.innerText="You clicked Hug!";
+      speech.innerText = "Ek BIG teddy hug tumhare liye! 🤗🐻💖";
+      feedback.innerText = "Hug clicked! Ab teddy hug mode ON! 🧸";
       confetti(20);
     }
 
     document.getElementById('gift').onclick = () => {
-      speech.innerText="Surprise! A tiny teddy gift is here 🎁🧸";
-      feedback.innerText="You clicked Gift!";
+      speech.innerText = "Surprise! Chhota sa teddy gift aa gaya 🎁🧸😂";
+      feedback.innerText = "Gift clicked! Tumhare liye sweet surprise! 💖";
       confetti(20);
     }
 
     document.getElementById('surprise').onclick = () => {
-      speech.innerText="Woohoo! Teddies everywhere! 😍";
-      feedback.innerText="You clicked Surprise!";
+      speech.innerText = "Woohoo! Teddies tumhare upar baras rahe hai! ☁️🧸😂";
+      feedback.innerText = "Surprise clicked! Mazaa aa gaya na? 😍";
       confetti(25);
     }
 
+    // Comment section
     const submitComment = document.getElementById('submitComment');
     const commentList = document.getElementById('commentList');
 
     submitComment.onclick = () => {
       const name = document.getElementById('name').value;
       const commentText = document.getElementById('comment').value;
+
       if(name==="" || commentText==="") {
         alert("Please enter both name and message!");
         return;
       }
+
       const div = document.createElement('div');
       div.className="comment";
-      div.innerHTML=`<strong>${name}:</strong> ${commentText}`;
+      div.innerHTML = `<strong>${name}:</strong> ${commentText}`;
       commentList.appendChild(div);
+
       document.getElementById('name').value="";
       document.getElementById('comment').value="";
     }
 
+    // Random floating every 2.5 sec
     setInterval(()=>{
       createFloating(Math.random()<0.5?"teddy":"heart");
     },2500);
 
   </script>
+
 </body>
 </html>
