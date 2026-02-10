@@ -7,69 +7,34 @@
 body {
   margin:0; padding:0;
   font-family:'Comic Sans MS', cursive, sans-serif;
-  background: linear-gradient(to top, #fff0f5, #ffe6f0);
+  background: linear-gradient(to top, #fff, #ffeef5); /* soft background, no strong pink */
   text-align:center;
   min-height:100vh;
   position:relative;
   overflow-x:hidden;
-  cursor: none; /* hide default cursor for fun teddy-follow effect */
+  cursor: none; /* hide default cursor for teddy-follow */
 }
 
-/* Falling hearts */
-.falling-heart {
+/* Popup mini messages */
+.popup {
   position:absolute;
-  width:30px;
-  animation: fall linear infinite;
-  pointer-events:none;
-}
-@keyframes fall {
-  0% { transform: translateY(-50px) rotate(0deg); opacity:1; }
-  100% { transform: translateY(100vh) rotate(360deg); opacity:0; }
-}
-
-/* Popup modal */
-#popupModal {
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  position:fixed;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(255,192,203,0.95);
-  z-index:9999;
-  flex-direction:column;
-  animation: popupSlide 0.8s ease-out;
-}
-@keyframes popupSlide {
-  0% { opacity:0; transform: scale(0.5);}
-  100% { opacity:1; transform: scale(1);}
-}
-
-#popupModal img {
-  width:250px;
+  background:#ffeff5;
+  padding:10px 15px;
   border-radius:20px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.5);
-  margin-bottom:20px;
-  animation: floatTeddy 3s ease-in-out infinite;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  font-size:14px;
+  color:#ff3399;
+  pointer-events:none;
+  opacity:0;
+  transform: scale(0);
+  transition: all 0.4s ease-out;
 }
-@keyframes floatTeddy {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
+.popup.show {
+  opacity:1;
+  transform: scale(1) translateY(-20px);
 }
 
-#closePopup {
-  padding:12px 25px;
-  font-size:18px;
-  border:none;
-  border-radius:50px;
-  background-color:#ff66aa;
-  color:white;
-  cursor:pointer;
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-#closePopup:hover { transform:scale(1.15); box-shadow:0 4px 15px rgba(0,0,0,0.3); }
-
-/* Teddy main */
+/* Teddy cursor */
 #teddyMain {
   width:120px;
   border-radius:20px;
@@ -134,7 +99,7 @@ body {
 #comments {
   max-width:500px;
   margin:50px auto 30px;
-  background:#fff0f5;
+  background:#fff;
   border-radius:30px;
   padding:20px;
   box-shadow:0 8px 20px rgba(0,0,0,0.1);
@@ -170,13 +135,6 @@ input, textarea {
 </head>
 <body>
 
-<!-- Popup modal -->
-<div id="popupModal">
-  <h1 style="color:#fff; font-family: 'Comic Sans MS', cursive; margin-bottom:20px;">Happy Teddy Day! 🧸💖</h1>
-  <img src="61-qJABL20L._AC_SL1100_.jpg" alt="Cute Teddy">
-  <button id="closePopup">Open Surprise 🎁</button>
-</div>
-
 <!-- Teddy following cursor -->
 <img id="teddyMain" src="61-qJABL20L._AC_SL1100_.jpg" alt="Cute Teddy">
 
@@ -200,73 +158,58 @@ input, textarea {
 </div>
 
 <script>
-  // Popup functionality
-  document.getElementById('closePopup').onclick = () => {
-    document.getElementById('popupModal').style.display = 'none';
-  }
+const feedback = document.getElementById('feedback');
+const teddy = document.getElementById('teddyMain');
 
-  const feedback = document.getElementById('feedback');
-  const teddy = document.getElementById('teddyMain');
+// Mouse follow teddy
+document.addEventListener('mousemove', e => {
+  teddy.style.transform = `translate(${e.clientX - 60}px, ${e.clientY - 60}px)`;
+});
 
-  // Mouse follow teddy
-  document.addEventListener('mousemove', e => {
-    teddy.style.transform = `translate(${e.clientX - 60}px, ${e.clientY - 60}px)`;
-  });
+// Popup mini function
+function showPopup(x,y,message){
+  const div = document.createElement('div');
+  div.className='popup';
+  div.innerHTML = `<strong>💖</strong> ${message}`;
+  div.style.left=x+'px';
+  div.style.top=y+'px';
+  document.body.appendChild(div);
+  setTimeout(()=>{ div.classList.add('show'); },10);
+  setTimeout(()=>{ div.remove(); },2000);
+}
 
-  // Button interactions + confetti
-  function createConfetti(x, y){
-    for(let i=0;i<15;i++){
-      const div = document.createElement('div');
-      div.style.position='absolute';
-      div.style.width='8px';
-      div.style.height='8px';
-      div.style.background=['#ff66aa','#ff99cc','#ffccff','#ff3399'][Math.floor(Math.random()*4)];
-      div.style.left=(x+Math.random()*50-25)+'px';
-      div.style.top=(y+Math.random()*50-25)+'px';
-      div.style.borderRadius='50%';
-      div.style.opacity=1;
-      document.body.appendChild(div);
-      let fall = 0;
-      const interval = setInterval(()=>{
-        fall+=2; div.style.top=(parseFloat(div.style.top)+2)+'px';
-        div.style.opacity-=0.02;
-        if(div.style.opacity<=0){ clearInterval(interval); div.remove(); }
-      },10);
-    }
-  }
+// Button interactions
+document.getElementById('love').onclick = (e) => { 
+  feedback.innerText = "Love clicked! Tumhare liye extra hugs! 💕"; 
+  showPopup(e.clientX,e.clientY,"Tumhe love mil gaya! 🧸");
+}
+document.getElementById('hug').onclick = (e) => { 
+  feedback.innerText = "Hug clicked! Teddy hug mode ON! 🧸"; 
+  showPopup(e.clientX,e.clientY,"Big hug tumhare liye! 🤗");
+}
+document.getElementById('gift').onclick = (e) => { 
+  feedback.innerText = "Gift clicked! Sweet surprise for you! 🎁"; 
+  showPopup(e.clientX,e.clientY,"Chhota sa gift! 🎁💖");
+}
+document.getElementById('surprise').onclick = (e) => { 
+  feedback.innerText = "Surprise clicked! Tumhe mazaa aaya na? 😍"; 
+  showPopup(e.clientX,e.clientY,"Surprise! 😍🧸");
+}
 
-  document.getElementById('love').onclick = (e) => { feedback.innerText = "Love clicked! Tumhare liye extra hugs! 💕"; createConfetti(e.clientX,e.clientY);}
-  document.getElementById('hug').onclick = (e) => { feedback.innerText = "Hug clicked! Teddy hug mode ON! 🧸"; createConfetti(e.clientX,e.clientY);}
-  document.getElementById('gift').onclick = (e) => { feedback.innerText = "Gift clicked! Sweet surprise for you! 🎁"; createConfetti(e.clientX,e.clientY);}
-  document.getElementById('surprise').onclick = (e) => { feedback.innerText = "Surprise clicked! Tumhe mazaa aaya na? 😍"; createConfetti(e.clientX,e.clientY);}
-
-  // Comment section
-  const submitComment = document.getElementById('submitComment');
-  const commentList = document.getElementById('commentList');
-  submitComment.onclick = () => {
-    const name = document.getElementById('name').value;
-    const commentText = document.getElementById('comment').value;
-    if(name==="" || commentText==="") { alert("Please enter both name and message!"); return; }
-    const div = document.createElement('div');
-    div.className="comment";
-    div.innerHTML = `<strong>${name}:</strong> ${commentText}`;
-    commentList.appendChild(div);
-    document.getElementById('name').value="";
-    document.getElementById('comment').value="";
-  }
-
-  // Falling hearts
-  function createHeart() {
-    const heart = document.createElement('img');
-    heart.src = 'https://i.ibb.co/T2Wz5Z2/heart.png';
-    heart.className = 'falling-heart';
-    heart.style.left = Math.random()*window.innerWidth + 'px';
-    heart.style.animationDuration = (3+Math.random()*2)+'s';
-    document.body.appendChild(heart);
-    setTimeout(()=>heart.remove(),5000);
-  }
-  setInterval(createHeart, 1500);
-
+// Comment section
+const submitComment = document.getElementById('submitComment');
+const commentList = document.getElementById('commentList');
+submitComment.onclick = () => {
+  const name = document.getElementById('name').value;
+  const commentText = document.getElementById('comment').value;
+  if(name==="" || commentText==="") { alert("Please enter both name and message!"); return; }
+  const div = document.createElement('div');
+  div.className="comment";
+  div.innerHTML = `<strong>${name}:</strong> ${commentText}`;
+  commentList.appendChild(div);
+  document.getElementById('name').value="";
+  document.getElementById('comment').value="";
+}
 </script>
 </body>
 </html>
