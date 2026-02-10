@@ -23,7 +23,7 @@ body{
   border-radius:30px;
   text-align:center;
   box-shadow:0 10px 30px rgba(0,0,0,0.2);
-  z-index:5;
+  z-index:10;
 }
 #loginPage h2{ color:#ff3366; }
 #loginPage input{
@@ -66,15 +66,70 @@ body{
   to{ left:110%; }
 }
 
+/* CENTER AREA */
+.center-box{
+  position:relative;
+  width:360px;
+  height:360px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
 /* CENTER TEDDY */
 #centerTeddy{
-  width:280px;
-  z-index:3;
-  animation: bounce 2s infinite;
+  width:260px;
+  z-index:2;
+  animation:bounce 2s infinite;
 }
 @keyframes bounce{
   0%,100%{ transform:translateY(0); }
   50%{ transform:translateY(-18px); }
+}
+
+/* BUTTONS */
+.btn{
+  position:absolute;
+  padding:12px 18px;
+  border:none;
+  border-radius:50px;
+  color:white;
+  cursor:pointer;
+  font-size:14px;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+#love{ background:#ff4d6d; top:0; left:50%; transform:translateX(-50%); }
+#hug{ background:#ff85b3; top:30%; right:0; }
+#gift{ background:#ff66aa; bottom:30%; right:0; }
+#surprise{ background:#ff3385; bottom:0; left:50%; transform:translateX(-50%); }
+#kiss{ background:#ff99c1; bottom:30%; left:0; }
+#smile{ background:#ff66cc; top:30%; left:0; }
+
+/* MODAL */
+.modal-bg{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  justify-content:center;
+  align-items:center;
+  z-index:20;
+}
+.modal{
+  background:#fffaf5;
+  padding:30px;
+  border-radius:30px;
+  text-align:center;
+  max-width:360px;
+  position:relative;
+}
+.close-btn{
+  position:absolute;
+  top:10px;
+  right:15px;
+  cursor:pointer;
+  font-size:22px;
+  color:#ff3366;
 }
 
 /* TEDDY RAIN */
@@ -111,12 +166,33 @@ body{
 
 <!-- MAIN -->
 <div id="mainContent">
-  <!-- SAME TEDDY IMAGE IN CENTER -->
-  <img id="centerTeddy" src="61-qJABL20L._AC_SL1100_.jpg" alt="My Teddy">
+  <div class="center-box">
+
+    <!-- BUTTONS -->
+    <button class="btn" id="love">Love 💕</button>
+    <button class="btn" id="hug">Hug 🤗</button>
+    <button class="btn" id="gift">Gift 🎁</button>
+    <button class="btn" id="surprise">Surprise 😍</button>
+    <button class="btn" id="kiss">Kiss 😘</button>
+    <button class="btn" id="smile">Smile 😄</button>
+
+    <!-- CENTER TEDDY -->
+    <img id="centerTeddy" src="61-qJABL20L._AC_SL1100_.jpg" alt="My Teddy">
+
+  </div>
+</div>
+
+<!-- MODAL -->
+<div class="modal-bg" id="modalBg">
+  <div class="modal">
+    <span class="close-btn" onclick="closeModal()">×</span>
+    <h2 id="modalTitle"></h2>
+    <p id="modalMsg"></p>
+  </div>
 </div>
 
 <script>
-const correctPassword = "ilovepiya"; // change if needed
+const correctPassword = "ilovepiya";
 
 function checkPassword(){
   if(password.value === correctPassword){
@@ -128,17 +204,35 @@ function checkPassword(){
   }
 }
 
-/* TEDDY RAIN FUNCTION */
+/* MODAL */
+function openModal(title,msg){
+  modalTitle.innerText=title;
+  modalMsg.innerText=msg;
+  modalBg.style.display="flex";
+}
+function closeModal(){
+  modalBg.style.display="none";
+}
+
+/* BUTTON ACTIONS */
+love.onclick=()=>openModal("Love 💖","Tum meri cutest teddy ho 🧸💕");
+hug.onclick=()=>openModal("Hug 🤗","Ek tight hug sirf tumhare liye 💖");
+gift.onclick=()=>openModal("Gift 🎁","Chhota sa teddy gift 🧸");
+surprise.onclick=()=>openModal("Surprise 😍","Teddy ki barish ho rahi hai 💕");
+kiss.onclick=()=>openModal("Kiss 😘","Ek sweet teddy kiss 💖");
+smile.onclick=()=>openModal("Smile 😄","Tumhari smile meri duniya hai 🧸");
+
+/* TEDDY RAIN */
 function startTeddyRain(){
   setInterval(()=>{
-    const teddy = document.createElement("img");
-    teddy.src = "61-qJABL20L._AC_SL1100_.jpg";
-    teddy.className = "falling-teddy";
-    teddy.style.left = Math.random()*window.innerWidth + "px";
-    teddy.style.animationDuration = (3 + Math.random()*2) + "s";
+    const teddy=document.createElement("img");
+    teddy.src="61-qJABL20L._AC_SL1100_.jpg";
+    teddy.className="falling-teddy";
+    teddy.style.left=Math.random()*window.innerWidth+"px";
+    teddy.style.animationDuration=(3+Math.random()*2)+"s";
     document.body.appendChild(teddy);
     setTimeout(()=>teddy.remove(),5000);
-  }, 400);
+  },400);
 }
 </script>
 
