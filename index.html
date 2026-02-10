@@ -69,14 +69,14 @@ body{
 /* CENTER WRAPPER */
 .center-box{
   position:relative;
-  width:520px;   /* BIGGER AREA */
+  width:520px;
   height:520px;
   display:flex;
   justify-content:center;
   align-items:center;
 }
 
-/* CENTER TEDDY */
+/* CENTER IMAGE */
 #centerTeddy{
   width:260px;
   z-index:2;
@@ -99,7 +99,6 @@ body{
   box-shadow:0 4px 10px rgba(0,0,0,0.15);
 }
 
-/* BUTTON POSITIONS – FAR FROM PHOTO */
 #love{ background:#ff4d6d; top:0; left:50%; transform:translateX(-50%); }
 #hug{ background:#ff85b3; top:25%; right:0; }
 #gift{ background:#ff66aa; bottom:25%; right:0; }
@@ -134,7 +133,7 @@ body{
   color:#ff3366;
 }
 
-/* TEDDY RAIN */
+/* IMAGE RAIN */
 .falling-teddy{
   position:absolute;
   top:-100px;
@@ -178,8 +177,8 @@ body{
     <button class="btn" id="kiss">Kiss 😘</button>
     <button class="btn" id="smile">Smile 😄</button>
 
-    <!-- CENTER TEDDY (SAME IMAGE) -->
-    <img id="centerTeddy" src="61-qJABL20L._AC_SL1100_.jpg" alt="My Teddy">
+    <!-- CENTER IMAGE (UPDATED) -->
+    <img id="centerTeddy" src="Image (3).jpg" alt="My Teddy">
 
   </div>
 </div>
@@ -194,13 +193,14 @@ body{
 </div>
 
 <script>
-const correctPassword = "ilovepiya"; // 🔐 UPDATED
+const correctPassword = "ilovepiya";
 
+/* LOGIN */
 function checkPassword(){
   if(password.value === correctPassword){
     loginPage.style.display="none";
     mainContent.style.display="flex";
-    startTeddyRain();
+    startImageRain();
   } else {
     error.innerText="Wrong password 😢";
   }
@@ -224,16 +224,16 @@ surprise.onclick=()=>openModal("Surprise 😍","Teddy ki barish shuru 💕");
 kiss.onclick=()=>openModal("Kiss 😘","Sweet teddy kiss 💖");
 smile.onclick=()=>openModal("Smile 😄","Tumhari smile meri duniya hai 🧸");
 
-/* TEDDY RAIN */
-function startTeddyRain(){
+/* IMAGE RAIN (SAME IMAGE) */
+function startImageRain(){
   setInterval(()=>{
-    const teddy=document.createElement("img");
-    teddy.src="61-qJABL20L._AC_SL1100_.jpg";
-    teddy.className="falling-teddy";
-    teddy.style.left=Math.random()*window.innerWidth+"px";
-    teddy.style.animationDuration=(3+Math.random()*2)+"s";
-    document.body.appendChild(teddy);
-    setTimeout(()=>teddy.remove(),5000);
+    const img=document.createElement("img");
+    img.src="Image (3).jpg";
+    img.className="falling-teddy";
+    img.style.left=Math.random()*window.innerWidth+"px";
+    img.style.animationDuration=(3+Math.random()*2)+"s";
+    document.body.appendChild(img);
+    setTimeout(()=>img.remove(),5000);
   },450);
 }
 </script>
