@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Teddy Day Fun 🧸</title>
+<title>Teddy Day Surprise 🧸</title>
 <style>
   body {
     margin:0; padding:0; font-family:'Comic Sans MS', cursive, sans-serif;
@@ -10,8 +10,40 @@
     overflow-x:hidden; text-align:center; min-height:100vh; position:relative;
   }
 
+  /* Modal Overlay */
+  #popupModal {
+    display:flex; justify-content:center; align-items:center;
+    position:fixed; top:0; left:0; width:100%; height:100%;
+    background: rgba(0,0,0,0.5); z-index:1000;
+    animation: fadeIn 0.6s ease forwards;
+  }
+  #popupContent {
+    background: #fff0f5; border-radius:25px; padding:30px;
+    max-width:400px; width:90%; box-shadow:0 8px 25px rgba(0,0,0,0.2);
+    position:relative; text-align:center;
+    animation: popIn 0.6s ease;
+  }
+  @keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+  }
+  @keyframes popIn {
+    0% {transform: scale(0.7); opacity:0;}
+    100% {transform: scale(1); opacity:1;}
+  }
+
+  #popupContent img { width:150px; border-radius:50%; margin-bottom:15px; }
+  #popupContent h2 { color:#ff66aa; margin-bottom:10px; }
+  #popupContent p { color:#ff3366; font-size:16px; line-height:1.4; }
+  #closePopup {
+    margin-top:20px; padding:10px 25px; border:none; border-radius:50px;
+    background:#ff66aa; color:white; cursor:pointer; font-size:16px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  #closePopup:hover { transform:scale(1.1); box-shadow:0 6px 15px rgba(0,0,0,0.25); }
+
   /* Teddy in center */
-  .teddy-cloud-container { 
+  .teddy-container { 
     position: relative; display: inline-block; margin-top:60px; 
   }
   #teddy { 
@@ -26,11 +58,7 @@
     position:absolute; top:-100px; left:50%; transform:translateX(-50%);
     background:#fff0f5; padding:15px 25px; border-radius:30px;
     font-size:16px; color:#ff3366; box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    max-width:220px; line-height:1.4; animation: pop 0.6s ease;
-  }
-  @keyframes pop {
-    0% { transform: translate(-50%, -50%) scale(0.8); opacity:0; }
-    100% { transform: translate(-50%, -50%) scale(1); opacity:1; }
+    max-width:220px; line-height:1.4;
   }
 
   /* Buttons */
@@ -77,34 +105,22 @@
     .btn{flex:1 1 100%; min-width:auto;}
   }
 
-  /* Floating hearts in background */
-  @keyframes floatHearts {
-    0% { transform: translateY(0) scale(1); opacity: 1; }
-    50% { transform: translateY(-150px) scale(1.1); opacity:0.7; }
-    100% { transform: translateY(-300px) scale(1); opacity:0; }
-  }
-  .heart-bg {
-    position:absolute; width:40px; opacity:0.6; animation: floatHearts linear infinite; pointer-events:none;
-    background:url('heart.png') no-repeat center/contain;
-  }
 </style>
 </head>
 <body>
 
-<!-- Floating Hearts JS -->
-<script>
-for(let i=0;i<12;i++){
-  const h=document.createElement('div');
-  h.className='heart-bg';
-  h.style.left=Math.random()*100+'vw';
-  h.style.top=Math.random()*120+'vh';
-  h.style.animationDuration=(4+Math.random()*3)+'s';
-  document.body.appendChild(h);
-}
-</script>
+<!-- Surprise Pop-Up Modal -->
+<div id="popupModal">
+  <div id="popupContent">
+    <img src="teddy.png" alt="Cute Teddy">
+    <h2>Heyy Sweetheart! 💖</h2>
+    <p>Yeh teddy aur yeh message tumhare liye!<br>Happy Teddy Day! 🧸💝</p>
+    <button id="closePopup">Open Teddy Surprise 🎁</button>
+  </div>
+</div>
 
 <!-- Teddy -->
-<div class="teddy-cloud-container">
+<div class="teddy-container">
   <img id="teddy" src="teddy.png" alt="Cute Teddy Bear">
   <div class="speech-bubble" id="speech">Heyyy! Ready for Teddy Day masti? 🧸💖</div>
 </div>
@@ -129,6 +145,15 @@ for(let i=0;i<12;i++){
 </div>
 
 <script>
+// Modal functionality
+const popupModal = document.getElementById('popupModal');
+const closePopup = document.getElementById('closePopup');
+
+closePopup.onclick = () => {
+  popupModal.style.display = 'none';
+}
+
+// Teddy speech
 const speech=document.getElementById('speech');
 const feedback=document.getElementById('feedback');
 
@@ -182,6 +207,5 @@ submitComment.onclick=()=>{
   document.getElementById('comment').value="";
 }
 </script>
-
 </body>
 </html>
