@@ -2,141 +2,168 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Teddy Day Surprise 🧸💖</title>
+<title>💖 Teddy Day Surprise 💖</title>
 <style>
-body {
-  margin:0; padding:0;
-  font-family:'Comic Sans MS', cursive, sans-serif;
-  background: linear-gradient(to top, #fff, #ffeef5); /* soft background, no strong pink */
-  text-align:center;
-  min-height:100vh;
-  position:relative;
-  overflow-x:hidden;
-  cursor: none; /* hide default cursor for teddy-follow */
-}
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(to bottom, #fff8f0, #fff2e6);
+    text-align: center;
+    min-height: 100vh;
+    overflow: hidden;
+    position: relative;
+  }
 
-/* Popup mini messages */
-.popup {
-  position:absolute;
-  background:#ffeff5;
-  padding:10px 15px;
-  border-radius:20px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.2);
-  font-size:14px;
-  color:#ff3399;
-  pointer-events:none;
-  opacity:0;
-  transform: scale(0);
-  transition: all 0.4s ease-out;
-}
-.popup.show {
-  opacity:1;
-  transform: scale(1) translateY(-20px);
-}
+  /* Teddy center */
+  .teddy-container {
+    position: relative;
+    margin-top: 60px;
+  }
 
-/* Teddy cursor */
-#teddyMain {
-  width:120px;
-  border-radius:20px;
-  position:absolute;
-  top:50%; left:50%;
-  transform: translate(-50%, -50%);
-  pointer-events:none;
-  transition: transform 0.2s;
-}
+  #teddy {
+    width: 220px;
+    transition: transform 0.3s;
+    cursor: pointer;
+  }
 
-/* Buttons */
-.btn-container {
-  display:flex;
-  justify-content:center;
-  flex-wrap:wrap;
-  gap:15px;
-  margin-top:400px;
-  position:relative;
-  z-index:10;
-}
-.btn {
-  flex:1 1 120px;
-  padding:15px 20px;
-  font-size:16px;
-  border:none;
-  border-radius:50px;
-  cursor:pointer;
-  color:white;
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow:0 4px 10px rgba(0,0,0,0.15);
-  min-width:120px;
-  position:relative;
-}
-.btn:hover { 
-  transform:scale(1.15) rotate(-3deg); 
-  box-shadow:0 6px 15px rgba(0,0,0,0.25); 
-  animation: btnBounce 0.5s ease;
-}
-@keyframes btnBounce {
-  0%,100%{transform:scale(1.15) rotate(-3deg);}
-  50%{transform:scale(1.3) rotate(0deg);}
-}
-#love { background-color:#ff66aa; }
-#hug { background-color:#ff99cc; color:#333; }
-#gift { background-color:#ff66cc; }
-#surprise { background-color:#ff3399; }
+  #teddy:hover {
+    transform: scale(1.2) rotate(-10deg);
+  }
 
-/* Feedback */
-#feedback {
-  margin-top:20px;
-  font-size:20px;
-  color:#ff3366;
-  min-height:30px;
-  animation: feedbackGlow 2s infinite;
-}
-@keyframes feedbackGlow {
-  0%,100% { text-shadow:none; }
-  50% { text-shadow:0 0 15px #ff99cc, 0 0 25px #ff66aa; }
-}
+  /* Speech bubble */
+  .speech-bubble {
+    position: absolute;
+    top: -110px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff4f0;
+    padding: 15px 25px;
+    border-radius: 30px;
+    font-size: 16px;
+    color: #ff3366;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    max-width: 220px;
+    line-height: 1.4;
+    transition: all 0.3s;
+  }
 
-/* Comments */
-#comments {
-  max-width:500px;
-  margin:50px auto 30px;
-  background:#fff;
-  border-radius:30px;
-  padding:20px;
-  box-shadow:0 8px 20px rgba(0,0,0,0.1);
-  text-align:left;
-}
-#comments h2 { text-align:center; color:#ff66aa; margin-bottom:15px; }
-input, textarea {
-  width:100%; padding:12px; margin-top:8px;
-  border-radius:15px; border:1px solid #ffb3c6;
-  font-size:14px;
-}
-#submitComment {
-  background-color:#ff66aa; color:white;
-  padding:10px 20px; border:none; border-radius:50px;
-  margin-top:10px; cursor:pointer;
-  display:block; margin-left:auto; margin-right:auto;
-  transition: transform 0.2s;
-}
-#submitComment:hover { transform:scale(1.05); }
-.comment {
-  background:#ffe6f0;
-  padding:12px;
-  margin-top:12px;
-  border-radius:20px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.05);
-  animation: sparkle 1s ease;
-}
-@keyframes sparkle {
-  0%,100%{ box-shadow:0 4px 10px rgba(0,0,0,0.05);}
-  50%{ box-shadow:0 4px 20px rgba(255,105,180,0.6);}
-}
+  /* Buttons */
+  .btn-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 40px;
+    gap: 15px;
+  }
+
+  .btn {
+    flex: 1 1 130px;
+    padding: 15px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    color: white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    transition: transform 0.2s, box-shadow 0.2s;
+    min-width: 120px;
+  }
+
+  .btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+  }
+
+  #love { background-color: #ff4d6d; }
+  #hug { background-color: #ff85b3; color:#333; }
+  #gift { background-color: #ff66aa; }
+  #surprise { background-color: #ff3385; }
+
+  /* Feedback messages */
+  #feedback {
+    margin-top: 20px;
+    font-size: 20px;
+    color: #ff3366;
+    min-height: 30px;
+    font-weight: bold;
+  }
+
+  /* Floating hearts & teddies */
+  .floating {
+    width: 50px;
+    position: absolute;
+    top: -60px;
+    animation: floatDown linear infinite;
+    pointer-events: none;
+  }
+
+  @keyframes floatDown {
+    0% { transform: translateY(0) rotate(0deg); opacity:1; }
+    50% { transform: translateY(200px) rotate(15deg); opacity:0.8; }
+    100% { transform: translateY(400px) rotate(-15deg); opacity:0; }
+  }
+
+  /* Comments section */
+  #comments {
+    max-width: 500px;
+    margin: 50px auto 30px;
+    background: #fff4f0;
+    border-radius: 30px;
+    padding: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    text-align: left;
+  }
+
+  #comments h2 { text-align: center; color: #ff4d6d; margin-bottom: 15px; }
+
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 8px;
+    border-radius: 15px;
+    border: 1px solid #ffb3c6;
+    font-size: 14px;
+  }
+
+  #submitComment {
+    background-color: #ff4d6d;
+    color:white;
+    padding: 10px 20px;
+    border:none;
+    border-radius:50px;
+    margin-top:10px;
+    cursor:pointer;
+    display:block;
+    margin-left:auto;
+    margin-right:auto;
+    transition: transform 0.2s;
+  }
+
+  #submitComment:hover { transform: scale(1.05); }
+
+  .comment {
+    background:#ffe6f0;
+    padding:12px;
+    margin-top:12px;
+    border-radius:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  }
+
+  @media(max-width:600px){
+    .speech-bubble{ font-size:14px; max-width:180px; top:-90px; }
+    #teddy{ width:180px; }
+    .btn{ flex:1 1 100%; min-width:auto; }
+  }
 </style>
 </head>
 <body>
 
-<!-- Teddy following cursor -->
-<img id="teddyMain" src="61-qJABL20L._AC_SL1100_.jpg" alt="Cute Teddy">
+<!-- Teddy center -->
+<div class="teddy-container">
+  <img id="teddy" src="teddy.png" alt="Cute Teddy">
+  <div class="speech-bubble" id="speech">Heyyy! Ready for Teddy Day fun? 🧸💖</div>
+</div>
 
 <!-- Buttons -->
 <div class="btn-container">
@@ -158,51 +185,74 @@ input, textarea {
 </div>
 
 <script>
+const speech = document.getElementById('speech');
 const feedback = document.getElementById('feedback');
-const teddy = document.getElementById('teddyMain');
 
-// Mouse follow teddy
-document.addEventListener('mousemove', e => {
-  teddy.style.transform = `translate(${e.clientX - 60}px, ${e.clientY - 60}px)`;
-});
+const messages = [
+  "Heyyy! Ready for Teddy Day fun? 🧸💖",
+  "Awww! Yeh teddy tumhare liye aa gaya! 😍🐻",
+  "Hug chahiye? 🤗 Yeh teddy ready hai! 💖",
+  "Chhota sa surprise tumhare liye! 🎁💝",
+  "Tumhare smile ke liye ek teddy aur cute emoji! 😘🐻💕"
+];
+let msgIndex = 0;
 
-// Popup mini function
-function showPopup(x,y,message){
-  const div = document.createElement('div');
-  div.className='popup';
-  div.innerHTML = `<strong>💖</strong> ${message}`;
-  div.style.left=x+'px';
-  div.style.top=y+'px';
-  document.body.appendChild(div);
-  setTimeout(()=>{ div.classList.add('show'); },10);
-  setTimeout(()=>{ div.remove(); },2000);
+setInterval(() => {
+  msgIndex = (msgIndex + 1) % messages.length;
+  speech.innerText = messages[msgIndex];
+}, 4000);
+
+// Floating teddies & hearts
+function createFloating(type="heart") {
+  const img = document.createElement('img');
+  img.className="floating";
+  img.style.left = Math.random()*window.innerWidth + "px";
+  img.style.animationDuration = (4 + Math.random()*3) + "s";
+  if(type==="teddy") img.src="teddy.png";
+  else img.src="heart.png";
+  document.body.appendChild(img);
+  setTimeout(()=>img.remove(),7000);
+}
+
+function confetti(count=10){
+  for(let i=0;i<count;i++){
+    createFloating(Math.random()<0.5?"teddy":"heart");
+  }
 }
 
 // Button interactions
-document.getElementById('love').onclick = (e) => { 
-  feedback.innerText = "Love clicked! Tumhare liye extra hugs! 💕"; 
-  showPopup(e.clientX,e.clientY,"Tumhe love mil gaya! 🧸");
+document.getElementById('love').onclick = () => {
+  speech.innerText = "Aww! Tumhe teddy pasand aaya! 😍🧸💖";
+  feedback.innerText = "Love clicked! 💕 Extra hugs for you!";
+  confetti(15);
 }
-document.getElementById('hug').onclick = (e) => { 
-  feedback.innerText = "Hug clicked! Teddy hug mode ON! 🧸"; 
-  showPopup(e.clientX,e.clientY,"Big hug tumhare liye! 🤗");
+
+document.getElementById('hug').onclick = () => {
+  speech.innerText = "Ek BIG teddy hug tumhare liye! 🤗🐻💖";
+  feedback.innerText = "Hug clicked! Teddy hug ON!";
+  confetti(20);
 }
-document.getElementById('gift').onclick = (e) => { 
-  feedback.innerText = "Gift clicked! Sweet surprise for you! 🎁"; 
-  showPopup(e.clientX,e.clientY,"Chhota sa gift! 🎁💖");
+
+document.getElementById('gift').onclick = () => {
+  speech.innerText = "Surprise! Chhota sa teddy gift aa gaya 🎁🧸😂";
+  feedback.innerText = "Gift clicked! Sweet surprise!";
+  confetti(20);
 }
-document.getElementById('surprise').onclick = (e) => { 
-  feedback.innerText = "Surprise clicked! Tumhe mazaa aaya na? 😍"; 
-  showPopup(e.clientX,e.clientY,"Surprise! 😍🧸");
+
+document.getElementById('surprise').onclick = () => {
+  speech.innerText = "Woohoo! Teddies tumhare upar baras rahe hai! ☁️🧸😂";
+  feedback.innerText = "Surprise clicked! Mazaa aa gaya na? 😍";
+  confetti(25);
 }
 
 // Comment section
 const submitComment = document.getElementById('submitComment');
 const commentList = document.getElementById('commentList');
+
 submitComment.onclick = () => {
   const name = document.getElementById('name').value;
   const commentText = document.getElementById('comment').value;
-  if(name==="" || commentText==="") { alert("Please enter both name and message!"); return; }
+  if(name==="" || commentText===""){ alert("Please enter both name and message!"); return; }
   const div = document.createElement('div');
   div.className="comment";
   div.innerHTML = `<strong>${name}:</strong> ${commentText}`;
@@ -210,6 +260,10 @@ submitComment.onclick = () => {
   document.getElementById('name').value="";
   document.getElementById('comment').value="";
 }
+
+// Automatic floating teddies
+setInterval(()=>{ createFloating(Math.random()<0.5?"teddy":"heart"); },2500);
 </script>
+
 </body>
 </html>
