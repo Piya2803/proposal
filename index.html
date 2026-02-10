@@ -15,7 +15,6 @@
       position: relative;
     }
 
-    /* Cloud background */
     .cloud {
       position: absolute;
       width: 150px;
@@ -30,7 +29,6 @@
       100% { transform: translateX(1200px); }
     }
 
-    /* Teddy on cloud */
     .teddy-cloud-container {
       position: relative;
       display: inline-block;
@@ -62,7 +60,6 @@
       line-height: 1.4;
     }
 
-    /* Buttons */
     .btn-container {
       display: flex;
       flex-wrap: wrap;
@@ -101,7 +98,6 @@
       min-height: 30px;
     }
 
-    /* Floating teddies/hearts */
     .floating {
       width: 50px;
       position: absolute;
@@ -115,7 +111,6 @@
       100% { transform: translateY(400px) rotate(-15deg); opacity:0; }
     }
 
-    /* Comments */
     #comments {
       max-width: 500px;
       margin: 50px auto 30px;
@@ -186,13 +181,13 @@
 <body>
 
   <!-- Cloud background -->
-  <img src="cloud.png" class="cloud" style="top:10%; left:5%;">
-  <img src="cloud.png" class="cloud" style="top:30%; left:50%;">
-  <img src="cloud.png" class="cloud" style="top:50%; left:20%;">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACW..." class="cloud" style="top:10%; left:5%;">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACW..." class="cloud" style="top:30%; left:50%;">
+  <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACW..." class="cloud" style="top:50%; left:20%;">
 
   <!-- Teddy on cloud -->
   <div class="teddy-cloud-container">
-    <img id="teddy" src="teddy.png" alt="Cute Teddy Bear">
+    <img id="teddy" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADh..." alt="Cute Teddy Bear">
     <div class="speech-bubble" id="speech">Heyyy! Ready for Teddy Day masti? 🧸💖</div>
   </div>
 
@@ -235,15 +230,14 @@
       speech.innerText = messages[msgIndex];
     }, 5000);
 
-    // Floating teddies/hearts
     function createFloating(type="heart") {
       const img = document.createElement('img');
       img.className = "floating";
       img.style.left = Math.random()*window.innerWidth + "px";
       img.style.animationDuration = (4 + Math.random()*3) + "s";
 
-      if(type==="teddy") img.src="teddy.png";
-      else img.src="heart.png";
+      if(type==="teddy") img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADh...";
+      else img.src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACgAAAAo...";
 
       document.body.appendChild(img);
       setTimeout(()=>img.remove(),7000);
@@ -255,7 +249,6 @@
       }
     }
 
-    // Button interactions
     document.getElementById('love').onclick = () => {
       speech.innerText = "Aww! Tumhe teddy pasand aaya! 😍🧸💖";
       feedback.innerText = "Love it! 💕 Tumhare liye extra hugs!";
@@ -280,7 +273,6 @@
       confetti(25);
     }
 
-    // Comment section
     const submitComment = document.getElementById('submitComment');
     const commentList = document.getElementById('commentList');
 
@@ -306,6 +298,5 @@
       createFloating(Math.random()<0.5?"teddy":"heart");
     },2500);
   </script>
-
 </body>
 </html>
