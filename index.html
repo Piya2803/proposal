@@ -2,18 +2,19 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Valentine Proposal</title>
+  <title>Teddy Day Surprise 🧸</title>
   <style>
-    /* Basic styling */
     body {
       font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: #ffe6f0;
+      background: #fff0f5;
       text-align: center;
       padding: 50px;
+      overflow-x: hidden;
+      position: relative;
     }
 
     h1 {
-      color: #ff3366;
+      color: #ff6699;
       font-size: 48px;
     }
 
@@ -24,7 +25,19 @@
       margin: 20px auto;
     }
 
-    /* Heart buttons */
+    #teddyImage {
+      width: 200px;
+      margin: 20px auto;
+      display: block;
+      border-radius: 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
+    }
+
+    #teddyImage:hover {
+      transform: rotate(-10deg) scale(1.1);
+    }
+
     button {
       padding: 15px 25px;
       margin: 15px;
@@ -34,24 +47,27 @@
       cursor: pointer;
       color: white;
       transition: transform 0.2s;
+      position: relative;
+      overflow: hidden;
     }
 
     button:hover {
       transform: scale(1.1);
     }
 
-    #yes { background-color: #ff3366; }
-    #maybe { background-color: #ff85a2; color: #333; }
+    #yes { background-color: #ff6699; }
+    #maybe { background-color: #ffb3c6; color: #333; }
     #no { background-color: #aaa; }
+    #hug { background-color: #ff99cc; }
+    #gift { background-color: #ff66cc; }
+    #surprise { background-color: #ff3399; }
 
-    /* Feedback message */
     #feedback {
       font-size: 24px;
       margin-top: 30px;
       color: #ff3366;
     }
 
-    /* Comment section */
     #comments {
       margin-top: 40px;
       max-width: 500px;
@@ -70,7 +86,7 @@
     }
 
     #submitComment {
-      background-color: #ff3366;
+      background-color: #ff6699;
       color: white;
       padding: 10px 20px;
       border: none;
@@ -85,16 +101,34 @@
       margin-top: 10px;
       border-radius: 5px;
     }
+
+    /* Floating teddy animation */
+    .floatingTeddy {
+      width: 50px;
+      position: absolute;
+      top: -60px;
+      animation: floatDown linear infinite;
+    }
+
+    @keyframes floatDown {
+      0% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(200px) rotate(15deg); }
+      100% { transform: translateY(400px) rotate(-15deg); }
+    }
   </style>
 </head>
 <body>
 
-  <h1>Will You Be My Valentine? 💖</h1>
-  <p>I've been thinking about you and I want to ask... will you be my Valentine? Choose your answer below!</p>
+  <h1>Happy Teddy Day! 🧸</h1>
+  <img id="teddyImage" src="https://i.imgur.com/7b8Kp1K.png" alt="Cute Teddy Bear">
+  <p>Sending you a little teddy to make your day cozy and sweet! Choose your reaction:</p>
 
-  <button id="yes">Yes 💕</button>
-  <button id="maybe">Maybe 😳</button>
-  <button id="no">No 💔</button>
+  <button id="yes">Love it! 💕</button>
+  <button id="maybe">Hmm 😳</button>
+  <button id="no">Not my thing 💔</button>
+  <button id="hug">Hug 🧸</button>
+  <button id="gift">Gift 🎁</button>
+  <button id="surprise">Surprise 😍</button>
 
   <div id="feedback"></div>
 
@@ -108,19 +142,52 @@
   </div>
 
   <script>
-    // Button interaction
     const feedback = document.getElementById('feedback');
 
+    function createFloatingTeddy(x) {
+      const teddy = document.createElement('img');
+      teddy.src = "https://i.imgur.com/7b8Kp1K.png";
+      teddy.className = "floatingTeddy";
+      teddy.style.left = x + "px";
+      teddy.style.animationDuration = (4 + Math.random() * 3) + "s";
+      document.body.appendChild(teddy);
+      setTimeout(() => teddy.remove(), 7000);
+    }
+
+    function teddyConfetti(count=10) {
+      for(let i=0; i<count; i++){
+        createFloatingTeddy(Math.random() * window.innerWidth);
+      }
+    }
+
+    // Button reactions
     document.getElementById('yes').onclick = () => {
-      feedback.innerText = "Yay! 💖 I’m so happy!";
+      feedback.innerText = "Yay! 🧸 I'm so glad you like it!";
+      teddyConfetti();
     }
 
     document.getElementById('maybe').onclick = () => {
-      feedback.innerText = "Aw, take your time 😳";
+      feedback.innerText = "No worries 😳 maybe it'll grow on you!";
+      teddyConfetti(5);
     }
 
     document.getElementById('no').onclick = () => {
-      feedback.innerText = "Oh no 💔 maybe next time...";
+      feedback.innerText = "Oh no 💔 maybe next time!";
+    }
+
+    document.getElementById('hug').onclick = () => {
+      feedback.innerText = "Sending a warm teddy hug! 🤗🧸";
+      teddyConfetti(15);
+    }
+
+    document.getElementById('gift').onclick = () => {
+      feedback.innerText = "A little teddy gift is on the way! 🎁🧸";
+      teddyConfetti(20);
+    }
+
+    document.getElementById('surprise').onclick = () => {
+      feedback.innerText = "Surprise! 🎉 A bunch of teddies just for you!";
+      teddyConfetti(25);
     }
 
     // Comment logic
@@ -144,7 +211,13 @@
       document.getElementById('name').value = "";
       document.getElementById('comment').value = "";
     }
+
+    // Random floating teddies every few seconds
+    setInterval(() => {
+      createFloatingTeddy(Math.random() * window.innerWidth);
+    }, 2000);
   </script>
 
 </body>
 </html>
+
