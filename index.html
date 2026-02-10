@@ -6,61 +6,88 @@
 <style>
 body {
   margin:0; padding:0; font-family:'Comic Sans MS', cursive, sans-serif;
-  background: linear-gradient(to top, #fff0f5, #ffe6f0);
-  text-align:center; min-height:100vh;
+  background: linear-gradient(to bottom, #fff0f5, #ffe6f0);
+  text-align:center; min-height:100vh; display:flex; flex-direction:column; align-items:center;
 }
-.teddy-container { margin-top:80px; display:inline-block; position:relative; }
-#teddy { width:200px; border-radius:50%; transition: transform 0.3s; }
-#teddy:hover { transform:scale(1.15) rotate(-10deg); }
+.header {
+  width:100%; padding:20px 0; background:#ffccdd; box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  font-size:24px; color:#ff3366;
+  font-weight:bold;
+}
+.main-container { display:flex; flex-direction:column; align-items:center; margin-top:40px; position:relative; }
+#teddy { width:220px; border-radius:50%; transition: transform 0.3s; }
+#teddy:hover { transform:scale(1.2) rotate(-10deg); }
 .speech-bubble {
   position:absolute; top:-100px; left:50%; transform:translateX(-50%);
   background:#fff0f5; padding:15px 25px; border-radius:30px;
   font-size:16px; color:#ff3366; box-shadow:0 5px 15px rgba(0,0,0,0.1);
-  max-width:220px; line-height:1.4;
+  max-width:250px; line-height:1.4;
 }
-.btn-container { display:flex; flex-wrap:wrap; justify-content:center; margin-top:30px; gap:15px; }
+
+/* Button layout around teddy */
+.btn-container {
+  display:grid; grid-template-columns:repeat(2, 140px);
+  gap:20px; margin-top:280px; justify-content:center;
+}
 .btn {
-  flex:1 1 120px; padding:15px 20px; font-size:16px; border:none;
+  padding:15px 20px; font-size:16px; border:none;
   border-radius:50px; cursor:pointer; color:white;
   transition: transform 0.2s, box-shadow 0.2s; box-shadow:0 4px 10px rgba(0,0,0,0.15);
-  min-width:120px;
 }
 .btn:hover { transform:scale(1.1); box-shadow:0 6px 15px rgba(0,0,0,0.25); }
-#love { background-color:#ff66aa; } #hug { background-color:#ff99cc; color:#333; }
-#gift { background-color:#ff66cc; } #surprise { background-color:#ff3399; }
+#love { background-color:#ff66aa; } 
+#hug { background-color:#ff99cc; color:#333; }
+#gift { background-color:#ff66cc; } 
+#surprise { background-color:#ff3399; }
+
 #feedback { margin-top:20px; font-size:20px; color:#ff3366; min-height:30px; }
+
+/* Comments section */
 #comments { max-width:500px; margin:50px auto 30px; background:#fff0f5; border-radius:30px; padding:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1); text-align:left; }
-#comments h2 { text-align:center; color:#ff66aa; margin-bottom:15px; }
+#comments h2 { text-align:center; color:#ff66aa; margin-bottom:15px; font-size:22px; }
 input, textarea { width:100%; padding:12px; margin-top:8px; border-radius:15px; border:1px solid #ffb3c6; font-size:14px; }
 #submitComment { background-color:#ff66aa; color:white; padding:10px 20px; border:none; border-radius:50px; margin-top:10px; cursor:pointer; display:block; margin-left:auto; margin-right:auto; transition: transform 0.2s; }
 #submitComment:hover { transform:scale(1.05); }
-.comment { background:#ffe6f0; padding:12px; margin-top:12px; border-radius:20px; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
-@media(max-width:600px){ .speech-bubble{font-size:14px; max-width:180px; top:-90px;} #teddy{width:150px;} .btn{flex:1 1 100%; min-width:auto;} }
+.comment { background:#ffe6f0; padding:12px; margin-top:12px; border-radius:20px; box-shadow:0 4px 10px rgba(0,0,0,0.05); font-size:14px; }
+
+/* Cute edge designs */
+.edge-design {
+  position:absolute; width:80px; opacity:0.2;
+}
+.edge-left { left:0; top:100px; transform:rotate(-20deg);}
+.edge-right { right:0; top:150px; transform:rotate(20deg);}
+.edge-bottom { bottom:0; left:50%; transform:translateX(-50%) rotate(180deg);}
+@media(max-width:600px){ #teddy{width:180px;} .speech-bubble{top:-80px; max-width:200px;} .btn-container{grid-template-columns:1fr; gap:15px;} }
 </style>
 </head>
 <body>
 
-<!-- Teddy -->
-<div class="teddy-container">
+<div class="header">Teddy Day Masti Zone 🧸💖</div>
+
+<!-- Main Teddy -->
+<div class="main-container">
+  <img class="edge-design edge-left" src="61-qJABL20L._AC_SL1100_.jpg" alt="Edge Design">
+  <img class="edge-design edge-right" src="61-qJABL20L._AC_SL1100_.jpg" alt="Edge Design">
+  
   <img id="teddy" src="61-qJABL20L._AC_SL1100_.jpg" alt="Cute Teddy Bear">
   <div class="speech-bubble" id="speech">Heyyy! Ready for Teddy Day masti? 🧸💖</div>
-</div>
 
-<!-- Buttons -->
-<div class="btn-container">
-  <button class="btn" id="love">Love it! 💕</button>
-  <button class="btn" id="hug">Hug 🧸</button>
-  <button class="btn" id="gift">Gift 🎁</button>
-  <button class="btn" id="surprise">Surprise 😍</button>
+  <!-- Buttons around teddy -->
+  <div class="btn-container">
+    <button class="btn" id="love">Love it! 💕</button>
+    <button class="btn" id="hug">Hug 🧸</button>
+    <button class="btn" id="gift">Gift 🎁</button>
+    <button class="btn" id="surprise">Surprise 😍</button>
+  </div>
 </div>
 
 <div id="feedback"></div>
 
 <!-- Comments -->
 <div id="comments">
-  <h2>Leave a Cute Note</h2>
+  <h2>Leave a Cute Note 😄</h2>
   <input type="text" id="name" placeholder="Your Name">
-  <textarea id="comment" placeholder="Write a cute/funny message..."></textarea>
+  <textarea id="comment" placeholder="Write a funny/cute message..."></textarea>
   <button id="submitComment">Send Note</button>
   <div id="commentList"></div>
 </div>
@@ -71,11 +98,11 @@ const feedback = document.getElementById('feedback');
 
 const messages = [
   "Heyyy! Ready for Teddy Day masti? 🧸💖",
-  "Awww! Yeh teddy tumhare liye aa gaya! 😍🐻",
+  "Awww! Teddy tumhare liye aa gaya! 😍🐻",
   "Hug chahiye? 🤗 Yeh teddy ready hai!",
   "Chhota sa surprise tumhare liye! 🎁💝",
-  "Dekhooo! Teddies tumhare upar baras rahe hai! ☁️🧸😂",
-  "Tumhare smile ke liye ek teddy aur cute emoji! 😘🐻💕",
+  "Dekhooo! Teddy vibes aa rahe hai! 😂🧸",
+  "Tumhare smile ke liye teddy aur emoji! 😘🐻💕",
   "Oye hoye! Kitna cute lag raha hai na tum? 😳💖🧸"
 ];
 let msgIndex = 0;
@@ -102,7 +129,7 @@ document.getElementById('gift').onclick = () => {
 }
 
 document.getElementById('surprise').onclick = () => {
-  speech.innerText = "Woohoo! Teddies tumhare upar baras rahe hai! ☁️🧸😂";
+  speech.innerText = "Woohoo! Teddy vibes tumhare upar! ☁️🧸😂";
   feedback.innerText = "Surprise clicked! Mazaa aa gaya na? 😍";
 }
 
