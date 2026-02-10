@@ -2,34 +2,51 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title> Teddy Day Surprise </title>
+<title>💖 Teddy Day Surprise 💖</title>
 <style>
 body {
   margin:0; padding:0; font-family:'Comic Sans MS', cursive, sans-serif;
-  background: linear-gradient(to bottom, #fdf6f0, #f7f0e6);
+  background: linear-gradient(to bottom, #f0fff4, #e0f7f1); /* light pastel green-blue */
   min-height:100vh; text-align:center; overflow:hidden;
+  display:flex; flex-direction:column; justify-content:center; align-items:center;
 }
 
-/* Center Teddy */
-.teddy-container { margin-top:50px; position:relative; }
-#teddy { width:220px; cursor:pointer; transition: transform 0.3s; }
+/* Teddy Center */
+.teddy-container { position:relative; }
+#teddy { width:250px; cursor:pointer; transition: transform 0.3s; }
 #teddy:hover { transform: scale(1.2) rotate(-10deg); }
 
-/* Buttons */
-.btn-container { display:flex; flex-wrap:wrap; justify-content:center; margin-top:40px; gap:15px; }
-.btn { flex:1 1 130px; padding:15px 20px; font-size:16px; border:none; border-radius:50px; cursor:pointer; color:white; box-shadow:0 4px 10px rgba(0,0,0,0.15); transition:transform 0.2s, box-shadow 0.2s; min-width:120px; }
+/* Buttons around teddy */
+.btn-container { position:absolute; width:100%; height:100%; pointer-events:none; }
+.btn {
+  position:absolute; padding:12px 18px; font-size:15px; border:none;
+  border-radius:50px; cursor:pointer; color:white; box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+  pointer-events:all;
+}
 .btn:hover { transform:scale(1.1); box-shadow:0 6px 15px rgba(0,0,0,0.25); }
-#love{background:#ff4d6d;} #hug{background:#ff85b3;color:#333;} #gift{background:#ff66aa;} #surprise{background:#ff3385;}
 
-/* Pop-up modal */
+/* Individual button colors */
+#love{background:#ff4d6d;} 
+#hug{background:#ff85b3;color:#333;} 
+#gift{background:#ff66aa;} 
+#surprise{background:#ff3385;} 
+#kiss{background:#ff99c1;} 
+#smile{background:#ff66cc;} 
+
+/* Modal Pop-up */
 .modal-bg { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; z-index:10; }
-.modal { background:#fffaf5; border-radius:30px; padding:30px; max-width:350px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.2); position:relative; overflow:hidden; }
-.modal img { width:120px; margin-bottom:15px; }
+.modal { background:#fffaf5; border-radius:30px; padding:30px; max-width:380px; text-align:center; box-shadow:0 10px 30px rgba(0,0,0,0.2); position:relative; overflow:hidden; transform:scale(0); transition: transform 0.3s ease; }
+.modal.show { transform:scale(1); }
+
+/* Modal content */
+.modal img { width:120px; margin-bottom:15px; animation:bounce 0.6s ease; }
+@keyframes bounce { 0%{transform:translateY(-20px);} 50%{transform:translateY(0);} 100%{transform:translateY(-5px);} }
 .modal h2 { color:#ff3366; margin-bottom:10px; }
 .modal p { font-size:16px; margin-bottom:20px; }
 .close-btn { position:absolute; top:10px; right:15px; cursor:pointer; font-size:20px; font-weight:bold; color:#ff3366; }
 
-/* Sparkle animation */
+/* Sparkles */
 .sparkle { width:10px; height:10px; background:gold; position:absolute; border-radius:50%; opacity:0; animation:sparkleAnim 1s linear infinite; }
 @keyframes sparkleAnim {
   0%{transform:scale(0);opacity:1;}
@@ -37,8 +54,16 @@ body {
   100%{transform:scale(0);opacity:0;}
 }
 
+/* Heart floating */
+.floating-heart { position:absolute; font-size:20px; color:#ff3366; animation:floatHeart 2s linear forwards; }
+@keyframes floatHeart {
+  0%{transform:translateY(0) scale(0); opacity:1;}
+  50%{transform:translateY(-50px) scale(1.2); opacity:0.9;}
+  100%{transform:translateY(-120px) scale(0); opacity:0;}
+}
+
 @media(max-width:600px){
-  #teddy{width:180px;} .btn{flex:1 1 100%; min-width:auto;} .modal{max-width:90%;}
+  #teddy{width:180px;} .modal{max-width:90%;}
 }
 </style>
 </head>
@@ -49,12 +74,14 @@ body {
   <img id="teddy" src="teddy.png" alt="Teddy Bear">
 </div>
 
-<!-- Buttons -->
+<!-- Buttons around teddy -->
 <div class="btn-container">
-  <button class="btn" id="love">Love it! 💕</button>
-  <button class="btn" id="hug">Hug 🧸</button>
-  <button class="btn" id="gift">Gift 🎁</button>
-  <button class="btn" id="surprise">Surprise 😍</button>
+  <button class="btn" id="love" style="top:10%; left:50%;">Love 💕</button>
+  <button class="btn" id="hug" style="top:35%; left:80%;">Hug 🤗</button>
+  <button class="btn" id="gift" style="top:65%; left:80%;">Gift 🎁</button>
+  <button class="btn" id="surprise" style="top:90%; left:50%;">Surprise 😍</button>
+  <button class="btn" id="kiss" style="top:65%; left:20%;">Kiss 😘</button>
+  <button class="btn" id="smile" style="top:35%; left:20%;">Smile 😄</button>
 </div>
 
 <!-- Modal Pop-up -->
@@ -69,22 +96,28 @@ body {
 
 <script>
 const modalBg = document.getElementById('modalBg');
+const modal = document.getElementById('modal');
 const modalTitle = document.getElementById('modalTitle');
 const modalMsg = document.getElementById('modalMsg');
 const closeModal = document.getElementById('closeModal');
 
-// Function to open modal with title + message
+// Open modal with sparkle + hearts
 function openModal(title,msg){
   modalTitle.innerText = title;
   modalMsg.innerText = msg;
   modalBg.style.display="flex";
-  createSparkles(15);
+  setTimeout(()=> modal.classList.add('show'),50);
+  createSparkles(12);
+  createHearts(8);
 }
 
 // Close modal
-closeModal.onclick = () => { modalBg.style.display="none"; }
+closeModal.onclick = () => { 
+  modal.classList.remove('show');
+  setTimeout(()=> modalBg.style.display="none",300);
+}
 
-// Sparkles effect
+// Sparkles
 function createSparkles(count=10){
   for(let i=0;i<count;i++){
     const sparkle = document.createElement('div');
@@ -92,17 +125,43 @@ function createSparkles(count=10){
     sparkle.style.top = Math.random()*250+"px";
     sparkle.style.left = Math.random()*300+"px";
     sparkle.style.animationDuration = (0.8+Math.random()*0.5)+"s";
-    document.getElementById('modal').appendChild(sparkle);
+    modal.appendChild(sparkle);
     setTimeout(()=>sparkle.remove(),1200);
   }
 }
 
-// Button clicks with cute popups
-document.getElementById('love').onclick = ()=>{ openModal("Love! 💖","Awww! Tumhe teddy pasand aaya! Extra hugs! 🧸"); }
-document.getElementById('hug').onclick = ()=>{ openModal("Big Hug! 🤗","Yeh teddy hug tumhare liye! Feel the cuddle! 💖"); }
-document.getElementById('gift').onclick = ()=>{ openModal("Gift! 🎁","Surprise! Chhota sa teddy gift aa gaya! 🧸💝"); }
-document.getElementById('surprise').onclick = ()=>{ openModal("Surprise! 😍","Woohoo! Teddies tumhare upar baras rahe hain! 🐻"); }
+// Floating hearts
+function createHearts(count=5){
+  for(let i=0;i<count;i++){
+    const heart = document.createElement('div');
+    heart.className="floating-heart";
+    heart.style.left = Math.random()*280 + "px";
+    heart.innerText = "💖";
+    modal.appendChild(heart);
+    setTimeout(()=>heart.remove(),2000);
+  }
+}
 
+// Button clicks with unique messages
+document.getElementById('love').onclick = ()=>{ 
+  openModal("Love! 💖","Awww! Tumhe teddy pasand aaya! Extra hugs tumhare liye! 🧸💕"); 
+}
+document.getElementById('hug').onclick = ()=>{ 
+  openModal("Big Hug! 🤗","Yeh teddy hug tumhare liye! Feel the cuddle! 💖"); 
+}
+document.getElementById('gift').onclick = ()=>{ 
+  openModal("Gift! 🎁","Surprise! Chhota sa teddy gift aa gaya! 🧸💝"); 
+}
+document.getElementById('surprise').onclick = ()=>{ 
+  openModal("Surprise! 😍","Woohoo! Teddies tumhare upar baras rahe hain! 🐻✨"); 
+}
+document.getElementById('kiss').onclick = ()=>{ 
+  openModal("Kiss! 😘","Awww! Ek cute teddy kiss tumhare liye! 💖"); 
+}
+document.getElementById('smile').onclick = ()=>{ 
+  openModal("Smile! 😄","Dekho! Tumhari smile ke liye teddy ready hai! 🧸💕"); 
+}
 </script>
+
 </body>
 </html>
