@@ -2,135 +2,148 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Teddy Day Surprise 🧸</title>
+<title>Teddy Day Surprise 🧸💖</title>
 <style>
   body {
-    margin:0; padding:0; font-family:'Comic Sans MS', cursive, sans-serif;
-    background: linear-gradient(135deg, #ffe6f0, #fffaf0, #ffebff);
-    overflow-x:hidden; text-align:center; min-height:100vh; position:relative;
+    margin:0; padding:0;
+    font-family:'Comic Sans MS', cursive, sans-serif;
+    background: linear-gradient(to top, #fff0f5, #ffe6f0);
+    text-align:center;
+    min-height:100vh;
+    position:relative;
   }
 
-  /* Modal Overlay */
+  /* Popup modal */
   #popupModal {
-    display:flex; justify-content:center; align-items:center;
-    position:fixed; top:0; left:0; width:100%; height:100%;
-    background: rgba(0,0,0,0.5); z-index:1000;
-    animation: fadeIn 0.6s ease forwards;
-  }
-  #popupContent {
-    background: #fff0f5; border-radius:25px; padding:30px;
-    max-width:400px; width:90%; box-shadow:0 8px 25px rgba(0,0,0,0.2);
-    position:relative; text-align:center;
-    animation: popIn 0.6s ease;
-  }
-  @keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
-  }
-  @keyframes popIn {
-    0% {transform: scale(0.7); opacity:0;}
-    100% {transform: scale(1); opacity:1;}
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    position:fixed;
+    top:0; left:0;
+    width:100%; height:100%;
+    background:rgba(255,192,203,0.95);
+    z-index:9999;
+    flex-direction:column;
   }
 
-  #popupContent img { width:150px; border-radius:50%; margin-bottom:15px; }
-  #popupContent h2 { color:#ff66aa; margin-bottom:10px; }
-  #popupContent p { color:#ff3366; font-size:16px; line-height:1.4; }
+  #popupModal img {
+    width:250px;
+    border-radius:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.5);
+    margin-bottom:20px;
+  }
+
   #closePopup {
-    margin-top:20px; padding:10px 25px; border:none; border-radius:50px;
-    background:#ff66aa; color:white; cursor:pointer; font-size:16px;
-    transition: transform 0.2s, box-shadow 0.2s;
+    padding:12px 25px;
+    font-size:18px;
+    border:none;
+    border-radius:50px;
+    background-color:#ff66aa;
+    color:white;
+    cursor:pointer;
+    transition: transform 0.2s;
   }
-  #closePopup:hover { transform:scale(1.1); box-shadow:0 6px 15px rgba(0,0,0,0.25); }
+  #closePopup:hover { transform:scale(1.1); }
 
-  /* Teddy in center */
-  .teddy-container { 
-    position: relative; display: inline-block; margin-top:60px; 
+  /* Teddy container */
+  .teddy-container {
+    margin-top:60px;
   }
-  #teddy { 
-    width: 220px; border-radius:50%; transition: transform 0.3s; 
+  #teddyMain {
+    width:200px;
+    border-radius:20px;
+    transition: transform 0.3s;
   }
-  #teddy:hover { 
-    transform: scale(1.15) rotate(-10deg); 
-  }
-
-  /* Speech Bubble */
-  .speech-bubble {
-    position:absolute; top:-100px; left:50%; transform:translateX(-50%);
-    background:#fff0f5; padding:15px 25px; border-radius:30px;
-    font-size:16px; color:#ff3366; box-shadow:0 5px 15px rgba(0,0,0,0.1);
-    max-width:220px; line-height:1.4;
-  }
+  #teddyMain:hover { transform:scale(1.1) rotate(-10deg); }
 
   /* Buttons */
-  .btn-container { display:flex; flex-wrap:wrap; justify-content:center; margin-top:30px; gap:15px; }
+  .btn-container {
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:15px;
+    margin-top:30px;
+  }
   .btn {
-    flex:1 1 140px; padding:15px 20px; font-size:16px; border:none;
-    border-radius:50px; cursor:pointer; color:white; position: relative;
-    transition: transform 0.2s, box-shadow 0.2s; min-width:120px;
-    overflow:hidden;
+    flex:1 1 120px;
+    padding:15px 20px;
+    font-size:16px;
+    border:none;
+    border-radius:50px;
+    cursor:pointer;
+    color:white;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow:0 4px 10px rgba(0,0,0,0.15);
+    min-width:120px;
   }
-  .btn:hover {
-    animation: pulse 0.4s ease-in-out;
-    transform: scale(1.15) rotate(-2deg);
-    box-shadow: 0 12px 22px rgba(0,0,0,0.3);
-  }
-  @keyframes pulse {
-    0% { transform: scale(1.05); }
-    50% { transform: scale(1.15); }
-    100% { transform: scale(1.05); }
-  }
-  #love { background-color:#ff66aa; } 
+  .btn:hover { transform:scale(1.1); box-shadow:0 6px 15px rgba(0,0,0,0.25); }
+  #love { background-color:#ff66aa; }
   #hug { background-color:#ff99cc; color:#333; }
-  #gift { background-color:#ff66cc; } 
+  #gift { background-color:#ff66cc; }
   #surprise { background-color:#ff3399; }
 
+  /* Feedback */
   #feedback { margin-top:20px; font-size:20px; color:#ff3366; min-height:30px; }
 
   /* Comments */
   #comments {
-    max-width:500px; margin:50px auto 30px; 
-    background: rgba(255,230,240,0.9); border-radius:30px; 
-    padding:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1); text-align:left;
-    border:2px dashed #ff99cc;
+    max-width:500px;
+    margin:50px auto 30px;
+    background:#fff0f5;
+    border-radius:30px;
+    padding:20px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+    text-align:left;
   }
   #comments h2 { text-align:center; color:#ff66aa; margin-bottom:15px; }
-  input, textarea { width:100%; padding:12px; margin-top:8px; border-radius:15px; border:1px solid #ffb3c6; font-size:14px; }
-  #submitComment { background-color:#ff66aa; color:white; padding:10px 20px; border:none; border-radius:50px; margin-top:10px; cursor:pointer; display:block; margin-left:auto; margin-right:auto; transition: transform 0.2s; }
-  #submitComment:hover { transform: scale(1.05); }
-  .comment { background:#ffe6f0; padding:12px; margin-top:12px; border-radius:20px; box-shadow:0 4px 10px rgba(0,0,0,0.05); }
+  input, textarea {
+    width:100%; padding:12px; margin-top:8px;
+    border-radius:15px; border:1px solid #ffb3c6;
+    font-size:14px;
+  }
+  #submitComment {
+    background-color:#ff66aa; color:white;
+    padding:10px 20px; border:none; border-radius:50px;
+    margin-top:10px; cursor:pointer;
+    display:block; margin-left:auto; margin-right:auto;
+    transition: transform 0.2s;
+  }
+  #submitComment:hover { transform:scale(1.05); }
+  .comment {
+    background:#ffe6f0;
+    padding:12px;
+    margin-top:12px;
+    border-radius:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  }
 
   @media(max-width:600px){
-    .speech-bubble{font-size:14px; max-width:180px; top:-90px;} 
-    #teddy{width:150px;} 
-    .btn{flex:1 1 100%; min-width:auto;}
+    #teddyMain { width:150px; }
+    .btn { flex:1 1 100%; min-width:auto; }
   }
 
 </style>
 </head>
 <body>
 
-<!-- Surprise Pop-Up Modal -->
+<!-- Popup modal -->
 <div id="popupModal">
-  <div id="popupContent">
-    <img src="teddy.png" alt="Cute Teddy">
-    <h2>Heyy Sweetheart! 💖</h2>
-    <p>Yeh teddy aur yeh message tumhare liye!<br>Happy Teddy Day! 🧸💝</p>
-    <button id="closePopup">Open Teddy Surprise 🎁</button>
-  </div>
+  <h1 style="color:#fff; font-family: 'Comic Sans MS', cursive; margin-bottom:20px;">Happy Teddy Day! 🧸💖</h1>
+  <img src="61-qJABL20L._AC_SL1100_.jpg" alt="Cute Teddy">
+  <button id="closePopup">Open Surprise 🎁</button>
 </div>
 
-<!-- Teddy -->
+<!-- Teddy main -->
 <div class="teddy-container">
-  <img id="teddy" src="teddy.png" alt="Cute Teddy Bear">
-  <div class="speech-bubble" id="speech">Heyyy! Ready for Teddy Day masti? 🧸💖</div>
+  <img id="teddyMain" src="61-qJABL20L._AC_SL1100_.jpg" alt="Cute Teddy">
 </div>
 
 <!-- Buttons -->
 <div class="btn-container">
-  <button class="btn" id="love">💖 Dil se Love!</button>
-  <button class="btn" id="hug">🤗 Bear Hug!</button>
-  <button class="btn" id="gift">🎁 Sweet Surprise!</button>
-  <button class="btn" id="surprise">😍 OMG Surprise!</button>
+  <button class="btn" id="love">Love it! 💕</button>
+  <button class="btn" id="hug">Hug 🧸</button>
+  <button class="btn" id="gift">Gift 🎁</button>
+  <button class="btn" id="surprise">Surprise 😍</button>
 </div>
 
 <div id="feedback"></div>
@@ -145,67 +158,57 @@
 </div>
 
 <script>
-// Modal functionality
-const popupModal = document.getElementById('popupModal');
-const closePopup = document.getElementById('closePopup');
+  // Popup functionality
+  document.getElementById('closePopup').onclick = () => {
+    document.getElementById('popupModal').style.display = 'none';
+  }
 
-closePopup.onclick = () => {
-  popupModal.style.display = 'none';
-}
+  const speech = document.getElementById('feedback');
 
-// Teddy speech
-const speech=document.getElementById('speech');
-const feedback=document.getElementById('feedback');
+  const messages = [
+    "Aww! Tumhe teddy pasand aaya? 🧸💖",
+    "Ek BIG hug tumhare liye! 🤗",
+    "Chhota sa surprise just for you! 🎁",
+    "Tumhari smile ke liye teddy aur pyaar! 😘",
+    "Oye hoye! Kitna cute lag raha hai na tum? 😳💖"
+  ];
 
-const messages=[
-  "Heyyy! Ready for Teddy Day masti? 🧸💖",
-  "Awww! Yeh teddy tumhare liye aa gaya! 😍🐻",
-  "Hug chahiye? 🤗 Yeh teddy ready hai!",
-  "Chhota sa surprise tumhare liye! 🎁💝",
-  "Dekhooo! Teddy tumhare upar aa gaya! ☁️🧸😂",
-  "Tumhare smile ke liye ek teddy aur cute emoji! 😘🐻💕",
-  "Oye hoye! Kitna cute lag raha hai na tum? 😳💖🧸"
-];
-let msgIndex=0;
+  // Buttons
+  document.getElementById('love').onclick = () => {
+    speech.innerText = "Love clicked! Tumhare liye extra hugs! 💕";
+  }
+  document.getElementById('hug').onclick = () => {
+    speech.innerText = "Hug clicked! Teddy hug mode ON! 🧸";
+  }
+  document.getElementById('gift').onclick = () => {
+    speech.innerText = "Gift clicked! Sweet surprise for you! 🎁";
+  }
+  document.getElementById('surprise').onclick = () => {
+    speech.innerText = "Surprise clicked! Tumhe mazaa aaya na? 😍";
+  }
 
-setInterval(()=>{
-  msgIndex=(msgIndex+1)%messages.length;
-  speech.innerText=messages[msgIndex];
-},5000);
+  // Comment section
+  const submitComment = document.getElementById('submitComment');
+  const commentList = document.getElementById('commentList');
 
-// Button interactions
-document.getElementById('love').onclick=()=>{
-  speech.innerText="Aww! Tumhe teddy pasand aaya! 😍🧸💖";
-  feedback.innerText="Love it! 💕 Tumhare liye extra hugs!";
-}
-document.getElementById('hug').onclick=()=>{
-  speech.innerText="Ek BIG teddy hug tumhare liye! 🤗🐻💖";
-  feedback.innerText="Hug clicked! Ab teddy hug mode ON! 🧸";
-}
-document.getElementById('gift').onclick=()=>{
-  speech.innerText="Surprise! Chhota sa teddy gift aa gaya 🎁🧸😂";
-  feedback.innerText="Gift clicked! Tumhare liye sweet surprise! 💖";
-}
-document.getElementById('surprise').onclick=()=>{
-  speech.innerText="Woohoo! Teddy tumhare upar aa gaya! ☁️🧸😂";
-  feedback.innerText="Surprise clicked! Mazaa aa gaya na? 😍";
-}
+  submitComment.onclick = () => {
+    const name = document.getElementById('name').value;
+    const commentText = document.getElementById('comment').value;
 
-// Comment section
-const submitComment=document.getElementById('submitComment');
-const commentList=document.getElementById('commentList');
+    if(name==="" || commentText==="") {
+      alert("Please enter both name and message!");
+      return;
+    }
 
-submitComment.onclick=()=>{
-  const name=document.getElementById('name').value;
-  const commentText=document.getElementById('comment').value;
-  if(name===""||commentText===""){ alert("Please enter both name and message!"); return; }
-  const div=document.createElement('div');
-  div.className="comment";
-  div.innerHTML=`<strong>${name}:</strong> ${commentText}`;
-  commentList.appendChild(div);
-  document.getElementById('name').value="";
-  document.getElementById('comment').value="";
-}
+    const div = document.createElement('div');
+    div.className="comment";
+    div.innerHTML = `<strong>${name}:</strong> ${commentText}`;
+    commentList.appendChild(div);
+
+    document.getElementById('name').value="";
+    document.getElementById('comment').value="";
+  }
 </script>
+
 </body>
 </html>
