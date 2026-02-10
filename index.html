@@ -2,64 +2,61 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>🥰 Teddy Day Surprise 🧸</title>
+  <title>Ultimate Teddy Day 🧸</title>
   <style>
-    /* ---------- Body & Background ---------- */
     body {
       font-family: 'Comic Sans MS', cursive, sans-serif;
-      background: linear-gradient(to bottom, #ffe6f0, #fff0f5);
-      text-align: center;
       margin: 0;
-      padding: 50px 20px;
+      padding: 0;
+      background: linear-gradient(to bottom, #ffe6f0, #fff0f5);
+      min-height: 100vh;
       overflow-x: hidden;
       position: relative;
-      min-height: 100vh;
+      text-align: center;
     }
 
-    /* ---------- Teddy & Speech Bubble ---------- */
     .teddy-container {
       position: relative;
       display: inline-block;
-      margin-bottom: 20px;
+      margin-top: 50px;
     }
 
-    #teddyImage {
-      width: 220px;
+    #teddy {
+      width: 250px;
       border-radius: 50%;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-      transition: transform 0.4s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      transition: transform 0.3s;
     }
 
-    #teddyImage:hover {
+    #teddy:hover {
       transform: scale(1.15) rotate(-10deg);
     }
 
     .speech-bubble {
       position: absolute;
-      top: -80px;
+      top: -90px;
       left: 50%;
       transform: translateX(-50%);
       background: #fff0f5;
       padding: 15px 20px;
       border-radius: 30px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      max-width: 250px;
       font-size: 16px;
       color: #ff3366;
-      line-height: 1.3;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      max-width: 220px;
+      line-height: 1.4;
     }
 
-    /* ---------- Buttons ---------- */
     .btn {
       padding: 12px 25px;
-      margin: 8px;
+      margin: 10px;
       font-size: 16px;
       border: none;
       border-radius: 50px;
       cursor: pointer;
       color: white;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
       transition: transform 0.2s, box-shadow 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
     }
 
     .btn:hover {
@@ -73,29 +70,39 @@
     #surprise { background-color: #ff3399; }
 
     #feedback {
-      font-size: 20px;
       margin-top: 20px;
+      font-size: 20px;
       color: #ff3366;
       min-height: 30px;
     }
 
-    /* ---------- Comment Section ---------- */
+    .floating {
+      width: 50px;
+      position: absolute;
+      top: -60px;
+      animation: floatDown linear infinite;
+    }
+
+    @keyframes floatDown {
+      0% { transform: translateY(0) rotate(0deg); opacity:1; }
+      50% { transform: translateY(200px) rotate(15deg); opacity:0.8; }
+      100% { transform: translateY(400px) rotate(-15deg); opacity:0; }
+    }
+
     #comments {
-      margin-top: 50px;
       max-width: 500px;
-      margin-left: auto;
-      margin-right: auto;
-      text-align: left;
+      margin: 50px auto 30px;
       background: #fff0f5;
       border-radius: 30px;
       padding: 20px;
       box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      text-align: left;
     }
 
     #comments h2 {
-      color: #ff66aa;
-      margin-bottom: 10px;
       text-align: center;
+      color: #ff66aa;
+      margin-bottom: 15px;
     }
 
     input, textarea {
@@ -132,31 +139,15 @@
       border-radius: 20px;
       box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     }
-
-    /* ---------- Floating Teddies & Hearts ---------- */
-    .floatingItem {
-      width: 50px;
-      position: absolute;
-      top: -60px;
-      animation: floatDown linear infinite;
-    }
-
-    @keyframes floatDown {
-      0% { transform: translateY(0) rotate(0deg); opacity:1; }
-      50% { transform: translateY(200px) rotate(15deg); opacity:0.8; }
-      100% { transform: translateY(400px) rotate(-15deg); opacity:0; }
-    }
-
   </style>
 </head>
 <body>
 
   <div class="teddy-container">
-    <img id="teddyImage" src="https://i.postimg.cc/0j2nDZZp/teddy.png" alt="Cute Teddy Bear">
-    <div class="speech-bubble" id="speech">Hi there! Wanna cuddle some teddies? 🧸💖</div>
+    <img id="teddy" src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Cute Teddy Bear">
+    <div class="speech-bubble" id="speech">Hi! Ready for some Teddy Day fun? 🧸💖</div>
   </div>
 
-  <!-- Buttons -->
   <div>
     <button class="btn" id="love">Love it! 💕</button>
     <button class="btn" id="hug">Hug 🧸</button>
@@ -166,9 +157,8 @@
 
   <div id="feedback"></div>
 
-  <!-- Comment Section -->
   <div id="comments">
-    <h2>Leave a Sweet Note</h2>
+    <h2>Leave a Cute Note</h2>
     <input type="text" id="name" placeholder="Your Name">
     <textarea id="comment" placeholder="Write a cute/funny message..."></textarea>
     <button id="submitComment">Send Note</button>
@@ -179,82 +169,69 @@
     const speech = document.getElementById('speech');
     const feedback = document.getElementById('feedback');
 
-    function createFloatingItem(x, type="teddy") {
-      const item = document.createElement('img');
-      if(type==="teddy"){
-        item.src = "https://i.postimg.cc/0j2nDZZp/teddy.png";
-      } else if(type==="heart"){
-        item.src = "https://i.postimg.cc/0y0P3ZsS/heart.png"; // cute heart image
-      }
-      item.className = "floatingItem";
-      item.style.left = x + "px";
-      item.style.animationDuration = (4 + Math.random()*3) + "s";
-      document.body.appendChild(item);
-
-      setTimeout(() => item.remove(), 7000);
+    function createFloating(type="heart") {
+      const img = document.createElement('img');
+      if(type==="teddy") img.src="https://cdn-icons-png.flaticon.com/512/616/616408.png"; // teddy
+      else img.src="https://cdn-icons-png.flaticon.com/512/833/833472.png"; // heart
+      img.className="floating";
+      img.style.left = Math.random()*window.innerWidth + "px";
+      img.style.animationDuration = (4 + Math.random()*3) + "s";
+      document.body.appendChild(img);
+      setTimeout(()=>img.remove(),7000);
     }
 
-    function teddyConfetti(count=10){
+    function confetti(count=10){
       for(let i=0;i<count;i++){
-        let type = Math.random()<0.5 ? "teddy":"heart";
-        createFloatingItem(Math.random()*window.innerWidth, type);
+        createFloating(Math.random()<0.5?"teddy":"heart");
       }
     }
 
-    // Button messages
     document.getElementById('love').onclick = () => {
-      speech.innerText = "Yay! I love your excitement! 💕🧸";
-      feedback.innerText = "You clicked Love it!";
-      teddyConfetti(15);
+      speech.innerText="Yay! I love your excitement! 💕🧸";
+      feedback.innerText="You clicked Love it!";
+      confetti(15);
     }
 
     document.getElementById('hug').onclick = () => {
-      speech.innerText = "Big warm teddy hug for you! 🤗🧸";
-      feedback.innerText = "You clicked Hug!";
-      teddyConfetti(20);
+      speech.innerText="A warm teddy hug just for you! 🤗🧸";
+      feedback.innerText="You clicked Hug!";
+      confetti(20);
     }
 
     document.getElementById('gift').onclick = () => {
-      speech.innerText = "Surprise! A tiny teddy gift is here 🎁🧸";
-      feedback.innerText = "You clicked Gift!";
-      teddyConfetti(20);
+      speech.innerText="Surprise! A tiny teddy gift is here 🎁🧸";
+      feedback.innerText="You clicked Gift!";
+      confetti(20);
     }
 
     document.getElementById('surprise').onclick = () => {
-      speech.innerText = "Woohoo! Teddies everywhere! 😍";
-      feedback.innerText = "You clicked Surprise!";
-      teddyConfetti(25);
+      speech.innerText="Woohoo! Teddies everywhere! 😍";
+      feedback.innerText="You clicked Surprise!";
+      confetti(25);
     }
 
-    // Comment section
     const submitComment = document.getElementById('submitComment');
     const commentList = document.getElementById('commentList');
 
     submitComment.onclick = () => {
       const name = document.getElementById('name').value;
       const commentText = document.getElementById('comment').value;
-
-      if(name === "" || commentText === "") {
+      if(name==="" || commentText==="") {
         alert("Please enter both name and message!");
         return;
       }
-
-      const commentDiv = document.createElement('div');
-      commentDiv.className = "comment";
-      commentDiv.innerHTML = `<strong>${name}:</strong> ${commentText}`;
-      commentList.appendChild(commentDiv);
-
-      document.getElementById('name').value = "";
-      document.getElementById('comment').value = "";
+      const div = document.createElement('div');
+      div.className="comment";
+      div.innerHTML=`<strong>${name}:</strong> ${commentText}`;
+      commentList.appendChild(div);
+      document.getElementById('name').value="";
+      document.getElementById('comment').value="";
     }
 
-    // Random floating teddies/hearts
     setInterval(()=>{
-      let type = Math.random()<0.5 ? "teddy":"heart";
-      createFloatingItem(Math.random()*window.innerWidth, type);
+      createFloating(Math.random()<0.5?"teddy":"heart");
     },2500);
 
   </script>
-
 </body>
 </html>
