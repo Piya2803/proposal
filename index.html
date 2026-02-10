@@ -7,17 +7,9 @@
 body {
   margin:0; padding:0; font-family:'Comic Sans MS', cursive, sans-serif;
   background: linear-gradient(to top, #fff0f5, #ffe6f0);
-  overflow-x:hidden; text-align:center; min-height:100vh; position:relative;
+  text-align:center; min-height:100vh;
 }
-.cloud {
-  position:absolute; width:150px; opacity:0.3;
-  animation: moveClouds linear infinite;
-}
-@keyframes moveClouds {
-  0% {transform:translateX(0);}
-  100% {transform:translateX(1200px);}
-}
-.teddy-cloud-container { position:relative; display:inline-block; margin-top:80px; }
+.teddy-container { margin-top:80px; display:inline-block; position:relative; }
 #teddy { width:200px; border-radius:50%; transition: transform 0.3s; }
 #teddy:hover { transform:scale(1.15) rotate(-10deg); }
 .speech-bubble {
@@ -37,12 +29,6 @@ body {
 #love { background-color:#ff66aa; } #hug { background-color:#ff99cc; color:#333; }
 #gift { background-color:#ff66cc; } #surprise { background-color:#ff3399; }
 #feedback { margin-top:20px; font-size:20px; color:#ff3366; min-height:30px; }
-.floating { width:50px; position:absolute; top:-60px; animation:floatDown linear infinite; }
-@keyframes floatDown {
-  0% { transform:translateY(0) rotate(0deg); opacity:1; }
-  50% { transform:translateY(200px) rotate(15deg); opacity:0.8; }
-  100% { transform:translateY(400px) rotate(-15deg); opacity:0; }
-}
 #comments { max-width:500px; margin:50px auto 30px; background:#fff0f5; border-radius:30px; padding:20px; box-shadow:0 8px 20px rgba(0,0,0,0.1); text-align:left; }
 #comments h2 { text-align:center; color:#ff66aa; margin-bottom:15px; }
 input, textarea { width:100%; padding:12px; margin-top:8px; border-radius:15px; border:1px solid #ffb3c6; font-size:14px; }
@@ -54,13 +40,8 @@ input, textarea { width:100%; padding:12px; margin-top:8px; border-radius:15px; 
 </head>
 <body>
 
-<!-- Clouds -->
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAB/fVY0AAAAVUlEQVR42u3BAQ0AAADCoPdPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAO4AAeqVF9wAAAAASUVORK5CYII=" class="cloud" style="top:10%; left:5%;">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAB/fVY0AAAAVUlEQVR42u3BAQ0AAADCoPdPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAO4AAeqVF9wAAAAASUVORK5CYII=" class="cloud" style="top:30%; left:50%;">
-<img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJYAAACWCAYAAAB/fVY0AAAAVUlEQVR42u3BAQ0AAADCoPdPbQ0PoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAO4AAeqVF9wAAAAASUVORK5CYII=" class="cloud" style="top:50%; left:20%;">
-
 <!-- Teddy -->
-<div class="teddy-cloud-container">
+<div class="teddy-container">
   <img id="teddy" src="61-qJABL20L._AC_SL1100_.jpg" alt="Cute Teddy Bear">
   <div class="speech-bubble" id="speech">Heyyy! Ready for Teddy Day masti? 🧸💖</div>
 </div>
@@ -104,49 +85,25 @@ setInterval(() => {
   speech.innerText = messages[msgIndex];
 }, 5000);
 
-// Floating teddies/hearts
-function createFloating(type="heart") {
-  const img = document.createElement('img');
-  img.className = "floating";
-  img.style.left = Math.random()*window.innerWidth + "px";
-  img.style.animationDuration = (4 + Math.random()*3) + "s";
-
-  if(type==="teddy") img.src="61-qJABL20L._AC_SL1100_.jpg"; // local teddy image
-  else img.src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAyCAYAAADqJfG9AAAAVUlEQVR42u3PQQ0AIAwAsdL9n2bCz4YoszBWHcu+vJboAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADgHuYABmsF3IkAAAAASUVORK5CYII="; // heart base64
-
-  document.body.appendChild(img);
-  setTimeout(()=>img.remove(),7000);
-}
-
-function confetti(count=10){
-  for(let i=0;i<count;i++){
-    createFloating(Math.random()<0.5?"teddy":"heart");
-  }
-}
-
 // Button interactions
 document.getElementById('love').onclick = () => {
   speech.innerText = "Aww! Tumhe teddy pasand aaya! 😍🧸💖";
   feedback.innerText = "Love it! 💕 Tumhare liye extra hugs!";
-  confetti(15);
 }
 
 document.getElementById('hug').onclick = () => {
   speech.innerText = "Ek BIG teddy hug tumhare liye! 🤗🐻💖";
   feedback.innerText = "Hug clicked! Ab teddy hug mode ON! 🧸";
-  confetti(20);
 }
 
 document.getElementById('gift').onclick = () => {
   speech.innerText = "Surprise! Chhota sa teddy gift aa gaya 🎁🧸😂";
   feedback.innerText = "Gift clicked! Tumhare liye sweet surprise! 💖";
-  confetti(20);
 }
 
 document.getElementById('surprise').onclick = () => {
   speech.innerText = "Woohoo! Teddies tumhare upar baras rahe hai! ☁️🧸😂";
   feedback.innerText = "Surprise clicked! Mazaa aa gaya na? 😍";
-  confetti(25);
 }
 
 // Comment section
@@ -170,8 +127,6 @@ submitComment.onclick = () => {
   document.getElementById('name').value="";
   document.getElementById('comment').value="";
 }
-
-setInterval(()=>{ createFloating(Math.random()<0.5?"teddy":"heart"); },2500);
 </script>
 
 </body>
