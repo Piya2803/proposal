@@ -133,7 +133,7 @@ body{
   color:#ff3366;
 }
 
-/* IMAGE RAIN */
+/* TEDDY RAIN */
 .falling-teddy{
   position:absolute;
   top:-100px;
@@ -177,7 +177,7 @@ body{
     <button class="btn" id="kiss">Kiss 😘</button>
     <button class="btn" id="smile">Smile 😄</button>
 
-    <!-- CENTER IMAGE (UPDATED) -->
+    <!-- CENTER IMAGE -->
     <img id="centerTeddy" src="Image (3).jpg" alt="My Teddy">
 
   </div>
@@ -200,7 +200,7 @@ function checkPassword(){
   if(password.value === correctPassword){
     loginPage.style.display="none";
     mainContent.style.display="flex";
-    startImageRain();
+    startTeddyRain();
   } else {
     error.innerText="Wrong password 😢";
   }
@@ -224,11 +224,11 @@ surprise.onclick=()=>openModal("Surprise 😍","Teddy ki barish shuru 💕");
 kiss.onclick=()=>openModal("Kiss 😘","Sweet teddy kiss 💖");
 smile.onclick=()=>openModal("Smile 😄","Tumhari smile meri duniya hai 🧸");
 
-/* IMAGE RAIN (SAME IMAGE) */
-function startImageRain(){
+/* TEDDY RAIN (FROM 61-qJABL20L._AC_SL1100_.jpg) */
+function startTeddyRain(){
   setInterval(()=>{
     const img=document.createElement("img");
-    img.src="Image (3).jpg";
+    img.src="61-qJABL20L._AC_SL1100_.jpg";
     img.className="falling-teddy";
     img.style.left=Math.random()*window.innerWidth+"px";
     img.style.animationDuration=(3+Math.random()*2)+"s";
