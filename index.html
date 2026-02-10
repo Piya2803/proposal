@@ -16,13 +16,14 @@ body{
   align-items:center;
 }
 
-/* ---------- LOGIN ---------- */
+/* LOGIN */
 #loginPage{
   background:#fffaf5;
   padding:40px;
   border-radius:30px;
   text-align:center;
   box-shadow:0 10px 30px rgba(0,0,0,0.2);
+  z-index:5;
 }
 #loginPage h2{ color:#ff3366; }
 #loginPage input{
@@ -30,7 +31,6 @@ body{
   width:220px;
   border-radius:20px;
   border:1px solid #ccc;
-  font-size:16px;
 }
 #loginPage button{
   margin-top:20px;
@@ -44,103 +44,51 @@ body{
 }
 #error{ color:red; margin-top:10px; }
 
-/* ---------- MAIN ---------- */
-#mainContent{ display:none; width:100%; height:100%; }
+/* MAIN */
+#mainContent{
+  display:none;
+  width:100%;
+  height:100%;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+}
 
+/* CLOUDS */
 .cloud{
   position:absolute;
-  width:130px;
+  width:140px;
   opacity:0.6;
-  animation: moveCloud 40s linear infinite;
+  animation: moveCloud 50s linear infinite;
 }
 @keyframes moveCloud{
   from{ left:-150px; }
   to{ left:110%; }
 }
 
-.container{
-  position:relative;
-  text-align:center;
-  z-index:2;
+/* CENTER TEDDY */
+#centerTeddy{
+  width:280px;
+  z-index:3;
+  animation: bounce 2s infinite;
+}
+@keyframes bounce{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-18px); }
 }
 
-/* Center Image */
-#centerImg{
-  width:200px;
-  border-radius:50%;
-  box-shadow:0 8px 20px rgba(0,0,0,0.25);
-  margin-bottom:15px;
-}
-
-/* Teddy */
-#teddy{
-  width:220px;
-  cursor:pointer;
-  transition:0.3s;
-}
-#teddy:hover{
-  transform:scale(1.2) rotate(-10deg);
-}
-
-/* Buttons */
-.btn-container{
-  position:relative;
-  width:300px;
-  height:300px;
-  margin:auto;
-}
-.btn{
+/* TEDDY RAIN */
+.falling-teddy{
   position:absolute;
-  padding:12px 18px;
-  border:none;
-  border-radius:50px;
-  color:white;
-  cursor:pointer;
-  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  top:-100px;
+  width:60px;
+  animation: fall linear forwards;
 }
-#love{background:#ff4d6d; top:0; left:50%; transform:translateX(-50%);}
-#hug{background:#ff85b3; top:25%; right:0;}
-#gift{background:#ff66aa; bottom:25%; right:0;}
-#surprise{background:#ff3385; bottom:0; left:50%; transform:translateX(-50%);}
-#kiss{background:#ff99c1; bottom:25%; left:0;}
-#smile{background:#ff66cc; top:25%; left:0;}
-
-/* ---------- MODAL ---------- */
-.modal-bg{
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.5);
-  justify-content:center;
-  align-items:center;
-  z-index:5;
-}
-.modal{
-  background:#fffaf5;
-  padding:30px;
-  border-radius:30px;
-  text-align:center;
-  max-width:360px;
-  position:relative;
-}
-.close-btn{
-  position:absolute;
-  top:10px;
-  right:15px;
-  font-size:22px;
-  cursor:pointer;
-  color:#ff3366;
-}
-
-/* Hearts */
-.floating-heart{
-  position:absolute;
-  animation:floatHeart 2s linear forwards;
-}
-@keyframes floatHeart{
-  0%{ transform:translateY(0) scale(0); opacity:1; }
-  50%{ transform:translateY(-60px) scale(1); }
-  100%{ transform:translateY(-120px) scale(0); opacity:0; }
+@keyframes fall{
+  to{
+    transform:translateY(110vh) rotate(360deg);
+    opacity:0;
+  }
 }
 </style>
 </head>
@@ -148,8 +96,8 @@ body{
 <body>
 
 <!-- CLOUDS -->
-<img src="cloud.png" class="cloud" style="top:10%; animation-duration:50s;">
-<img src="cloud.png" class="cloud" style="top:60%; animation-duration:60s;">
+<img src="cloud.png" class="cloud" style="top:15%; animation-duration:55s;">
+<img src="cloud.png" class="cloud" style="top:65%; animation-duration:65s;">
 
 <!-- LOGIN -->
 <div id="loginPage">
@@ -161,77 +109,37 @@ body{
   <div id="error"></div>
 </div>
 
-<!-- MAIN CONTENT -->
+<!-- MAIN -->
 <div id="mainContent">
-  <div class="container">
-
-    <!-- YOUR IMAGE -->
-    <img id="centerImg" src="61-qJABL20L._AC_SL1100_.jpg" alt="My Love">
-
-    <!-- TEDDY -->
-    <img id="teddy" src="teddy.png" alt="Teddy">
-
-    <!-- BUTTONS -->
-    <div class="btn-container">
-      <button class="btn" id="love">Love 💕</button>
-      <button class="btn" id="hug">Hug 🤗</button>
-      <button class="btn" id="gift">Gift 🎁</button>
-      <button class="btn" id="surprise">Surprise 😍</button>
-      <button class="btn" id="kiss">Kiss 😘</button>
-      <button class="btn" id="smile">Smile 😄</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL -->
-<div class="modal-bg" id="modalBg">
-  <div class="modal" id="modal">
-    <span class="close-btn" onclick="closeModal()">×</span>
-    <h2 id="modalTitle"></h2>
-    <p id="modalMsg"></p>
-  </div>
+  <!-- SAME TEDDY IMAGE IN CENTER -->
+  <img id="centerTeddy" src="61-qJABL20L._AC_SL1100_.jpg" alt="My Teddy">
 </div>
 
 <script>
-const correctPassword = "iloveupiya"; // 🔐 change password
+const correctPassword = "ilovepiya"; // change if needed
 
 function checkPassword(){
   if(password.value === correctPassword){
     loginPage.style.display="none";
-    mainContent.style.display="block";
+    mainContent.style.display="flex";
+    startTeddyRain();
   } else {
     error.innerText="Wrong password 😢";
   }
 }
 
-function openModal(title,msg){
-  modalTitle.innerText = title;
-  modalMsg.innerText = msg;
-  modalBg.style.display="flex";
-  createHearts(8);
+/* TEDDY RAIN FUNCTION */
+function startTeddyRain(){
+  setInterval(()=>{
+    const teddy = document.createElement("img");
+    teddy.src = "61-qJABL20L._AC_SL1100_.jpg";
+    teddy.className = "falling-teddy";
+    teddy.style.left = Math.random()*window.innerWidth + "px";
+    teddy.style.animationDuration = (3 + Math.random()*2) + "s";
+    document.body.appendChild(teddy);
+    setTimeout(()=>teddy.remove(),5000);
+  }, 400);
 }
-function closeModal(){
-  modalBg.style.display="none";
-}
-
-function createHearts(count){
-  for(let i=0;i<count;i++){
-    const heart = document.createElement("div");
-    heart.className="floating-heart";
-    heart.style.left = Math.random()*250 + "px";
-    heart.innerHTML = `<img src="heart.png" width="22">`;
-    modal.appendChild(heart);
-    setTimeout(()=>heart.remove(),2000);
-  }
-}
-
-/* Button actions */
-love.onclick=()=>openModal("Love 💖","Tum meri cutest teddy ho 🧸💕");
-hug.onclick=()=>openModal("Hug 🤗","Ek tight hug sirf tumhare liye 💖");
-gift.onclick=()=>openModal("Gift 🎁","Chhota sa teddy gift 🧸");
-surprise.onclick=()=>openModal("Surprise 😍","Tum meri sabse badi surprise ho 💕");
-kiss.onclick=()=>openModal("Kiss 😘","Ek sweet teddy kiss 💖");
-smile.onclick=()=>openModal("Smile 😄","Tumhari smile meri duniya hai 🧸");
 </script>
 
 </body>
