@@ -12,6 +12,7 @@ body {
   min-height:100vh;
   position:relative;
   overflow-x:hidden;
+  cursor: none; /* hide default cursor for fun teddy-follow effect */
 }
 
 /* Falling hearts */
@@ -68,20 +69,15 @@ body {
 }
 #closePopup:hover { transform:scale(1.15); box-shadow:0 4px 15px rgba(0,0,0,0.3); }
 
-/* Teddy container */
-.teddy-container {
-  margin-top:60px;
-}
+/* Teddy main */
 #teddyMain {
-  width:200px;
+  width:120px;
   border-radius:20px;
-  transition: transform 0.3s;
-  animation: floatMain 3s ease-in-out infinite;
-}
-#teddyMain:hover { transform:scale(1.2) rotate(-10deg); }
-@keyframes floatMain {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
+  position:absolute;
+  top:50%; left:50%;
+  transform: translate(-50%, -50%);
+  pointer-events:none;
+  transition: transform 0.2s;
 }
 
 /* Buttons */
@@ -90,7 +86,9 @@ body {
   justify-content:center;
   flex-wrap:wrap;
   gap:15px;
-  margin-top:30px;
+  margin-top:400px;
+  position:relative;
+  z-index:10;
 }
 .btn {
   flex:1 1 120px;
@@ -105,7 +103,15 @@ body {
   min-width:120px;
   position:relative;
 }
-.btn:hover { transform:scale(1.15) rotate(-3deg); box-shadow:0 6px 15px rgba(0,0,0,0.25); }
+.btn:hover { 
+  transform:scale(1.15) rotate(-3deg); 
+  box-shadow:0 6px 15px rgba(0,0,0,0.25); 
+  animation: btnBounce 0.5s ease;
+}
+@keyframes btnBounce {
+  0%,100%{transform:scale(1.15) rotate(-3deg);}
+  50%{transform:scale(1.3) rotate(0deg);}
+}
 #love { background-color:#ff66aa; }
 #hug { background-color:#ff99cc; color:#333; }
 #gift { background-color:#ff66cc; }
@@ -154,19 +160,15 @@ input, textarea {
   margin-top:12px;
   border-radius:20px;
   box-shadow:0 4px 10px rgba(0,0,0,0.05);
+  animation: sparkle 1s ease;
 }
-
-/* Responsive */
-@media(max-width:600px){
-  #teddyMain { width:150px; }
-  .btn { flex:1 1 100%; min-width:auto; }
+@keyframes sparkle {
+  0%,100%{ box-shadow:0 4px 10px rgba(0,0,0,0.05);}
+  50%{ box-shadow:0 4px 20px rgba(255,105,180,0.6);}
 }
 </style>
 </head>
 <body>
-
-<!-- Falling hearts container -->
-<div id="heartContainer"></div>
 
 <!-- Popup modal -->
 <div id="popupModal">
@@ -175,10 +177,8 @@ input, textarea {
   <button id="closePopup">Open Surprise 🎁</button>
 </div>
 
-<!-- Teddy main -->
-<div class="teddy-container">
-  <img id="teddyMain" src="61-qJABL20L._AC_SL1100_.jpg" alt="Cute Teddy">
-</div>
+<!-- Teddy following cursor -->
+<img id="teddyMain" src="61-qJABL20L._AC_SL1100_.jpg" alt="Cute Teddy">
 
 <!-- Buttons -->
 <div class="btn-container">
@@ -206,12 +206,39 @@ input, textarea {
   }
 
   const feedback = document.getElementById('feedback');
+  const teddy = document.getElementById('teddyMain');
 
-  // Buttons
-  document.getElementById('love').onclick = () => { feedback.innerText = "Love clicked! Tumhare liye extra hugs! 💕"; createHeart(); }
-  document.getElementById('hug').onclick = () => { feedback.innerText = "Hug clicked! Teddy hug mode ON! 🧸"; createHeart(); createHeart(); }
-  document.getElementById('gift').onclick = () => { feedback.innerText = "Gift clicked! Sweet surprise for you! 🎁"; createHeart(); createHeart(); createHeart(); }
-  document.getElementById('surprise').onclick = () => { feedback.innerText = "Surprise clicked! Tumhe mazaa aaya na? 😍"; for(let i=0;i<5;i++) createHeart(); }
+  // Mouse follow teddy
+  document.addEventListener('mousemove', e => {
+    teddy.style.transform = `translate(${e.clientX - 60}px, ${e.clientY - 60}px)`;
+  });
+
+  // Button interactions + confetti
+  function createConfetti(x, y){
+    for(let i=0;i<15;i++){
+      const div = document.createElement('div');
+      div.style.position='absolute';
+      div.style.width='8px';
+      div.style.height='8px';
+      div.style.background=['#ff66aa','#ff99cc','#ffccff','#ff3399'][Math.floor(Math.random()*4)];
+      div.style.left=(x+Math.random()*50-25)+'px';
+      div.style.top=(y+Math.random()*50-25)+'px';
+      div.style.borderRadius='50%';
+      div.style.opacity=1;
+      document.body.appendChild(div);
+      let fall = 0;
+      const interval = setInterval(()=>{
+        fall+=2; div.style.top=(parseFloat(div.style.top)+2)+'px';
+        div.style.opacity-=0.02;
+        if(div.style.opacity<=0){ clearInterval(interval); div.remove(); }
+      },10);
+    }
+  }
+
+  document.getElementById('love').onclick = (e) => { feedback.innerText = "Love clicked! Tumhare liye extra hugs! 💕"; createConfetti(e.clientX,e.clientY);}
+  document.getElementById('hug').onclick = (e) => { feedback.innerText = "Hug clicked! Teddy hug mode ON! 🧸"; createConfetti(e.clientX,e.clientY);}
+  document.getElementById('gift').onclick = (e) => { feedback.innerText = "Gift clicked! Sweet surprise for you! 🎁"; createConfetti(e.clientX,e.clientY);}
+  document.getElementById('surprise').onclick = (e) => { feedback.innerText = "Surprise clicked! Tumhe mazaa aaya na? 😍"; createConfetti(e.clientX,e.clientY);}
 
   // Comment section
   const submitComment = document.getElementById('submitComment');
@@ -231,17 +258,14 @@ input, textarea {
   // Falling hearts
   function createHeart() {
     const heart = document.createElement('img');
-    heart.src = 'https://i.ibb.co/T2Wz5Z2/heart.png'; // small heart icon URL
+    heart.src = 'https://i.ibb.co/T2Wz5Z2/heart.png';
     heart.className = 'falling-heart';
     heart.style.left = Math.random()*window.innerWidth + 'px';
     heart.style.animationDuration = (3+Math.random()*2)+'s';
     document.body.appendChild(heart);
     setTimeout(()=>heart.remove(),5000);
   }
-
-  setInterval(() => {
-    createHeart();
-  }, 2000);
+  setInterval(createHeart, 1500);
 
 </script>
 </body>
