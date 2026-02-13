@@ -87,10 +87,11 @@ body{
   text-align:center;
   animation: fadeIn 1.5s ease-in-out;
 }
-.phase h2{
+.phase .title{
   color:#ff3399;
-  font-size:28px;
+  font-size:24px;
   margin-bottom:10px;
+  font-weight:bold;
 }
 .phase p{
   font-size:18px;
@@ -234,31 +235,31 @@ for(let i=0;i<200;i++){
 <div id="main">
 
 <script>
-// Photos and quotes
+// Slides: photo + mini-title + quote
 const slides=[
-  {img:"WhatsApp Image 2026-02-13 at 11.03.16 PM.jpeg",quote:"The first time I saw you, my heart knew it found home 💖"},
-  {img:"WhatsApp Image 2026-02-13 at 11.03.47 PM.jpeg",quote:"Every laugh with you is a memory I treasure 🌟"},
-  {img:"WhatsApp Image 2026-02-13 at 11.03.48 PM.jpeg",quote:"Your smile lights up even my darkest days 🌈"},
-  {img:"WhatsApp Image 2026-02-13 at 11.03.49 PM (1).jpeg",quote:"Holding your hand feels like the safest place in the world 🤗"},
-  {img:"WhatsApp Image 2026-02-13 at 11.03.49 PM.jpeg",quote:"With you, every moment is magical ✨"},
-  {img:"WhatsApp Image 2026-02-13 at 11.03.50 PM.jpeg",quote:"Your laughter is my favorite song 🎶"},
-  {img:"WhatsApp Image 2026-02-13 at 11.04.27 PM (1).jpeg",quote:"Together, we create the sweetest memories 🍓"},
-  {img:"WhatsApp Image 2026-02-13 at 11.04.27 PM.jpeg",quote:"I fall for you every single day ❤️"},
-  {img:"WhatsApp Image 2026-02-13 at 11.08.38 PM.jpeg",quote:"Your eyes tell the story of our love 💕"},
-  {img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (1).jpeg",quote:"Moments with you feel eternal 🌹"},
-  {img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (2).jpeg",quote:"Life is sweeter with you by my side 🍭"},
-  {img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (3).jpeg",quote:"Your hug is my happy place 🤗"},
-  {img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (4).jpeg",quote:"I love the way we laugh together 😂💖"},
-  {img:"WhatsApp Image 2026-02-13 at 11.08.41 PM.jpeg",quote:"Every glance from you is a spark of joy ✨"},
-  {img:"WhatsApp Image 2026-02-13 at 11.08.42 PM (1).jpeg",quote:"With you, even silence speaks volumes 💞"},
-  {img:"WhatsApp Image 2026-02-13 at 11.08.42 PM (2).jpeg",quote:"You are my sunshine on rainy days ☀️"},
-  {img:"WhatsApp Image 2026-02-13 at 11.08.42 PM.jpeg",quote:"Forever and always, my love ❤️"}
+  {title:"The First Time 💖", img:"WhatsApp Image 2026-02-13 at 11.03.16 PM.jpeg",quote:"The first time I saw you, my heart knew it found home 💖"},
+  {title:"Sweet Laughs 🌟", img:"WhatsApp Image 2026-02-13 at 11.03.47 PM.jpeg",quote:"Every laugh with you is a memory I treasure 🌟"},
+  {title:"Your Smile 🌈", img:"WhatsApp Image 2026-02-13 at 11.03.48 PM.jpeg",quote:"Your smile lights up even my darkest days 🌈"},
+  {title:"Safe Hands 🤗", img:"WhatsApp Image 2026-02-13 at 11.03.49 PM (1).jpeg",quote:"Holding your hand feels like the safest place in the world 🤗"},
+  {title:"Magical Moments ✨", img:"WhatsApp Image 2026-02-13 at 11.03.49 PM.jpeg",quote:"With you, every moment is magical ✨"},
+  {title:"Sweet Music 🎶", img:"WhatsApp Image 2026-02-13 at 11.03.50 PM.jpeg",quote:"Your laughter is my favorite song 🎶"},
+  {title:"Together Always 🍓", img:"WhatsApp Image 2026-02-13 at 11.04.27 PM (1).jpeg",quote:"Together, we create the sweetest memories 🍓"},
+  {title:"Falling For You ❤️", img:"WhatsApp Image 2026-02-13 at 11.04.27 PM.jpeg",quote:"I fall for you every single day ❤️"},
+  {title:"Eyes Tell All 💕", img:"WhatsApp Image 2026-02-13 at 11.08.38 PM.jpeg",quote:"Your eyes tell the story of our love 💕"},
+  {title:"Eternal Moments 🌹", img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (1).jpeg",quote:"Moments with you feel eternal 🌹"},
+  {title:"Life is Sweeter 🍭", img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (2).jpeg",quote:"Life is sweeter with you by my side 🍭"},
+  {title:"Happy Place 🤗", img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (3).jpeg",quote:"Your hug is my happy place 🤗"},
+  {title:"Laugh Together 😂💖", img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (4).jpeg",quote:"I love the way we laugh together 😂💖"},
+  {title:"Spark of Joy ✨", img:"WhatsApp Image 2026-02-13 at 11.08.41 PM.jpeg",quote:"Every glance from you is a spark of joy ✨"},
+  {title:"Silence Speaks 💞", img:"WhatsApp Image 2026-02-13 at 11.08.42 PM (1).jpeg",quote:"With you, even silence speaks volumes 💞"},
+  {title:"Sunshine ☀️", img:"WhatsApp Image 2026-02-13 at 11.08.42 PM (2).jpeg",quote:"You are my sunshine on rainy days ☀️"},
+  {title:"Forever ❤️", img:"WhatsApp Image 2026-02-13 at 11.08.42 PM.jpeg",quote:"Forever and always, my love ❤️"}
 ];
 
 for(let i=0;i<slides.length;i++){
   document.write(`<div class="phase" id="phase${i+1}" style="display:${i===0?'block':'none'};">
-    <h2>Memory ${i+1}</h2>
-    <div class="img-card"><img src="${slides[i].img}" alt="Memory ${i+1}"></div>
+    <div class="title">${slides[i].title}</div>
+    <div class="img-card"><img src="${slides[i].img}" alt="${slides[i].title}"></div>
     <p>${slides[i].quote}</p>
     <button class="btn" onclick="nextPhase(${i+1})">Next ➡️</button>
   </div>`);
@@ -266,21 +267,22 @@ for(let i=0;i<slides.length;i++){
 
 // Slide 18: Navratri Video
 document.write(`<div class="phase" id="phase18" style="display:none;">
-<h2>Navratri Special Video 🎥</h2>
+<p class="title">Celebration Time 🎉</p>
 <p>Watch video below 👇</p>
 <button class="btn" onclick="openVideo('navratri')">Watch Video</button>
 </div>`);
 
 // Slide 19: Special Video
 document.write(`<div class="phase" id="phase19" style="display:none;">
-<h2>Special Memory Video 🎬</h2>
+<p class="title">Our Special Moment 🎬</p>
 <p>Watch video below 👇</p>
 <button class="btn" onclick="openVideo('special')">Watch Video</button>
 </div>`);
 
 // Slide 20: Proposal Slide
 document.write(`<div class="phase" id="proposalSlide" style="display:none;">
-<h2>Will You Be My Valentine? 💍</h2>
+<p class="title">Forever & Always 💍</p>
+<h2>Will You Be My Valentine? 💖</h2>
 <button class="btn" onclick="finalLove()">Yes, Always 💖</button>
 </div>`);
 </script>
