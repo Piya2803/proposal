@@ -13,7 +13,7 @@ body{
   color:white;
 }
 
-/* STARS BACKGROUND */
+/* STARS */
 .star{
   position:absolute;
   width:2px;
@@ -28,7 +28,7 @@ body{
   50%{opacity:1;}
 }
 
-/* INTRO SCREEN */
+/* INTRO */
 #intro{
   position:fixed;
   inset:0;
@@ -64,7 +64,7 @@ body{
   to{text-shadow:0 0 30px red;}
 }
 
-/* MAIN JOURNEY SECTIONS */
+/* MAIN */
 #main{
   display:none;
   flex-direction:column;
@@ -74,7 +74,7 @@ body{
   padding-bottom:100px;
 }
 
-/* PHASE SECTIONS */
+/* PHASES */
 .phase{
   width:90%;
   max-width:700px;
@@ -86,22 +86,18 @@ body{
   text-align:center;
   animation: fadeIn 1.5s ease-in-out;
 }
-
-/* PHASE TITLE */
 .phase h2{
   color:#ff3399;
   font-size:28px;
   margin-bottom:10px;
 }
-
-/* PHASE TEXT */
 .phase p{
   font-size:18px;
   line-height:1.5;
   margin-bottom:15px;
 }
 
-/* IMAGE CARDS */
+/* IMAGES */
 .img-card{
   width:200px;
   height:200px;
@@ -183,14 +179,8 @@ body{
   background:red;
   border-radius:50%;
 }
-.heart::before{
-  top:-10px;
-  left:0;
-}
-.heart::after{
-  left:10px;
-  top:0;
-}
+.heart::before{top:-10px; left:0;}
+.heart::after{left:10px; top:0;}
 @keyframes fall{
   0%{transform:translateY(-50px) rotate(0deg); opacity:1;}
   100%{transform:translateY(100vh) rotate(360deg); opacity:0;}
@@ -236,12 +226,11 @@ body{
 }
 </style>
 </head>
-
 <body>
 
 <!-- STARS -->
 <script>
-for(let i=0;i<150;i++){
+for(let i=0;i<200;i++){
   let star=document.createElement('div');
   star.className='star';
   star.style.top=Math.random()*100+'vh';
@@ -254,9 +243,9 @@ for(let i=0;i<150;i++){
 
 <!-- INTRO -->
 <div id="intro">
-  <h1>Our Journey Begins 💖</h1>
-  <h2>Every memory is special 🎬</h2>
-  <button id="enterBtn" onclick="enterSite()">Start Our Story ❤️</button>
+  <h1>Our Love Story 💖</h1>
+  <h2>Every memory is a treasure 🌟</h2>
+  <button id="enterBtn" onclick="enterSite()">Start Journey ❤️</button>
 </div>
 
 <!-- MAIN -->
@@ -265,55 +254,54 @@ for(let i=0;i<150;i++){
   <!-- Phase 1: First Meeting -->
   <div class="phase" id="phase1">
     <h2>Our First Meeting 🤗</h2>
-    <p>This was the magical moment when we first met, our hearts smiled unknowingly...</p>
+    <p>The magical moment we first met, hearts smiling unknowingly...</p>
     <div class="img-card"><img src="photo1.jpg" alt="First Meeting"></div>
     <div class="img-card"><img src="photo2.jpg" alt="First Meeting"></div>
+    <div class="img-card"><img src="photo3.jpg" alt="First Meeting"></div>
     <button class="btn" onclick="nextPhase(1)">Next ➡️</button>
   </div>
 
-  <!-- Phase 2: Memories -->
+  <!-- Phase 2: Day Memories -->
   <div class="phase" id="phase2" style="display:none;">
-    <h2>Our Special Memories 🥰</h2>
-    <p>The moments we shared, walking together, laughing and holding hands...</p>
-    <div class="img-card"><img src="photo3.jpg" alt="Memory"></div>
-    <div class="img-card"><img src="photo4.jpg" alt="Memory"></div>
+    <h2>Our Day Memories 🌞</h2>
+    <p>Fun moments, laughter, close hugs and little adventures during the day...</p>
+    <div class="img-card"><img src="photo4.jpg" alt="Day Memory"></div>
+    <div class="img-card"><img src="photo5.jpg" alt="Day Memory"></div>
+    <div class="img-card"><img src="photo6.jpg" alt="Day Memory"></div>
     <button class="btn" onclick="nextPhase(2)">Next ➡️</button>
   </div>
 
-  <!-- Phase 3: Our Adventures -->
+  <!-- Phase 3: Surprises -->
   <div class="phase" id="phase3" style="display:none;">
-    <h2>Our Adventures 🌄</h2>
-    <p>From short trips to little surprises, every moment was filled with laughter...</p>
-    <div class="img-card"><img src="photo5.jpg" alt="Adventure"></div>
-    <div class="img-card"><img src="photo6.jpg" alt="Adventure"></div>
+    <h2>Surprises & Love Notes 🎁</h2>
+    <p>Hidden messages, cute gifts, and little fun moments that made us smile...</p>
+    <div class="img-card"><img src="photo7.jpg" alt="Surprise"></div>
+    <div class="img-card"><img src="photo8.jpg" alt="Surprise"></div>
+    <div class="img-card"><img src="photo9.jpg" alt="Surprise"></div>
     <button class="btn" onclick="nextPhase(3)">Next ➡️</button>
   </div>
 
-  <!-- Phase 4: Fun & Surprises -->
+  <!-- Phase 4: Navratri Video -->
   <div class="phase" id="phase4" style="display:none;">
-    <h2>Fun Moments & Surprises 🎁</h2>
-    <p>Remember the little notes, teddy gifts, and random hugs that made everything magical?</p>
-    <div class="img-card"><img src="photo7.jpg" alt="Surprise"></div>
-    <div class="img-card"><img src="photo8.jpg" alt="Surprise"></div>
-    <button class="btn" onclick="nextPhase(4)">Next ➡️</button>
+    <h2>Navratri Special Video 🎥</h2>
+    <p>Remember our Navratri moments! Watch the video below:</p>
+    <button class="btn" onclick="openVideo('navratri')">Watch Navratri Video</button>
   </div>
 
-  <!-- Phase 5: Special Video -->
+  <!-- Phase 5: Special Final Video -->
   <div class="phase" id="phase5" style="display:none;">
-    <h2>Our Special Video 🎥</h2>
-    <p>Here’s a glimpse of our beautiful journey...</p>
-    <button class="btn" onclick="openVideo()">Watch Video</button>
+    <h2>Our Special Memory Video 🎬</h2>
+    <p>Our journey in a beautiful video!</p>
+    <button class="btn" onclick="openVideo('special')">Watch Special Video</button>
   </div>
 
   <!-- Video Modal -->
   <div class="modal" id="videoModal">
-    <video id="loveVideo" controls>
-      <source src="WhatsApp%20Video%202026-02-13%20at%2010.25.04%20PM.mp4" type="video/mp4">
-    </video>
+    <video id="loveVideo" controls></video>
     <div class="close" onclick="closeVideo()">Close ✖</div>
   </div>
 
-  <!-- Proposal Phase -->
+  <!-- Proposal -->
   <div id="proposal" class="phase" style="display:none;">
     <h2>Will You Be My Forever Valentine? 💍</h2>
     <button class="yes-btn" onclick="finalLove()">Yes, Always 💖</button>
@@ -325,7 +313,7 @@ for(let i=0;i<150;i++){
 <audio id="bgMusic" src="music.mp3" loop></audio>
 
 <script>
-let currentPhase = 1;
+let currentPhase=1;
 
 /* ENTER SITE */
 function enterSite(){
@@ -334,42 +322,39 @@ function enterSite(){
   document.getElementById('bgMusic').play();
 }
 
-/* NEXT PHASE FUNCTION */
+/* NEXT PHASE */
 function nextPhase(phase){
   document.getElementById(`phase${phase}`).style.display='none';
-  if(phase < 4){
-    document.getElementById(`phase${phase+1}`).style.display='block';
-  } else if(phase === 4){
-    document.getElementById('phase5').style.display='block';
-  }
-  // Surprise alert
-  if(phase === 2){
-    alert("You found a hidden teddy note! 🧸💖");
-  }
-  if(phase === 3){
-    alert("Remember our first trip together? 🌄✨");
-  }
+  document.getElementById(`phase${phase+1}`).style.display='block';
+  // Surprise alerts
+  if(phase===1) alert("Remember the smiles from our first day together! 😊💖");
+  if(phase===2) alert("Little day adventures and hugs 💞");
+  if(phase===3) alert("Hidden love notes for you! 🧸💌");
 }
 
 /* VIDEO MODAL */
-function openVideo(){
+function openVideo(type){
+  let video=document.getElementById('loveVideo');
+  if(type==='navratri') video.src='navratri_video.mp4';
+  else if(type==='special') video.src='special_video.mp4';
   document.getElementById('videoModal').style.display='flex';
-  document.getElementById('loveVideo').play();
+  video.play();
 }
 function closeVideo(){
-  document.getElementById('videoModal').style.display='none';
   let video=document.getElementById('loveVideo');
   video.pause();
   video.currentTime=0;
-  // Show proposal phase after video
-  document.getElementById('proposal').style.display='block';
+  document.getElementById('videoModal').style.display='none';
+  if(currentPhase===4) document.getElementById('phase5').style.display='block';
+  else if(currentPhase===5) document.getElementById('proposal').style.display='block';
+  currentPhase++;
 }
 
 /* PROPOSAL */
 function finalLove(){
   alert("Yayyy ❤️ I Love You Forever!");
-  // Confetti effect
-  for(let i=0;i<150;i++){
+  // Confetti
+  for(let i=0;i<200;i++){
     let c=document.createElement('div');
     c.className='confetti';
     c.style.left=Math.random()*window.innerWidth+'px';
@@ -401,6 +386,5 @@ function startHeartRain(){
 }
 startHeartRain();
 </script>
-
 </body>
 </html>
