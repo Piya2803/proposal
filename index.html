@@ -8,13 +8,13 @@
 <style>
 body{
   margin:0;
-  font-family:'Georgia', serif;
+  font-family:'Comic Sans MS', cursive;
   background:#000;
   overflow:hidden;
   color:white;
 }
 
-/* STARS BACKGROUND */
+/* STARS */
 .star{
   position:absolute;
   width:2px;
@@ -29,7 +29,7 @@ body{
   50%{opacity:1;}
 }
 
-/* INTRO SCREEN */
+/* INTRO */
 #intro{
   position:fixed;
   inset:0;
@@ -48,11 +48,9 @@ body{
   color:#ff3399;
   animation: glow 2s infinite alternate;
 }
-
 #intro h2{
   color:#ff66aa;
 }
-
 #enterBtn{
   margin-top:30px;
   padding:12px 30px;
@@ -110,6 +108,7 @@ body{
   background:#ff0066;
   color:white;
   cursor:pointer;
+  font-size:16px;
 }
 
 /* MODAL */
@@ -143,7 +142,6 @@ body{
   margin-top:20px;
   animation: fadeIn 2s;
 }
-
 .yes-btn{
   margin-top:20px;
   padding:10px 25px;
@@ -182,7 +180,6 @@ body{
   left:10px;
   top:0;
 }
-
 @keyframes fall{
   0%{transform:translateY(-50px) rotate(0deg); opacity:1;}
   100%{transform:translateY(100vh) rotate(360deg); opacity:0;}
@@ -207,45 +204,66 @@ for(let i=0;i<150;i++){
 
 <!-- INTRO -->
 <div id="intro">
-  <h1>Every Love Story is Beautiful... 💖</h1>
+  <h1>Every Love Story is Beautiful 💖</h1>
   <h2>But Ours is My Favorite 🎬</h2>
-  <button id="enterBtn" onclick="enterSite()">Start Our Story ❤️</button>
+  <button id="enterBtn" onclick="enterSite()">Start Our Journey ❤️</button>
 </div>
 
 <!-- MAIN -->
 <div id="main">
-  <div class="photo-frame">
+
+  <!-- Phase 1: Photo -->
+  <div class="photo-frame" id="phasePhoto">
     <img src="yourphoto.jpg">
   </div>
+  <h2 id="phaseText">Our Beautiful Journey ✨</h2>
+  <button class="btn" onclick="nextPhase()">Next Phase ➡️</button>
 
-  <h2>Our Beautiful Journey ✨</h2>
+  <!-- Video Modal Phase 2 -->
+  <div class="modal" id="videoModal">
+    <video id="loveVideo" controls>
+      <source src="WhatsApp%20Video%202026-02-13%20at%2010.25.04%20PM.mp4" type="video/mp4">
+    </video>
+    <div class="close" onclick="closeVideo()">Close ✖</div>
+  </div>
 
-  <button class="btn" onclick="openVideo()">Watch Our Special Moment 🎥</button>
-  <button class="btn" onclick="showProposal()">Future With You 💍</button>
-
+  <!-- Phase 3: Proposal -->
   <div id="proposal">
     <p>Will You Be My Forever Valentine? 💖</p>
     <button class="yes-btn" onclick="finalLove()">Yes, Always 💍</button>
   </div>
+
 </div>
 
-<!-- VIDEO MODAL -->
-<div class="modal" id="videoModal">
-  <video id="loveVideo" controls>
-    <source src="WhatsApp%20Video%202026-02-13%20at%2010.25.04%20PM.mp4" type="video/mp4">
-  </video>
-  <div class="close" onclick="closeVideo()">Close ✖</div>
-</div>
-
-<!-- BACKGROUND MUSIC -->
+<!-- Background Music -->
 <audio id="bgMusic" src="music.mp3" loop></audio>
 
 <script>
+let currentPhase=1;
+
 /* ENTER SITE */
 function enterSite(){
   document.getElementById('intro').style.display='none';
   document.getElementById('main').style.display='flex';
   document.getElementById('bgMusic').play();
+}
+
+/* NEXT PHASE */
+function nextPhase(){
+  if(currentPhase===1){
+    document.getElementById('phaseText').innerText="Watch Our Special Moment 🎥";
+    document.getElementById('phasePhoto').style.display='none';
+    openVideo();
+    currentPhase++;
+  } else if(currentPhase===2){
+    document.getElementById('phaseText').innerText="Surprise Messages 💌";
+    alert("You found a secret teddy message! 🧸💖");
+    currentPhase++;
+  } else if(currentPhase===3){
+    document.getElementById('phaseText').innerText="Final Proposal 💍";
+    showProposal();
+    currentPhase++;
+  }
 }
 
 /* VIDEO MODAL */
