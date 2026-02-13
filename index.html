@@ -60,7 +60,6 @@ body{
 #main{
   display:none;
   height:100vh;
-  display:flex;
   flex-direction:column;
   justify-content:center;
   align-items:center;
@@ -102,7 +101,7 @@ body{
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.8);
+  background:rgba(0,0,0,0.85);
   display:none;
   justify-content:center;
   align-items:center;
@@ -110,21 +109,24 @@ body{
 }
 
 .modal video{
-  width:80%;
-  max-width:500px;
+  width:90%;
+  max-width:600px;
   border-radius:20px;
+  box-shadow:0 0 30px pink;
 }
 
 .close{
   margin-top:20px;
   cursor:pointer;
   color:pink;
+  font-size:18px;
 }
 
 /* FINAL PROPOSAL */
 #proposal{
   display:none;
   font-size:28px;
+  margin-top:20px;
   animation: fadeIn 2s;
 }
 
@@ -136,6 +138,7 @@ body{
   background:red;
   color:white;
   cursor:pointer;
+  font-size:16px;
 }
 </style>
 </head>
@@ -159,6 +162,11 @@ body{
 
   <button class="btn" onclick="openVideo()">Watch Our Special Moment 🎥</button>
   <button class="btn" onclick="showProposal()">Future With You 💍</button>
+
+  <div id="proposal">
+    <p>Will You Be My Forever Valentine? 💖</p>
+    <button class="yes-btn" onclick="finalLove()">Yes, Always 💍</button>
+  </div>
 </div>
 
 <!-- VIDEO MODAL -->
@@ -169,35 +177,34 @@ body{
   <div class="close" onclick="closeVideo()">Close ✖</div>
 </div>
 
-<!-- PROPOSAL -->
-<div id="proposal">
-  <p>Will You Be My Forever Valentine? 💖</p>
-  <button class="yes-btn" onclick="alert('Yayyy ❤️ I Love You Forever!')">Yes, Always 💍</button>
-</div>
-
 <!-- BACKGROUND MUSIC -->
 <audio id="bgMusic" src="music.mp3" loop></audio>
 
 <script>
 function enterSite(){
-  intro.style.display="none";
-  main.style.display="flex";
-  bgMusic.play();
+  document.getElementById("intro").style.display="none";
+  document.getElementById("main").style.display="flex";
+  document.getElementById("bgMusic").play();
 }
 
 function openVideo(){
-  videoModal.style.display="flex";
-  loveVideo.play();
+  document.getElementById("videoModal").style.display="flex";
+  document.getElementById("loveVideo").play();
 }
 
 function closeVideo(){
-  videoModal.style.display="none";
-  loveVideo.pause();
-  loveVideo.currentTime=0;
+  document.getElementById("videoModal").style.display="none";
+  const video = document.getElementById("loveVideo");
+  video.pause();
+  video.currentTime=0;
 }
 
 function showProposal(){
-  proposal.style.display="block";
+  document.getElementById("proposal").style.display="block";
+}
+
+function finalLove(){
+  alert("Yayyy ❤️ I Love You Forever!");
 }
 </script>
 
