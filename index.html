@@ -2,239 +2,202 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>💖 Teddy Day Surprise 💖</title>
+<title>Our Love Story 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
 body{
   margin:0;
-  font-family:'Comic Sans MS', cursive;
-  background: linear-gradient(to bottom, #f0fff4, #e0f7f1);
-  height:100vh;
+  font-family: 'Georgia', serif;
+  background: radial-gradient(circle at top, #1a001f, #000);
   overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* LOGIN */
-#loginPage{
-  background:#fffaf5;
-  padding:40px;
-  border-radius:30px;
-  text-align:center;
-  box-shadow:0 10px 30px rgba(0,0,0,0.2);
-  z-index:10;
-}
-#loginPage h2{ color:#ff3366; }
-#loginPage input{
-  padding:12px;
-  width:220px;
-  border-radius:20px;
-  border:1px solid #ccc;
-}
-#loginPage button{
-  margin-top:20px;
-  padding:12px 30px;
-  border:none;
-  border-radius:30px;
-  background:#ff4d6d;
   color:white;
-  font-size:16px;
-  cursor:pointer;
-}
-#error{ color:red; margin-top:10px; }
-
-/* MAIN */
-#mainContent{
-  display:none;
-  width:100%;
-  height:100%;
-  justify-content:center;
-  align-items:center;
-  position:relative;
 }
 
-/* CLOUDS */
-.cloud{
-  position:absolute;
-  width:140px;
-  opacity:0.6;
-  animation: moveCloud 50s linear infinite;
-}
-@keyframes moveCloud{
-  from{ left:-150px; }
-  to{ left:110%; }
-}
-
-/* CENTER WRAPPER */
-.center-box{
-  position:relative;
-  width:520px;
-  height:520px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-
-/* CENTER IMAGE */
-#centerTeddy{
-  width:260px;
-  z-index:2;
-  animation:bounce 2s infinite;
-}
-@keyframes bounce{
-  0%,100%{ transform:translateY(0); }
-  50%{ transform:translateY(-18px); }
-}
-
-/* BUTTONS */
-.btn{
-  position:absolute;
-  padding:12px 18px;
-  border:none;
-  border-radius:50px;
-  color:white;
-  cursor:pointer;
-  font-size:14px;
-  box-shadow:0 4px 10px rgba(0,0,0,0.15);
-}
-
-#love{ background:#ff4d6d; top:0; left:50%; transform:translateX(-50%); }
-#hug{ background:#ff85b3; top:25%; right:0; }
-#gift{ background:#ff66aa; bottom:25%; right:0; }
-#surprise{ background:#ff3385; bottom:0; left:50%; transform:translateX(-50%); }
-#kiss{ background:#ff99c1; bottom:25%; left:0; }
-#smile{ background:#ff66cc; top:25%; left:0; }
-
-/* MODAL */
-.modal-bg{
-  display:none;
+/* INTRO SCREEN */
+#intro{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.5);
+  display:flex;
+  flex-direction:column;
   justify-content:center;
   align-items:center;
-  z-index:20;
-}
-.modal{
-  background:#fffaf5;
-  padding:30px;
-  border-radius:30px;
+  background:black;
+  z-index:10;
   text-align:center;
-  max-width:360px;
-  position:relative;
-}
-.close-btn{
-  position:absolute;
-  top:10px;
-  right:15px;
-  cursor:pointer;
-  font-size:22px;
-  color:#ff3366;
+  animation: fadeIn 3s ease-in;
 }
 
-/* TEDDY RAIN */
-.falling-teddy{
-  position:absolute;
-  top:-100px;
-  width:60px;
-  animation: fall linear forwards;
+#intro h1{
+  font-size:40px;
+  letter-spacing:2px;
+  animation: glow 2s infinite alternate;
 }
-@keyframes fall{
-  to{
-    transform:translateY(110vh) rotate(360deg);
-    opacity:0;
-  }
+
+#enterBtn{
+  margin-top:30px;
+  padding:12px 30px;
+  border:none;
+  border-radius:40px;
+  font-size:16px;
+  background:#ff1a75;
+  color:white;
+  cursor:pointer;
+  box-shadow:0 0 20px #ff1a75;
+}
+
+@keyframes glow{
+  from{ text-shadow:0 0 10px pink; }
+  to{ text-shadow:0 0 30px red; }
+}
+
+@keyframes fadeIn{
+  from{opacity:0;}
+  to{opacity:1;}
+}
+
+/* MAIN CONTENT */
+#main{
+  display:none;
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+}
+
+.photo-frame{
+  width:250px;
+  height:250px;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 0 40px pink;
+  margin-bottom:20px;
+  animation: float 3s ease-in-out infinite;
+}
+
+.photo-frame img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+@keyframes float{
+  0%,100%{transform:translateY(0);}
+  50%{transform:translateY(-15px);}
+}
+
+.btn{
+  margin:10px;
+  padding:10px 25px;
+  border:none;
+  border-radius:30px;
+  background:#ff0066;
+  color:white;
+  cursor:pointer;
+}
+
+/* MODAL */
+.modal{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.8);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+}
+
+.modal video{
+  width:80%;
+  max-width:500px;
+  border-radius:20px;
+}
+
+.close{
+  margin-top:20px;
+  cursor:pointer;
+  color:pink;
+}
+
+/* FINAL PROPOSAL */
+#proposal{
+  display:none;
+  font-size:28px;
+  animation: fadeIn 2s;
+}
+
+.yes-btn{
+  margin-top:20px;
+  padding:10px 25px;
+  border:none;
+  border-radius:30px;
+  background:red;
+  color:white;
+  cursor:pointer;
 }
 </style>
 </head>
 
 <body>
 
-<!-- CLOUDS -->
-<img src="cloud.png" class="cloud" style="top:15%; animation-duration:55s;">
-<img src="cloud.png" class="cloud" style="top:65%; animation-duration:65s;">
-
-<!-- LOGIN -->
-<div id="loginPage">
-  <h2>🔐 Teddy Secret Login</h2>
-  <p>Password daalo 💖</p>
-  <input type="password" id="password" placeholder="Enter password">
-  <br>
-  <button onclick="checkPassword()">Login</button>
-  <div id="error"></div>
+<!-- INTRO -->
+<div id="intro">
+  <h1>Every Love Story is Beautiful... 💖</h1>
+  <h2>But Ours is My Favorite 🎬</h2>
+  <button id="enterBtn" onclick="enterSite()">Start Our Story ❤️</button>
 </div>
 
 <!-- MAIN -->
-<div id="mainContent">
-  <div class="center-box">
-
-    <!-- BUTTONS -->
-    <button class="btn" id="love">Love 💕</button>
-    <button class="btn" id="hug">Hug 🤗</button>
-    <button class="btn" id="gift">Gift 🎁</button>
-    <button class="btn" id="surprise">Surprise 😍</button>
-    <button class="btn" id="kiss">Kiss 😘</button>
-    <button class="btn" id="smile">Smile 😄</button>
-
-    <!-- CENTER IMAGE -->
-    <img id="centerTeddy" src="Image (3).jpg" alt="My Teddy">
-
+<div id="main">
+  <div class="photo-frame">
+    <img src="yourphoto.jpg">
   </div>
+
+  <h2>Our Beautiful Journey ✨</h2>
+
+  <button class="btn" onclick="openVideo()">Watch Our Special Moment 🎥</button>
+  <button class="btn" onclick="showProposal()">Future With You 💍</button>
 </div>
 
-<!-- MODAL -->
-<div class="modal-bg" id="modalBg">
-  <div class="modal">
-    <span class="close-btn" onclick="closeModal()">×</span>
-    <h2 id="modalTitle"></h2>
-    <p id="modalMsg"></p>
-  </div>
+<!-- VIDEO MODAL -->
+<div class="modal" id="videoModal">
+  <video id="loveVideo" controls>
+    <source src="lovevideo.mp4" type="video/mp4">
+  </video>
+  <div class="close" onclick="closeVideo()">Close ✖</div>
 </div>
+
+<!-- PROPOSAL -->
+<div id="proposal">
+  <p>Will You Be My Forever Valentine? 💖</p>
+  <button class="yes-btn" onclick="alert('Yayyy ❤️ I Love You Forever!')">Yes, Always 💍</button>
+</div>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="bgMusic" src="music.mp3" loop></audio>
 
 <script>
-const correctPassword = "ilovepiya";
-
-/* LOGIN */
-function checkPassword(){
-  if(password.value === correctPassword){
-    loginPage.style.display="none";
-    mainContent.style.display="flex";
-    startTeddyRain();
-  } else {
-    error.innerText="Wrong password 😢";
-  }
+function enterSite(){
+  intro.style.display="none";
+  main.style.display="flex";
+  bgMusic.play();
 }
 
-/* MODAL */
-function openModal(title,msg){
-  modalTitle.innerText=title;
-  modalMsg.innerText=msg;
-  modalBg.style.display="flex";
-}
-function closeModal(){
-  modalBg.style.display="none";
+function openVideo(){
+  videoModal.style.display="flex";
+  loveVideo.play();
 }
 
-/* BUTTON ACTIONS */
-love.onclick=()=>openModal("Love 💖","Tum meri sabse pyaari teddy ho 🧸💕");
-hug.onclick=()=>openModal("Hug 🤗","Ek tight hug sirf tumhare liye 💖");
-gift.onclick=()=>openModal("Gift 🎁","Cute teddy surprise 🧸");
-surprise.onclick=()=>openModal("Surprise 😍","Teddy ki barish shuru 💕");
-kiss.onclick=()=>openModal("Kiss 😘","Sweet teddy kiss 💖");
-smile.onclick=()=>openModal("Smile 😄","Tumhari smile meri duniya hai 🧸");
+function closeVideo(){
+  videoModal.style.display="none";
+  loveVideo.pause();
+  loveVideo.currentTime=0;
+}
 
-/* TEDDY RAIN (FROM 61-qJABL20L._AC_SL1100_.jpg) */
-function startTeddyRain(){
-  setInterval(()=>{
-    const img=document.createElement("img");
-    img.src="61-qJABL20L._AC_SL1100_.jpg";
-    img.className="falling-teddy";
-    img.style.left=Math.random()*window.innerWidth+"px";
-    img.style.animationDuration=(3+Math.random()*2)+"s";
-    document.body.appendChild(img);
-    setTimeout(()=>img.remove(),5000);
-  },450);
+function showProposal(){
+  proposal.style.display="block";
 }
 </script>
 
