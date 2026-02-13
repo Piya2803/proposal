@@ -11,6 +11,7 @@ body{
   background:#000;
   overflow-x:hidden;
   color:white;
+  text-align:center;
 }
 
 /* STARS */
@@ -95,6 +96,7 @@ body{
   font-size:18px;
   line-height:1.5;
   margin-bottom:15px;
+  color:#ffccff;
 }
 
 /* IMAGES */
@@ -231,55 +233,57 @@ for(let i=0;i<200;i++){
 <!-- MAIN -->
 <div id="main">
 
-<!-- 17 Photo Slides -->
 <script>
-const photos=[
-"WhatsApp Image 2026-02-13 at 11.03.16 PM.jpeg",
-"WhatsApp Image 2026-02-13 at 11.03.47 PM.jpeg",
-"WhatsApp Image 2026-02-13 at 11.03.48 PM.jpeg",
-"WhatsApp Image 2026-02-13 at 11.03.49 PM (1).jpeg",
-"WhatsApp Image 2026-02-13 at 11.03.49 PM.jpeg",
-"WhatsApp Image 2026-02-13 at 11.03.50 PM.jpeg",
-"WhatsApp Image 2026-02-13 at 11.04.27 PM (1).jpeg",
-"WhatsApp Image 2026-02-13 at 11.04.27 PM.jpeg",
-"WhatsApp Image 2026-02-13 at 11.08.38 PM.jpeg",
-"WhatsApp Image 2026-02-13 at 11.08.41 PM (1).jpeg",
-"WhatsApp Image 2026-02-13 at 11.08.41 PM (2).jpeg",
-"WhatsApp Image 2026-02-13 at 11.08.41 PM (3).jpeg",
-"WhatsApp Image 2026-02-13 at 11.08.41 PM (4).jpeg",
-"WhatsApp Image 2026-02-13 at 11.08.41 PM.jpeg",
-"WhatsApp Image 2026-02-13 at 11.08.42 PM (1).jpeg",
-"WhatsApp Image 2026-02-13 at 11.08.42 PM (2).jpeg",
-"WhatsApp Image 2026-02-13 at 11.08.42 PM.jpeg"
+// Photos and quotes
+const slides=[
+  {img:"WhatsApp Image 2026-02-13 at 11.03.16 PM.jpeg",quote:"The first time I saw you, my heart knew it found home 💖"},
+  {img:"WhatsApp Image 2026-02-13 at 11.03.47 PM.jpeg",quote:"Every laugh with you is a memory I treasure 🌟"},
+  {img:"WhatsApp Image 2026-02-13 at 11.03.48 PM.jpeg",quote:"Your smile lights up even my darkest days 🌈"},
+  {img:"WhatsApp Image 2026-02-13 at 11.03.49 PM (1).jpeg",quote:"Holding your hand feels like the safest place in the world 🤗"},
+  {img:"WhatsApp Image 2026-02-13 at 11.03.49 PM.jpeg",quote:"With you, every moment is magical ✨"},
+  {img:"WhatsApp Image 2026-02-13 at 11.03.50 PM.jpeg",quote:"Your laughter is my favorite song 🎶"},
+  {img:"WhatsApp Image 2026-02-13 at 11.04.27 PM (1).jpeg",quote:"Together, we create the sweetest memories 🍓"},
+  {img:"WhatsApp Image 2026-02-13 at 11.04.27 PM.jpeg",quote:"I fall for you every single day ❤️"},
+  {img:"WhatsApp Image 2026-02-13 at 11.08.38 PM.jpeg",quote:"Your eyes tell the story of our love 💕"},
+  {img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (1).jpeg",quote:"Moments with you feel eternal 🌹"},
+  {img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (2).jpeg",quote:"Life is sweeter with you by my side 🍭"},
+  {img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (3).jpeg",quote:"Your hug is my happy place 🤗"},
+  {img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (4).jpeg",quote:"I love the way we laugh together 😂💖"},
+  {img:"WhatsApp Image 2026-02-13 at 11.08.41 PM.jpeg",quote:"Every glance from you is a spark of joy ✨"},
+  {img:"WhatsApp Image 2026-02-13 at 11.08.42 PM (1).jpeg",quote:"With you, even silence speaks volumes 💞"},
+  {img:"WhatsApp Image 2026-02-13 at 11.08.42 PM (2).jpeg",quote:"You are my sunshine on rainy days ☀️"},
+  {img:"WhatsApp Image 2026-02-13 at 11.08.42 PM.jpeg",quote:"Forever and always, my love ❤️"}
 ];
-for(let i=0;i<photos.length;i++){
+
+for(let i=0;i<slides.length;i++){
   document.write(`<div class="phase" id="phase${i+1}" style="display:${i===0?'block':'none'};">
     <h2>Memory ${i+1}</h2>
-    <div class="img-card"><img src="${photos[i]}" alt="Memory ${i+1}"></div>
+    <div class="img-card"><img src="${slides[i].img}" alt="Memory ${i+1}"></div>
+    <p>${slides[i].quote}</p>
     <button class="btn" onclick="nextPhase(${i+1})">Next ➡️</button>
   </div>`);
 }
+
+// Slide 18: Navratri Video
+document.write(`<div class="phase" id="phase18" style="display:none;">
+<h2>Navratri Special Video 🎥</h2>
+<p>Watch video below 👇</p>
+<button class="btn" onclick="openVideo('navratri')">Watch Video</button>
+</div>`);
+
+// Slide 19: Special Video
+document.write(`<div class="phase" id="phase19" style="display:none;">
+<h2>Special Memory Video 🎬</h2>
+<p>Watch video below 👇</p>
+<button class="btn" onclick="openVideo('special')">Watch Video</button>
+</div>`);
+
+// Slide 20: Proposal Slide
+document.write(`<div class="phase" id="proposalSlide" style="display:none;">
+<h2>Will You Be My Valentine? 💍</h2>
+<button class="btn" onclick="finalLove()">Yes, Always 💖</button>
+</div>`);
 </script>
-
-<!-- Slide 18: Navratri Video -->
-<div class="phase" id="phase18" style="display:none;">
-  <h2>Navratri Special Video 🎥</h2>
-  <p>Watch video below 👇</p>
-  <button class="btn" onclick="openVideo('navratri')">Watch Video</button>
-</div>
-
-<!-- Slide 19: Special Video -->
-<div class="phase" id="phase19" style="display:none;">
-  <h2>Our Special Memory Video 🎬</h2>
-  <p>Watch video below 👇</p>
-  <button class="btn" onclick="openVideo('special')">Watch Video</button>
-</div>
-
-<!-- Proposal Slide -->
-<div class="phase" id="proposalSlide" style="display:none;">
-  <h2>Will You Be My Forever Valentine? 💍</h2>
-  <button class="btn" onclick="finalLove()">Yes, Always 💖</button>
-</div>
 
 <!-- Video Modal -->
 <div class="modal" id="videoModal">
@@ -302,14 +306,14 @@ function enterSite(){
 function nextPhase(phase){
   document.getElementById(`phase${phase}`).style.display='none';
   if(phase<17) document.getElementById(`phase${phase+1}`).style.display='block';
-  else document.getElementById('phase18').style.display='block';
+  else if(phase===17) document.getElementById('phase18').style.display='block';
   currentPhase++;
 }
 
 function openVideo(type){
   let video=document.getElementById('loveVideo');
   if(type==='navratri') video.src='WhatsApp Video 2026-02-13 at 11.04.25 PM.mp4';
-  else if(type==='special') video.src='special_video.mp4';
+  else if(type==='special') video.src='WhatsApp Video 2026-02-13 at 11.42.23 PM.mp4';
   document.getElementById('videoModal').style.display='flex';
   video.play();
 }
@@ -319,8 +323,8 @@ function closeVideo(){
   video.pause();
   video.currentTime=0;
   document.getElementById('videoModal').style.display='none';
-  if(currentPhase===18) {document.getElementById('phase19').style.display='block'; currentPhase++;}
-  else if(currentPhase===19) {document.getElementById('proposalSlide').style.display='block'; currentPhase++;}
+  if(currentPhase===18){document.getElementById('phase19').style.display='block'; currentPhase++;}
+  else if(currentPhase===19){document.getElementById('proposalSlide').style.display='block'; currentPhase++;}
 }
 
 function finalLove(){
