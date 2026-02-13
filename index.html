@@ -99,10 +99,9 @@ body{
 
 /* IMAGES */
 .img-card{
-  width:180px;
-  height:180px;
-  margin:10px;
-  display:inline-block;
+  width:300px;
+  height:300px;
+  margin:10px auto;
   border-radius:20px;
   overflow:hidden;
   box-shadow:0 0 20px pink;
@@ -115,7 +114,7 @@ body{
   object-fit:cover;
 }
 .img-card:hover{
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 
 /* BUTTONS */
@@ -251,96 +250,75 @@ for(let i=0;i<200;i++){
 <!-- MAIN -->
 <div id="main">
 
-<!-- Phase 1: First Meeting -->
+<!-- Phase 1 -->
 <div class="phase" id="phase1">
   <h2>Our First Meeting 🤗</h2>
   <p>The magical moment we first met, hearts smiling unknowingly...</p>
   <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.03.16 PM.jpeg" alt="First Meeting"></div>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.03.47 PM.jpeg" alt="First Meeting"></div>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.03.48 PM.jpeg" alt="First Meeting"></div>
   <button class="btn" onclick="nextPhase(1)">Next ➡️</button>
 </div>
 
-<!-- Phase 2: Day Memories -->
+<!-- Phase 2 -->
 <div class="phase" id="phase2" style="display:none;">
   <h2>Our Day Memories 🌞</h2>
   <p>Fun moments, laughter, close hugs and little adventures during the day...</p>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.03.49 PM (1).jpeg" alt="Day Memory"></div>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.03.49 PM.jpeg" alt="Day Memory"></div>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.03.50 PM.jpeg" alt="Day Memory"></div>
+  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.03.47 PM.jpeg" alt="Day Memory"></div>
   <button class="btn" onclick="nextPhase(2)">Next ➡️</button>
 </div>
 
-<!-- Phase 3: Mini Adventures -->
+<!-- Phase 3 -->
 <div class="phase" id="phase3" style="display:none;">
   <h2>Mini Adventures 🏞️</h2>
   <p>Exploring new places, fun moments & laughter together...</p>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.04.27 PM (1).jpeg" alt="Adventure"></div>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.04.27 PM.jpeg" alt="Adventure"></div>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.08.38 PM.jpeg" alt="Adventure"></div>
+  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.03.48 PM.jpeg" alt="Adventure"></div>
   <button class="btn" onclick="nextPhase(3)">Next ➡️</button>
 </div>
 
-<!-- Phase 4: Friends & Fun -->
+<!-- Phase 4 -->
 <div class="phase" id="phase4" style="display:none;">
-  <h2>Friends & Fun 🎉</h2>
-  <p>Our moments with friends, smiles & laughter...</p>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.08.41 PM (1).jpeg" alt="Friends"></div>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.08.41 PM (2).jpeg" alt="Friends"></div>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.08.41 PM (3).jpeg" alt="Friends"></div>
+  <h2>Hidden Surprises & Love Notes 🎁</h2>
+  <p>Little messages & moments that made us smile...</p>
+  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.03.49 PM (1).jpeg" alt="Surprise"></div>
   <button class="btn" onclick="nextPhase(4)">Next ➡️</button>
 </div>
 
-<!-- Phase 5: Hidden Surprises -->
+<!-- Phase 5: Navratri Video -->
 <div class="phase" id="phase5" style="display:none;">
-  <h2>Hidden Surprises & Love Notes 🎁</h2>
-  <p>Little messages & moments that made us smile...</p>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.08.41 PM (4).jpeg" alt="Surprise"></div>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.08.41 PM.jpeg" alt="Surprise"></div>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.08.42 PM (1).jpeg" alt="Surprise"></div>
-  <button class="btn" onclick="nextPhase(5)">Next ➡️</button>
-</div>
-
-<!-- Phase 6: Navratri Video -->
-<div class="phase" id="phase6" style="display:none;">
   <h2>Navratri Special Video 🎥</h2>
-  <p>Remember our Navratri moments! Watch below:</p>
-  <button class="btn" onclick="openVideo('navratri')">Watch Navratri Video</button>
+  <p>Watch video below 👇</p>
+  <button class="btn" onclick="openVideo('navratri')">Watch Video</button>
 </div>
 
-<!-- Phase 7: Special Final Video -->
-<div class="phase" id="phase7" style="display:none;">
+<!-- Phase 6: Special Video -->
+<div class="phase" id="phase6" style="display:none;">
   <h2>Our Special Memory Video 🎬</h2>
-  <p>Our journey captured beautifully!</p>
-  <button class="btn" onclick="openVideo('special')">Watch Special Video</button>
+  <p>Watch video below 👇</p>
+  <button class="btn" onclick="openVideo('special')">Watch Video</button>
+</div>
+
+<!-- Phase 7: Proposal -->
+<div class="phase" id="phase7" style="display:none;">
+  <h2>Will You Be My Forever Valentine? 💍</h2>
+  <button class="yes-btn" onclick="finalLove()">Yes, Always 💖</button>
+</div>
+
+<!-- Phase 8: Bonus Memories -->
+<div class="phase" id="phase8" style="display:none;">
+  <h2>Bonus Memories 📸</h2>
+  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.08.42 PM (2).jpeg" alt="Bonus"></div>
+  <button class="btn" onclick="nextPhase(8)">Next ➡️</button>
+</div>
+
+<!-- Phase 9: Ending -->
+<div class="phase" id="phase9" style="display:none;">
+  <h2>Memories & Magic Forever 💞</h2>
+  <p>Our story continues, shining brighter with every moment ✨</p>
 </div>
 
 <!-- Video Modal -->
 <div class="modal" id="videoModal">
   <video id="loveVideo" controls></video>
   <div class="close" onclick="closeVideo()">Close ✖</div>
-</div>
-
-<!-- Phase 8: Proposal -->
-<div class="phase" id="phase8" style="display:none;">
-  <h2>Will You Be My Forever Valentine? 💍</h2>
-  <button class="yes-btn" onclick="finalLove()">Yes, Always 💖</button>
-</div>
-
-<!-- Phase 9: Bonus Memories -->
-<div class="phase" id="phase9" style="display:none;">
-  <h2>Bonus Memories 📸</h2>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.08.42 PM (2).jpeg" alt="Bonus"></div>
-  <div class="img-card"><img src="WhatsApp Image 2026-02-13 at 11.08.42 PM.jpeg" alt="Bonus"></div>
-  <button class="btn" onclick="nextPhase(9)">Next ➡️</button>
-</div>
-
-<!-- Phase 10: Ending -->
-<div class="phase" id="phase10" style="display:none;">
-  <h2>Memories & Magic Forever 💞</h2>
-  <p>Our story continues, shining brighter with every moment ✨</p>
-</div>
-
 </div>
 
 <!-- Background Music -->
@@ -376,8 +354,8 @@ function closeVideo(){
   video.pause();
   video.currentTime=0;
   document.getElementById('videoModal').style.display='none';
-  if(currentPhase===6) {document.getElementById('phase7').style.display='block'; currentPhase++;}
-  else if(currentPhase===7) {document.getElementById('phase8').style.display='block'; currentPhase++;}
+  if(currentPhase===5){document.getElementById('phase6').style.display='block'; currentPhase++;}
+  else if(currentPhase===6){document.getElementById('phase7').style.display='block'; currentPhase++;}
 }
 
 /* PROPOSAL */
@@ -391,7 +369,7 @@ function finalLove(){
     document.body.appendChild(c);
     setTimeout(()=>c.remove(),4000);
   }
-  document.getElementById('phase9').style.display='block';
+  document.getElementById('phase8').style.display='block';
   currentPhase++;
 }
 
