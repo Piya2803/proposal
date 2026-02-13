@@ -92,6 +92,11 @@ body{
   font-size:24px;
   margin-bottom:10px;
   font-weight:bold;
+  animation: glowTitle 2s infinite alternate;
+}
+@keyframes glowTitle{
+  from{text-shadow:0 0 10px pink;}
+  to{text-shadow:0 0 25px red;}
 }
 .phase p{
   font-size:18px;
@@ -141,7 +146,7 @@ body{
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.9);
+  background:rgba(0,0,0,0.95);
   display:none;
   justify-content:center;
   align-items:center;
@@ -207,6 +212,17 @@ body{
   0%{opacity:0; transform:translateY(20px);}
   100%{opacity:1; transform:translateY(0);}
 }
+
+/* Animated Watch Video Text */
+@keyframes flashText{
+  0%,100%{opacity:1; color:#ff66cc;}
+  50%{opacity:0.5; color:#ff3399;}
+}
+.watchText{
+  font-size:20px;
+  margin:15px 0;
+  animation: flashText 1s infinite;
+}
 </style>
 </head>
 <body>
@@ -265,18 +281,18 @@ for(let i=0;i<slides.length;i++){
   </div>`);
 }
 
-// Slide 18: Navratri Video
+// Slide 18: Navratri Video - special effects
 document.write(`<div class="phase" id="phase18" style="display:none;">
-<p class="title">Celebration Time 🎉</p>
-<p>Watch video below 👇</p>
-<button class="btn" onclick="openVideo('navratri')">Watch Video</button>
+<p class="title">Navratri Celebration 🎉</p>
+<p class="watchText">Watch video below 👇</p>
+<button class="btn" onclick="openVideo('navratri')">Play Video</button>
 </div>`);
 
 // Slide 19: Special Video
 document.write(`<div class="phase" id="phase19" style="display:none;">
 <p class="title">Our Special Moment 🎬</p>
-<p>Watch video below 👇</p>
-<button class="btn" onclick="openVideo('special')">Watch Video</button>
+<p class="watchText">Watch video below 👇</p>
+<button class="btn" onclick="openVideo('special')">Play Video</button>
 </div>`);
 
 // Slide 20: Proposal Slide
@@ -314,7 +330,10 @@ function nextPhase(phase){
 
 function openVideo(type){
   let video=document.getElementById('loveVideo');
-  if(type==='navratri') video.src='WhatsApp Video 2026-02-13 at 11.04.25 PM.mp4';
+  if(type==='navratri'){
+    video.src='WhatsApp Video 2026-02-13 at 11.04.25 PM.mp4';
+    startConfetti();
+  }
   else if(type==='special') video.src='WhatsApp Video 2026-02-13 at 11.42.23 PM.mp4';
   document.getElementById('videoModal').style.display='flex';
   video.play();
@@ -329,6 +348,7 @@ function closeVideo(){
   else if(currentPhase===19){document.getElementById('proposalSlide').style.display='block'; currentPhase++;}
 }
 
+// Final Proposal Confetti
 function finalLove(){
   alert("Yayyy ❤️ I Love You Forever!");
   for(let i=0;i<200;i++){
@@ -362,6 +382,18 @@ function startHeartRain(){
   },600);
 }
 startHeartRain();
+
+/* NAVRATRI CONFETTI */
+function startConfetti(){
+  for(let i=0;i<100;i++){
+    let c=document.createElement('div');
+    c.className='confetti';
+    c.style.left=Math.random()*window.innerWidth+'px';
+    c.style.background=`hsl(${Math.random()*360},100%,70%)`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4000);
+  }
+}
 </script>
 
 </body>
