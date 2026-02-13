@@ -8,10 +8,25 @@
 <style>
 body{
   margin:0;
-  font-family: 'Georgia', serif;
-  background: radial-gradient(circle at top, #1a001f, #000);
+  font-family:'Georgia', serif;
+  background:#000;
   overflow:hidden;
   color:white;
+}
+
+/* STARS BACKGROUND */
+.star{
+  position:absolute;
+  width:2px;
+  height:2px;
+  background:white;
+  border-radius:50%;
+  opacity:0.8;
+  animation: twinkle 3s infinite;
+}
+@keyframes twinkle{
+  0%,100%{opacity:0.3;}
+  50%{opacity:1;}
 }
 
 /* INTRO SCREEN */
@@ -23,15 +38,19 @@ body{
   justify-content:center;
   align-items:center;
   background:black;
-  z-index:10;
   text-align:center;
-  animation: fadeIn 3s ease-in;
+  z-index:10;
 }
 
 #intro h1{
   font-size:40px;
   letter-spacing:2px;
+  color:#ff3399;
   animation: glow 2s infinite alternate;
+}
+
+#intro h2{
+  color:#ff66aa;
 }
 
 #enterBtn{
@@ -47,13 +66,8 @@ body{
 }
 
 @keyframes glow{
-  from{ text-shadow:0 0 10px pink; }
-  to{ text-shadow:0 0 30px red; }
-}
-
-@keyframes fadeIn{
-  from{opacity:0;}
-  to{opacity:1;}
+  from{text-shadow:0 0 10px pink;}
+  to{text-shadow:0 0 30px red;}
 }
 
 /* MAIN CONTENT */
@@ -64,8 +78,10 @@ body{
   justify-content:center;
   align-items:center;
   text-align:center;
+  position:relative;
 }
 
+/* PHOTO FRAME */
 .photo-frame{
   width:250px;
   height:250px;
@@ -75,18 +91,17 @@ body{
   margin-bottom:20px;
   animation: float 3s ease-in-out infinite;
 }
-
 .photo-frame img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
-
 @keyframes float{
   0%,100%{transform:translateY(0);}
   50%{transform:translateY(-15px);}
 }
 
+/* BUTTONS */
 .btn{
   margin:10px;
   padding:10px 25px;
@@ -106,15 +121,14 @@ body{
   justify-content:center;
   align-items:center;
   flex-direction:column;
+  z-index:20;
 }
-
 .modal video{
   width:90%;
   max-width:600px;
   border-radius:20px;
   box-shadow:0 0 30px pink;
 }
-
 .close{
   margin-top:20px;
   cursor:pointer;
@@ -122,7 +136,7 @@ body{
   font-size:18px;
 }
 
-/* FINAL PROPOSAL */
+/* PROPOSAL */
 #proposal{
   display:none;
   font-size:28px;
@@ -140,10 +154,56 @@ body{
   cursor:pointer;
   font-size:16px;
 }
+
+/* HEARTS */
+.heart{
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:red;
+  transform:rotate(45deg);
+  animation: fall 5s linear infinite;
+  opacity:0.8;
+}
+.heart::before,
+.heart::after{
+  content:'';
+  position:absolute;
+  width:20px;
+  height:20px;
+  background:red;
+  border-radius:50%;
+}
+.heart::before{
+  top:-10px;
+  left:0;
+}
+.heart::after{
+  left:10px;
+  top:0;
+}
+
+@keyframes fall{
+  0%{transform:translateY(-50px) rotate(0deg); opacity:1;}
+  100%{transform:translateY(100vh) rotate(360deg); opacity:0;}
+}
 </style>
 </head>
 
 <body>
+
+<!-- STARS -->
+<script>
+for(let i=0;i<150;i++){
+  let star=document.createElement('div');
+  star.className='star';
+  star.style.top=Math.random()*100+'vh';
+  star.style.left=Math.random()*100+'vw';
+  star.style.width=Math.random()*2+1+'px';
+  star.style.height=star.style.width;
+  document.body.appendChild(star);
+}
+</script>
 
 <!-- INTRO -->
 <div id="intro">
@@ -172,7 +232,7 @@ body{
 <!-- VIDEO MODAL -->
 <div class="modal" id="videoModal">
   <video id="loveVideo" controls>
-    <source src="lovevideo.mp4" type="video/mp4">
+    <source src="WhatsApp%20Video%202026-02-13%20at%2010.25.04%20PM.mp4" type="video/mp4">
   </video>
   <div class="close" onclick="closeVideo()">Close ✖</div>
 </div>
@@ -181,31 +241,54 @@ body{
 <audio id="bgMusic" src="music.mp3" loop></audio>
 
 <script>
+/* ENTER SITE */
 function enterSite(){
-  document.getElementById("intro").style.display="none";
-  document.getElementById("main").style.display="flex";
-  document.getElementById("bgMusic").play();
+  document.getElementById('intro').style.display='none';
+  document.getElementById('main').style.display='flex';
+  document.getElementById('bgMusic').play();
 }
 
+/* VIDEO MODAL */
 function openVideo(){
-  document.getElementById("videoModal").style.display="flex";
-  document.getElementById("loveVideo").play();
+  document.getElementById('videoModal').style.display='flex';
+  document.getElementById('loveVideo').play();
 }
-
 function closeVideo(){
-  document.getElementById("videoModal").style.display="none";
-  const video = document.getElementById("loveVideo");
+  document.getElementById('videoModal').style.display='none';
+  let video=document.getElementById('loveVideo');
   video.pause();
   video.currentTime=0;
 }
 
+/* PROPOSAL */
 function showProposal(){
-  document.getElementById("proposal").style.display="block";
+  document.getElementById('proposal').style.display='block';
 }
-
 function finalLove(){
   alert("Yayyy ❤️ I Love You Forever!");
 }
+
+/* HEART TRAIL ON MOUSE */
+document.addEventListener('mousemove',function(e){
+  let heart=document.createElement('div');
+  heart.className='heart';
+  heart.style.left=e.clientX+'px';
+  heart.style.top=e.clientY+'px';
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),4000);
+});
+
+/* TEDDY + HEART RAIN */
+function startHeartRain(){
+  setInterval(()=>{
+    let h=document.createElement('div');
+    h.className='heart';
+    h.style.left=Math.random()*window.innerWidth+'px';
+    document.body.appendChild(h);
+    setTimeout(()=>h.remove(),5000);
+  },600);
+}
+startHeartRain();
 </script>
 
 </body>
