@@ -4,17 +4,16 @@
 <meta charset="UTF-8">
 <title>Our Love Story 💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <style>
 body{
   margin:0;
   font-family:'Comic Sans MS', cursive;
   background:#000;
-  overflow:hidden;
+  overflow-x:hidden;
   color:white;
 }
 
-/* STARS */
+/* STARS BACKGROUND */
 .star{
   position:absolute;
   width:2px;
@@ -29,7 +28,7 @@ body{
   50%{opacity:1;}
 }
 
-/* INTRO */
+/* INTRO SCREEN */
 #intro{
   position:fixed;
   inset:0;
@@ -41,10 +40,8 @@ body{
   text-align:center;
   z-index:10;
 }
-
 #intro h1{
   font-size:40px;
-  letter-spacing:2px;
   color:#ff3399;
   animation: glow 2s infinite alternate;
 }
@@ -62,41 +59,67 @@ body{
   cursor:pointer;
   box-shadow:0 0 20px #ff1a75;
 }
-
 @keyframes glow{
   from{text-shadow:0 0 10px pink;}
   to{text-shadow:0 0 30px red;}
 }
 
-/* MAIN CONTENT */
+/* MAIN JOURNEY SECTIONS */
 #main{
   display:none;
-  height:100vh;
   flex-direction:column;
-  justify-content:center;
+  justify-content:flex-start;
   align-items:center;
-  text-align:center;
   position:relative;
+  padding-bottom:100px;
 }
 
-/* PHOTO FRAME */
-.photo-frame{
-  width:250px;
-  height:250px;
+/* PHASE SECTIONS */
+.phase{
+  width:90%;
+  max-width:700px;
+  margin:40px auto;
+  background:rgba(255,255,255,0.05);
+  border-radius:20px;
+  padding:20px;
+  box-shadow:0 0 20px rgba(255,0,150,0.4);
+  text-align:center;
+  animation: fadeIn 1.5s ease-in-out;
+}
+
+/* PHASE TITLE */
+.phase h2{
+  color:#ff3399;
+  font-size:28px;
+  margin-bottom:10px;
+}
+
+/* PHASE TEXT */
+.phase p{
+  font-size:18px;
+  line-height:1.5;
+  margin-bottom:15px;
+}
+
+/* IMAGE CARDS */
+.img-card{
+  width:200px;
+  height:200px;
+  margin:10px;
+  display:inline-block;
   border-radius:20px;
   overflow:hidden;
-  box-shadow:0 0 40px pink;
-  margin-bottom:20px;
-  animation: float 3s ease-in-out infinite;
+  box-shadow:0 0 20px pink;
+  transition: transform 0.5s;
+  cursor:pointer;
 }
-.photo-frame img{
+.img-card img{
   width:100%;
   height:100%;
   object-fit:cover;
 }
-@keyframes float{
-  0%,100%{transform:translateY(0);}
-  50%{transform:translateY(-15px);}
+.img-card:hover{
+  transform: scale(1.1);
 }
 
 /* BUTTONS */
@@ -109,13 +132,18 @@ body{
   color:white;
   cursor:pointer;
   font-size:16px;
+  box-shadow:0 0 15px pink;
+  transition: transform 0.3s;
+}
+.btn:hover{
+  transform: scale(1.1);
 }
 
-/* MODAL */
+/* VIDEO MODAL */
 .modal{
   position:fixed;
   inset:0;
-  background:rgba(0,0,0,0.85);
+  background:rgba(0,0,0,0.9);
   display:none;
   justify-content:center;
   align-items:center;
@@ -135,24 +163,6 @@ body{
   font-size:18px;
 }
 
-/* PROPOSAL */
-#proposal{
-  display:none;
-  font-size:28px;
-  margin-top:20px;
-  animation: fadeIn 2s;
-}
-.yes-btn{
-  margin-top:20px;
-  padding:10px 25px;
-  border:none;
-  border-radius:30px;
-  background:red;
-  color:white;
-  cursor:pointer;
-  font-size:16px;
-}
-
 /* HEARTS */
 .heart{
   position:absolute;
@@ -162,6 +172,7 @@ body{
   transform:rotate(45deg);
   animation: fall 5s linear infinite;
   opacity:0.8;
+  z-index:5;
 }
 .heart::before,
 .heart::after{
@@ -184,6 +195,45 @@ body{
   0%{transform:translateY(-50px) rotate(0deg); opacity:1;}
   100%{transform:translateY(100vh) rotate(360deg); opacity:0;}
 }
+
+/* CONFETTI */
+.confetti{
+  position:absolute;
+  width:10px;
+  height:10px;
+  background: #ff33aa;
+  opacity:0.8;
+  animation: confettiFall linear forwards;
+}
+@keyframes confettiFall{
+  0%{transform: translateY(-20px) rotate(0deg);}
+  100%{transform: translateY(100vh) rotate(360deg);}
+}
+
+/* PROPOSAL */
+#proposal{
+  display:none;
+  font-size:28px;
+  margin-top:20px;
+  animation: fadeIn 2s;
+}
+.yes-btn{
+  margin-top:20px;
+  padding:10px 25px;
+  border:none;
+  border-radius:30px;
+  background:red;
+  color:white;
+  cursor:pointer;
+  font-size:16px;
+  box-shadow:0 0 20px pink;
+}
+
+/* FADE IN */
+@keyframes fadeIn{
+  0%{opacity:0; transform:translateY(20px);}
+  100%{opacity:1; transform:translateY(0);}
+}
 </style>
 </head>
 
@@ -204,22 +254,58 @@ for(let i=0;i<150;i++){
 
 <!-- INTRO -->
 <div id="intro">
-  <h1>Every Love Story is Beautiful 💖</h1>
-  <h2>But Ours is My Favorite 🎬</h2>
-  <button id="enterBtn" onclick="enterSite()">Start Our Journey ❤️</button>
+  <h1>Our Journey Begins 💖</h1>
+  <h2>Every memory is special 🎬</h2>
+  <button id="enterBtn" onclick="enterSite()">Start Our Story ❤️</button>
 </div>
 
 <!-- MAIN -->
 <div id="main">
 
-  <!-- Phase 1: Photo -->
-  <div class="photo-frame" id="phasePhoto">
-    <img src="yourphoto.jpg">
+  <!-- Phase 1: First Meeting -->
+  <div class="phase" id="phase1">
+    <h2>Our First Meeting 🤗</h2>
+    <p>This was the magical moment when we first met, our hearts smiled unknowingly...</p>
+    <div class="img-card"><img src="photo1.jpg" alt="First Meeting"></div>
+    <div class="img-card"><img src="photo2.jpg" alt="First Meeting"></div>
+    <button class="btn" onclick="nextPhase(1)">Next ➡️</button>
   </div>
-  <h2 id="phaseText">Our Beautiful Journey ✨</h2>
-  <button class="btn" onclick="nextPhase()">Next Phase ➡️</button>
 
-  <!-- Video Modal Phase 2 -->
+  <!-- Phase 2: Memories -->
+  <div class="phase" id="phase2" style="display:none;">
+    <h2>Our Special Memories 🥰</h2>
+    <p>The moments we shared, walking together, laughing and holding hands...</p>
+    <div class="img-card"><img src="photo3.jpg" alt="Memory"></div>
+    <div class="img-card"><img src="photo4.jpg" alt="Memory"></div>
+    <button class="btn" onclick="nextPhase(2)">Next ➡️</button>
+  </div>
+
+  <!-- Phase 3: Our Adventures -->
+  <div class="phase" id="phase3" style="display:none;">
+    <h2>Our Adventures 🌄</h2>
+    <p>From short trips to little surprises, every moment was filled with laughter...</p>
+    <div class="img-card"><img src="photo5.jpg" alt="Adventure"></div>
+    <div class="img-card"><img src="photo6.jpg" alt="Adventure"></div>
+    <button class="btn" onclick="nextPhase(3)">Next ➡️</button>
+  </div>
+
+  <!-- Phase 4: Fun & Surprises -->
+  <div class="phase" id="phase4" style="display:none;">
+    <h2>Fun Moments & Surprises 🎁</h2>
+    <p>Remember the little notes, teddy gifts, and random hugs that made everything magical?</p>
+    <div class="img-card"><img src="photo7.jpg" alt="Surprise"></div>
+    <div class="img-card"><img src="photo8.jpg" alt="Surprise"></div>
+    <button class="btn" onclick="nextPhase(4)">Next ➡️</button>
+  </div>
+
+  <!-- Phase 5: Special Video -->
+  <div class="phase" id="phase5" style="display:none;">
+    <h2>Our Special Video 🎥</h2>
+    <p>Here’s a glimpse of our beautiful journey...</p>
+    <button class="btn" onclick="openVideo()">Watch Video</button>
+  </div>
+
+  <!-- Video Modal -->
   <div class="modal" id="videoModal">
     <video id="loveVideo" controls>
       <source src="WhatsApp%20Video%202026-02-13%20at%2010.25.04%20PM.mp4" type="video/mp4">
@@ -227,10 +313,10 @@ for(let i=0;i<150;i++){
     <div class="close" onclick="closeVideo()">Close ✖</div>
   </div>
 
-  <!-- Phase 3: Proposal -->
-  <div id="proposal">
-    <p>Will You Be My Forever Valentine? 💖</p>
-    <button class="yes-btn" onclick="finalLove()">Yes, Always 💍</button>
+  <!-- Proposal Phase -->
+  <div id="proposal" class="phase" style="display:none;">
+    <h2>Will You Be My Forever Valentine? 💍</h2>
+    <button class="yes-btn" onclick="finalLove()">Yes, Always 💖</button>
   </div>
 
 </div>
@@ -239,7 +325,7 @@ for(let i=0;i<150;i++){
 <audio id="bgMusic" src="music.mp3" loop></audio>
 
 <script>
-let currentPhase=1;
+let currentPhase = 1;
 
 /* ENTER SITE */
 function enterSite(){
@@ -248,21 +334,20 @@ function enterSite(){
   document.getElementById('bgMusic').play();
 }
 
-/* NEXT PHASE */
-function nextPhase(){
-  if(currentPhase===1){
-    document.getElementById('phaseText').innerText="Watch Our Special Moment 🎥";
-    document.getElementById('phasePhoto').style.display='none';
-    openVideo();
-    currentPhase++;
-  } else if(currentPhase===2){
-    document.getElementById('phaseText').innerText="Surprise Messages 💌";
-    alert("You found a secret teddy message! 🧸💖");
-    currentPhase++;
-  } else if(currentPhase===3){
-    document.getElementById('phaseText').innerText="Final Proposal 💍";
-    showProposal();
-    currentPhase++;
+/* NEXT PHASE FUNCTION */
+function nextPhase(phase){
+  document.getElementById(`phase${phase}`).style.display='none';
+  if(phase < 4){
+    document.getElementById(`phase${phase+1}`).style.display='block';
+  } else if(phase === 4){
+    document.getElementById('phase5').style.display='block';
+  }
+  // Surprise alert
+  if(phase === 2){
+    alert("You found a hidden teddy note! 🧸💖");
+  }
+  if(phase === 3){
+    alert("Remember our first trip together? 🌄✨");
   }
 }
 
@@ -276,17 +361,25 @@ function closeVideo(){
   let video=document.getElementById('loveVideo');
   video.pause();
   video.currentTime=0;
+  // Show proposal phase after video
+  document.getElementById('proposal').style.display='block';
 }
 
 /* PROPOSAL */
-function showProposal(){
-  document.getElementById('proposal').style.display='block';
-}
 function finalLove(){
   alert("Yayyy ❤️ I Love You Forever!");
+  // Confetti effect
+  for(let i=0;i<150;i++){
+    let c=document.createElement('div');
+    c.className='confetti';
+    c.style.left=Math.random()*window.innerWidth+'px';
+    c.style.background=`hsl(${Math.random()*360},100%,70%)`;
+    document.body.appendChild(c);
+    setTimeout(()=>c.remove(),4000);
+  }
 }
 
-/* HEART TRAIL ON MOUSE */
+/* HEART TRAIL */
 document.addEventListener('mousemove',function(e){
   let heart=document.createElement('div');
   heart.className='heart';
@@ -296,7 +389,7 @@ document.addEventListener('mousemove',function(e){
   setTimeout(()=>heart.remove(),4000);
 });
 
-/* TEDDY + HEART RAIN */
+/* HEART RAIN */
 function startHeartRain(){
   setInterval(()=>{
     let h=document.createElement('div');
