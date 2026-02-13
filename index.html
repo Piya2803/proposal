@@ -99,8 +99,8 @@ body{
 
 /* IMAGES */
 .img-card{
-  width:200px;
-  height:200px;
+  width:180px;
+  height:180px;
   margin:10px;
   display:inline-block;
   border-radius:20px;
@@ -251,61 +251,96 @@ for(let i=0;i<200;i++){
 <!-- MAIN -->
 <div id="main">
 
-  <!-- Phase 1: First Meeting -->
-  <div class="phase" id="phase1">
-    <h2>Our First Meeting 🤗</h2>
-    <p>The magical moment we first met, hearts smiling unknowingly...</p>
-    <div class="img-card"><img src="photo1.jpg" alt="First Meeting"></div>
-    <div class="img-card"><img src="photo2.jpg" alt="First Meeting"></div>
-    <div class="img-card"><img src="photo3.jpg" alt="First Meeting"></div>
-    <button class="btn" onclick="nextPhase(1)">Next ➡️</button>
-  </div>
+<!-- Phase 1: First Meeting -->
+<div class="phase" id="phase1">
+  <h2>Our First Meeting 🤗</h2>
+  <p>The magical moment we first met, hearts smiling unknowingly...</p>
+  <div class="img-card"><img src="photo1.jpg" alt="First Meeting"></div>
+  <div class="img-card"><img src="photo2.jpg" alt="First Meeting"></div>
+  <div class="img-card"><img src="photo3.jpg" alt="First Meeting"></div>
+  <button class="btn" onclick="nextPhase(1)">Next ➡️</button>
+</div>
 
-  <!-- Phase 2: Day Memories -->
-  <div class="phase" id="phase2" style="display:none;">
-    <h2>Our Day Memories 🌞</h2>
-    <p>Fun moments, laughter, close hugs and little adventures during the day...</p>
-    <div class="img-card"><img src="photo4.jpg" alt="Day Memory"></div>
-    <div class="img-card"><img src="photo5.jpg" alt="Day Memory"></div>
-    <div class="img-card"><img src="photo6.jpg" alt="Day Memory"></div>
-    <button class="btn" onclick="nextPhase(2)">Next ➡️</button>
-  </div>
+<!-- Phase 2: Day Memories -->
+<div class="phase" id="phase2" style="display:none;">
+  <h2>Our Day Memories 🌞</h2>
+  <p>Fun moments, laughter, close hugs and little adventures during the day...</p>
+  <div class="img-card"><img src="photo4.jpg" alt="Day Memory"></div>
+  <div class="img-card"><img src="photo5.jpg" alt="Day Memory"></div>
+  <div class="img-card"><img src="photo6.jpg" alt="Day Memory"></div>
+  <button class="btn" onclick="nextPhase(2)">Next ➡️</button>
+</div>
 
-  <!-- Phase 3: Surprises -->
-  <div class="phase" id="phase3" style="display:none;">
-    <h2>Surprises & Love Notes 🎁</h2>
-    <p>Hidden messages, cute gifts, and little fun moments that made us smile...</p>
-    <div class="img-card"><img src="photo7.jpg" alt="Surprise"></div>
-    <div class="img-card"><img src="photo8.jpg" alt="Surprise"></div>
-    <div class="img-card"><img src="photo9.jpg" alt="Surprise"></div>
-    <button class="btn" onclick="nextPhase(3)">Next ➡️</button>
-  </div>
+<!-- Phase 3: Mini Adventures -->
+<div class="phase" id="phase3" style="display:none;">
+  <h2>Mini Adventures 🏞️</h2>
+  <p>Exploring new places, fun moments & laughter together...</p>
+  <div class="img-card"><img src="photo7.jpg" alt="Adventure"></div>
+  <div class="img-card"><img src="photo8.jpg" alt="Adventure"></div>
+  <div class="img-card"><img src="photo9.jpg" alt="Adventure"></div>
+  <button class="btn" onclick="nextPhase(3)">Next ➡️</button>
+</div>
 
-  <!-- Phase 4: Navratri Video -->
-  <div class="phase" id="phase4" style="display:none;">
-    <h2>Navratri Special Video 🎥</h2>
-    <p>Remember our Navratri moments! Watch the video below:</p>
-    <button class="btn" onclick="openVideo('navratri')">Watch Navratri Video</button>
-  </div>
+<!-- Phase 4: Friends & Fun -->
+<div class="phase" id="phase4" style="display:none;">
+  <h2>Friends & Fun 🎉</h2>
+  <p>Our moments with friends, smiles & laughter...</p>
+  <div class="img-card"><img src="photo10.jpg" alt="Friends"></div>
+  <div class="img-card"><img src="photo11.jpg" alt="Friends"></div>
+  <div class="img-card"><img src="photo12.jpg" alt="Friends"></div>
+  <button class="btn" onclick="nextPhase(4)">Next ➡️</button>
+</div>
 
-  <!-- Phase 5: Special Final Video -->
-  <div class="phase" id="phase5" style="display:none;">
-    <h2>Our Special Memory Video 🎬</h2>
-    <p>Our journey in a beautiful video!</p>
-    <button class="btn" onclick="openVideo('special')">Watch Special Video</button>
-  </div>
+<!-- Phase 5: Hidden Surprises -->
+<div class="phase" id="phase5" style="display:none;">
+  <h2>Hidden Surprises & Love Notes 🎁</h2>
+  <p>Little messages & moments that made us smile...</p>
+  <div class="img-card"><img src="photo13.jpg" alt="Surprise"></div>
+  <div class="img-card"><img src="photo14.jpg" alt="Surprise"></div>
+  <div class="img-card"><img src="photo15.jpg" alt="Surprise"></div>
+  <button class="btn" onclick="nextPhase(5)">Next ➡️</button>
+</div>
 
-  <!-- Video Modal -->
-  <div class="modal" id="videoModal">
-    <video id="loveVideo" controls></video>
-    <div class="close" onclick="closeVideo()">Close ✖</div>
-  </div>
+<!-- Phase 6: Navratri Video -->
+<div class="phase" id="phase6" style="display:none;">
+  <h2>Navratri Special Video 🎥</h2>
+  <p>Remember our Navratri moments! Watch below:</p>
+  <button class="btn" onclick="openVideo('navratri')">Watch Navratri Video</button>
+</div>
 
-  <!-- Proposal -->
-  <div id="proposal" class="phase" style="display:none;">
-    <h2>Will You Be My Forever Valentine? 💍</h2>
-    <button class="yes-btn" onclick="finalLove()">Yes, Always 💖</button>
-  </div>
+<!-- Phase 7: Special Final Video -->
+<div class="phase" id="phase7" style="display:none;">
+  <h2>Our Special Memory Video 🎬</h2>
+  <p>Our journey captured beautifully!</p>
+  <button class="btn" onclick="openVideo('special')">Watch Special Video</button>
+</div>
+
+<!-- Video Modal -->
+<div class="modal" id="videoModal">
+  <video id="loveVideo" controls></video>
+  <div class="close" onclick="closeVideo()">Close ✖</div>
+</div>
+
+<!-- Phase 8: Proposal -->
+<div class="phase" id="phase8" style="display:none;">
+  <h2>Will You Be My Forever Valentine? 💍</h2>
+  <button class="yes-btn" onclick="finalLove()">Yes, Always 💖</button>
+</div>
+
+<!-- Phase 9: Bonus Memories -->
+<div class="phase" id="phase9" style="display:none;">
+  <h2>Bonus Memories 📸</h2>
+  <div class="img-card"><img src="photo16.jpg" alt="Bonus"></div>
+  <div class="img-card"><img src="photo17.jpg" alt="Bonus"></div>
+  <div class="img-card"><img src="photo18.jpg" alt="Bonus"></div>
+  <button class="btn" onclick="nextPhase(9)">Next ➡️</button>
+</div>
+
+<!-- Phase 10: Ending -->
+<div class="phase" id="phase10" style="display:none;">
+  <h2>Memories & Magic Forever 💞</h2>
+  <p>Our story continues, shining brighter with every moment ✨</p>
+</div>
 
 </div>
 
@@ -326,10 +361,7 @@ function enterSite(){
 function nextPhase(phase){
   document.getElementById(`phase${phase}`).style.display='none';
   document.getElementById(`phase${phase+1}`).style.display='block';
-  // Surprise alerts
-  if(phase===1) alert("Remember the smiles from our first day together! 😊💖");
-  if(phase===2) alert("Little day adventures and hugs 💞");
-  if(phase===3) alert("Hidden love notes for you! 🧸💌");
+  currentPhase++;
 }
 
 /* VIDEO MODAL */
@@ -345,9 +377,9 @@ function closeVideo(){
   video.pause();
   video.currentTime=0;
   document.getElementById('videoModal').style.display='none';
-  if(currentPhase===4) document.getElementById('phase5').style.display='block';
-  else if(currentPhase===5) document.getElementById('proposal').style.display='block';
-  currentPhase++;
+  // Show next phase
+  if(currentPhase===6) {document.getElementById('phase7').style.display='block'; currentPhase++;}
+  else if(currentPhase===7) {document.getElementById('phase8').style.display='block'; currentPhase++;}
 }
 
 /* PROPOSAL */
@@ -362,6 +394,8 @@ function finalLove(){
     document.body.appendChild(c);
     setTimeout(()=>c.remove(),4000);
   }
+  document.getElementById('phase9').style.display='block';
+  currentPhase++;
 }
 
 /* HEART TRAIL */
