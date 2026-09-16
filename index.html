@@ -2,398 +2,830 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Our Love Story 💖</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Birthday My Love 🎂❤️</title>
+
 <style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
 body{
-  margin:0;
-  font-family:'Comic Sans MS', cursive;
-  background:#000;
-  overflow-x:hidden;
-  color:white;
-  text-align:center;
+    font-family:"Trebuchet MS", cursive;
+    background:#08000f;
+    color:white;
+    overflow-x:hidden;
 }
 
-/* STARS */
+/* ================= BACKGROUND ================= */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:
+        radial-gradient(circle at 20% 20%, #ff168455, transparent 25%),
+        radial-gradient(circle at 80% 80%, #8a2be255, transparent 25%),
+        radial-gradient(circle at 50% 50%, #ff005522, transparent 40%);
+    z-index:-2;
+}
+
+.stars{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+}
+
 .star{
-  position:absolute;
-  width:2px;
-  height:2px;
-  background:white;
-  border-radius:50%;
-  opacity:0.8;
-  animation: twinkle 3s infinite;
+    position:absolute;
+    width:3px;
+    height:3px;
+    background:white;
+    border-radius:50%;
+    animation:twinkle 2s infinite alternate;
 }
+
 @keyframes twinkle{
-  0%,100%{opacity:0.3;}
-  50%{opacity:1;}
+    from{opacity:.2;transform:scale(.5);}
+    to{opacity:1;transform:scale(1.4);}
 }
 
-/* INTRO */
+/* ================= INTRO ================= */
+
 #intro{
-  position:fixed;
-  inset:0;
-  display:flex;
-  flex-direction:column;
-  justify-content:center;
-  align-items:center;
-  background:black;
-  text-align:center;
-  z-index:10;
+    position:fixed;
+    inset:0;
+    background:#08000f;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    z-index:100;
+    padding:25px;
 }
+
+#intro .cake{
+    font-size:90px;
+    animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+    0%,100%{transform:translateY(0);}
+    50%{transform:translateY(-15px);}
+}
+
 #intro h1{
-  font-size:40px;
-  color:#ff3399;
-  animation: glow 2s infinite alternate;
-}
-#intro h2{
-  color:#ff66aa;
-}
-#enterBtn{
-  margin-top:30px;
-  padding:12px 30px;
-  border:none;
-  border-radius:40px;
-  font-size:16px;
-  background:#ff1a75;
-  color:white;
-  cursor:pointer;
-  box-shadow:0 0 20px #ff1a75;
-}
-@keyframes glow{
-  from{text-shadow:0 0 10px pink;}
-  to{text-shadow:0 0 30px red;}
+    font-size:clamp(35px,8vw,65px);
+    color:#ff4fa3;
+    text-shadow:0 0 15px #ff1493,0 0 40px #ff1493;
+    margin:20px 0 10px;
 }
 
-/* MAIN */
+#intro p{
+    color:#ffc7e6;
+    font-size:18px;
+}
+
+.start-btn{
+    margin-top:35px;
+    padding:15px 35px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#ff006e,#ff4da6);
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    box-shadow:0 0 25px #ff1493;
+    transition:.3s;
+}
+
+.start-btn:hover{
+    transform:scale(1.1);
+}
+
+/* ================= MAIN ================= */
+
 #main{
-  display:none;
-  flex-direction:column;
-  justify-content:flex-start;
-  align-items:center;
-  position:relative;
-  padding-bottom:100px;
+    display:none;
+    min-height:100vh;
+    text-align:center;
+    padding-bottom:100px;
 }
 
-/* PHASES */
-.phase{
-  width:90%;
-  max-width:700px;
-  margin:40px auto;
-  background:rgba(255,255,255,0.05);
-  border-radius:20px;
-  padding:20px;
-  box-shadow:0 0 20px rgba(255,0,150,0.4);
-  text-align:center;
-  animation: fadeIn 1.5s ease-in-out;
-}
-.phase .title{
-  color:#ff3399;
-  font-size:24px;
-  margin-bottom:10px;
-  font-weight:bold;
-  animation: glowTitle 2s infinite alternate;
-}
-@keyframes glowTitle{
-  from{text-shadow:0 0 10px pink;}
-  to{text-shadow:0 0 25px red;}
-}
-.phase p{
-  font-size:18px;
-  line-height:1.5;
-  margin-bottom:15px;
-  color:#ffccff;
+.hero{
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:30px;
 }
 
-/* IMAGES */
-.img-card{
-  width:300px;
-  height:300px;
-  margin:10px auto;
-  border-radius:20px;
-  overflow:hidden;
-  box-shadow:0 0 20px pink;
-  transition: transform 0.5s;
-  cursor:pointer;
-}
-.img-card img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.img-card:hover{
-  transform: scale(1.05);
+.hero h1{
+    font-size:clamp(40px,10vw,80px);
+    color:#ff5cad;
+    text-shadow:0 0 20px #ff1493;
 }
 
-/* BUTTONS */
-.btn{
-  margin:10px;
-  padding:10px 25px;
-  border:none;
-  border-radius:30px;
-  background:#ff0066;
-  color:white;
-  cursor:pointer;
-  font-size:16px;
-  box-shadow:0 0 15px pink;
-  transition: transform 0.3s;
-}
-.btn:hover{
-  transform: scale(1.1);
+.hero h2{
+    margin-top:15px;
+    font-size:clamp(20px,5vw,32px);
+    color:#ffd1e8;
 }
 
-/* VIDEO MODAL */
-.modal{
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,0.95);
-  display:none;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  z-index:20;
-}
-.modal video{
-  width:90%;
-  max-width:600px;
-  border-radius:20px;
-  box-shadow:0 0 30px pink;
-}
-.close{
-  margin-top:20px;
-  cursor:pointer;
-  color:pink;
-  font-size:18px;
+.hero p{
+    margin-top:20px;
+    max-width:600px;
+    color:#ffb8db;
+    font-size:18px;
+    line-height:1.7;
 }
 
-/* HEARTS */
+/* ================= COUNTDOWN ================= */
+
+.countdown-box{
+    margin:30px auto;
+    padding:25px;
+    width:min(90%,600px);
+    border-radius:25px;
+    background:#ffffff0d;
+    border:1px solid #ff4fa355;
+    box-shadow:0 0 30px #ff149344;
+}
+
+.countdown{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+.time{
+    min-width:80px;
+    padding:15px 10px;
+    border-radius:15px;
+    background:#ff149322;
+}
+
+.time span{
+    display:block;
+    font-size:30px;
+    color:#ff72b8;
+    font-weight:bold;
+}
+
+.time small{
+    color:#ffcce5;
+}
+
+/* ================= SECTION ================= */
+
+.section{
+    width:min(90%,700px);
+    margin:50px auto;
+    padding:30px 20px;
+    background:#ffffff0b;
+    border-radius:30px;
+    border:1px solid #ff4fa333;
+    box-shadow:0 0 25px #ff149322;
+}
+
+.section h2{
+    color:#ff69b4;
+    font-size:30px;
+    margin-bottom:20px;
+}
+
+.section p{
+    color:#ffd0e8;
+    line-height:1.8;
+    font-size:18px;
+}
+
+/* ================= PHOTO ================= */
+
+.photo{
+    width:min(90%,350px);
+    height:350px;
+    margin:25px auto;
+    border-radius:25px;
+    overflow:hidden;
+    border:4px solid #ff4fa3;
+    box-shadow:0 0 30px #ff1493;
+}
+
+.photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.photo:hover img{
+    transform:scale(1.08);
+}
+
+/* ================= MEMORIES ================= */
+
+.memory{
+    margin:25px 0;
+    padding:20px;
+    border-radius:20px;
+    background:#ff149311;
+}
+
+.memory h3{
+    color:#ff78bd;
+    margin-bottom:10px;
+}
+
+.memory p{
+    font-size:16px;
+}
+
+/* ================= LOVE LETTER ================= */
+
+.letter{
+    background:#fff5fa;
+    color:#4a1933;
+    padding:30px;
+    border-radius:15px;
+    max-width:600px;
+    margin:auto;
+    text-align:left;
+    box-shadow:0 0 30px #ff149366;
+}
+
+.letter h3{
+    text-align:center;
+    color:#d41468;
+    margin-bottom:20px;
+}
+
+.letter p{
+    color:#5b2442;
+    font-size:17px;
+    line-height:1.8;
+}
+
+/* ================= BUTTON ================= */
+
+.surprise-btn{
+    padding:15px 30px;
+    border:none;
+    border-radius:50px;
+    background:linear-gradient(45deg,#ff006e,#c218ff);
+    color:white;
+    font-size:18px;
+    cursor:pointer;
+    box-shadow:0 0 25px #ff1493;
+    margin-top:20px;
+}
+
+.surprise-btn:hover{
+    transform:scale(1.08);
+}
+
+/* ================= FINAL ================= */
+
+#finalMessage{
+    display:none;
+    position:fixed;
+    inset:0;
+    background:#08000fee;
+    z-index:50;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:25px;
+}
+
+.final-box{
+    max-width:600px;
+    padding:40px 25px;
+    border-radius:30px;
+    background:linear-gradient(145deg,#2a0921,#120019);
+    border:2px solid #ff4fa3;
+    box-shadow:0 0 50px #ff1493;
+}
+
+.final-box .big-heart{
+    font-size:80px;
+    animation:heartBeat 1s infinite;
+}
+
+@keyframes heartBeat{
+    0%,100%{transform:scale(1);}
+    50%{transform:scale(1.2);}
+}
+
+.final-box h1{
+    color:#ff5cad;
+    font-size:40px;
+    margin:15px 0;
+}
+
+.final-box p{
+    color:#ffd0e8;
+    font-size:19px;
+    line-height:1.8;
+}
+
+/* ================= FLOATING HEARTS ================= */
+
 .heart{
-  position:absolute;
-  width:20px;
-  height:20px;
-  background:red;
-  transform:rotate(45deg);
-  animation: fall 5s linear infinite;
-  opacity:0.8;
-  z-index:5;
-}
-.heart::before,
-.heart::after{
-  content:'';
-  position:absolute;
-  width:20px;
-  height:20px;
-  background:red;
-  border-radius:50%;
-}
-.heart::before{top:-10px; left:0;}
-.heart::after{left:10px; top:0;}
-@keyframes fall{
-  0%{transform:translateY(-50px) rotate(0deg); opacity:1;}
-  100%{transform:translateY(100vh) rotate(360deg); opacity:0;}
+    position:fixed;
+    bottom:-30px;
+    font-size:25px;
+    animation:floatUp 5s linear forwards;
+    pointer-events:none;
+    z-index:40;
 }
 
-/* CONFETTI */
+@keyframes floatUp{
+    0%{
+        transform:translateY(0) rotate(0);
+        opacity:1;
+    }
+    100%{
+        transform:translateY(-110vh) rotate(360deg);
+        opacity:0;
+    }
+}
+
+/* ================= CONFETTI ================= */
+
 .confetti{
-  position:absolute;
-  width:10px;
-  height:10px;
-  background: #ff33aa;
-  opacity:0.8;
-  animation: confettiFall linear forwards;
+    position:fixed;
+    top:-20px;
+    width:10px;
+    height:18px;
+    z-index:60;
+    animation:confettiFall 4s linear forwards;
 }
+
 @keyframes confettiFall{
-  0%{transform: translateY(-20px) rotate(0deg);}
-  100%{transform: translateY(100vh) rotate(360deg);}
+    to{
+        transform:translateY(110vh) rotate(720deg);
+        opacity:0;
+    }
 }
 
-/* FADE IN */
-@keyframes fadeIn{
-  0%{opacity:0; transform:translateY(20px);}
-  100%{opacity:1; transform:translateY(0);}
-}
+/* ================= RESPONSIVE ================= */
 
-/* Animated Watch Video Text */
-@keyframes flashText{
-  0%,100%{opacity:1; color:#ff66cc;}
-  50%{opacity:0.5; color:#ff3399;}
-}
-.watchText{
-  font-size:20px;
-  margin:15px 0;
-  animation: flashText 1s infinite;
+@media(max-width:500px){
+    .photo{
+        height:300px;
+    }
+
+    .section{
+        padding:25px 15px;
+    }
+
+    .letter{
+        padding:22px;
+    }
 }
 </style>
 </head>
+
 <body>
 
 <!-- STARS -->
-<script>
-for(let i=0;i<200;i++){
-  let star=document.createElement('div');
-  star.className='star';
-  star.style.top=Math.random()*100+'vh';
-  star.style.left=Math.random()*100+'vw';
-  star.style.width=Math.random()*2+1+'px';
-  star.style.height=star.style.width;
-  document.body.appendChild(star);
-}
-</script>
+<div class="stars" id="stars"></div>
 
 <!-- INTRO -->
 <div id="intro">
-  <h1>Our Love Story 💖</h1>
-  <h2>Every memory is a treasure 🌟</h2>
-  <button id="enterBtn" onclick="enterSite()">Start Journey ❤️</button>
+
+    <div class="cake">🎂</div>
+
+    <h1>Happy Birthday<br>My Love ❤️</h1>
+
+    <p>A little surprise made specially for you... 💌</p>
+
+    <button class="start-btn" onclick="startJourney()">
+        Open Your Surprise 💖
+    </button>
+
 </div>
+
 
 <!-- MAIN -->
 <div id="main">
 
-<script>
-// Slides: photo + mini-title + quote
-const slides=[
-  {title:"The First Time 💖", img:"WhatsApp Image 2026-02-13 at 11.03.16 PM.jpeg",quote:"The first time I saw you, my heart knew it found home 💖"},
-  {title:"Sweet Laughs 🌟", img:"WhatsApp Image 2026-02-13 at 11.03.47 PM.jpeg",quote:"Every laugh with you is a memory I treasure 🌟"},
-  {title:"Your Smile 🌈", img:"WhatsApp Image 2026-02-13 at 11.03.48 PM.jpeg",quote:"Your smile lights up even my darkest days 🌈"},
-  {title:"Safe Hands 🤗", img:"WhatsApp Image 2026-02-13 at 11.03.49 PM (1).jpeg",quote:"Holding your hand feels like the safest place in the world 🤗"},
-  {title:"Magical Moments ✨", img:"WhatsApp Image 2026-02-13 at 11.03.49 PM.jpeg",quote:"With you, every moment is magical ✨"},
-  {title:"Sweet Music 🎶", img:"WhatsApp Image 2026-02-13 at 11.03.50 PM.jpeg",quote:"Your laughter is my favorite song 🎶"},
-  {title:"Together Always 🍓", img:"WhatsApp Image 2026-02-13 at 11.04.27 PM (1).jpeg",quote:"Together, we create the sweetest memories 🍓"},
-  {title:"Falling For You ❤️", img:"WhatsApp Image 2026-02-13 at 11.04.27 PM.jpeg",quote:"I fall for you every single day ❤️"},
-  {title:"Eyes Tell All 💕", img:"WhatsApp Image 2026-02-13 at 11.08.38 PM.jpeg",quote:"Your eyes tell the story of our love 💕"},
-  {title:"Eternal Moments 🌹", img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (1).jpeg",quote:"Moments with you feel eternal 🌹"},
-  {title:"Life is Sweeter 🍭", img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (2).jpeg",quote:"Life is sweeter with you by my side 🍭"},
-  {title:"Happy Place 🤗", img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (3).jpeg",quote:"Your hug is my happy place 🤗"},
-  {title:"Laugh Together 😂💖", img:"WhatsApp Image 2026-02-13 at 11.08.41 PM (4).jpeg",quote:"I love the way we laugh together 😂💖"},
-  {title:"Spark of Joy ✨", img:"WhatsApp Image 2026-02-13 at 11.08.41 PM.jpeg",quote:"Every glance from you is a spark of joy ✨"},
-  {title:"Silence Speaks 💞", img:"WhatsApp Image 2026-02-13 at 11.08.42 PM (1).jpeg",quote:"With you, even silence speaks volumes 💞"},
-  {title:"Sunshine ☀️", img:"WhatsApp Image 2026-02-13 at 11.08.42 PM (2).jpeg",quote:"You are my sunshine on rainy days ☀️"},
-  {title:"Forever ❤️", img:"WhatsApp Image 2026-02-13 at 11.08.42 PM.jpeg",quote:"Forever and always, my love ❤️"}
-];
+    <!-- HERO -->
+    <section class="hero">
 
-for(let i=0;i<slides.length;i++){
-  document.write(`<div class="phase" id="phase${i+1}" style="display:${i===0?'block':'none'};">
-    <div class="title">${slides[i].title}</div>
-    <div class="img-card"><img src="${slides[i].img}" alt="${slides[i].title}"></div>
-    <p>${slides[i].quote}</p>
-    <button class="btn" onclick="nextPhase(${i+1})">Next ➡️</button>
-  </div>`);
-}
+        <h1>Happy Birthday, Baby! 🎂❤️</h1>
 
-// Slide 18: Navratri Video - special effects
-document.write(`<div class="phase" id="phase18" style="display:none;">
-<p class="title">Navratri Celebration 🎉</p>
-<p class="watchText">Watch video below 👇</p>
-<button class="btn" onclick="openVideo('navratri')">Play Video</button>
-</div>`);
+        <h2>Today is all about YOU ✨</h2>
 
-// Slide 19: Special Video
-document.write(`<div class="phase" id="phase19" style="display:none;">
-<p class="title">Our Special Moment 🎬</p>
-<p class="watchText">Watch video below 👇</p>
-<button class="btn" onclick="openVideo('special')">Play Video</button>
-</div>`);
+        <p>
+            The world got a little more beautiful on the day you were born...
+            and my world became even more beautiful when I found you. 💕
+        </p>
 
-// Slide 20: Proposal Slide
-document.write(`<div class="phase" id="proposalSlide" style="display:none;">
-<p class="title">Forever & Always 💍</p>
-<h2>Will You Be My Valentine? 💖</h2>
-<button class="btn" onclick="finalLove()">Yes, Always 💖</button>
-</div>`);
-</script>
+        <div class="countdown-box">
 
-<!-- Video Modal -->
-<div class="modal" id="videoModal">
-  <video id="loveVideo" controls></video>
-  <div class="close" onclick="closeVideo()">Close ✖</div>
+            <h2>🎉 Your Special Day 🎉</h2>
+
+            <div class="countdown">
+
+                <div class="time">
+                    <span id="days">00</span>
+                    <small>Days</small>
+                </div>
+
+                <div class="time">
+                    <span id="hours">00</span>
+                    <small>Hours</small>
+                </div>
+
+                <div class="time">
+                    <span id="minutes">00</span>
+                    <small>Minutes</small>
+                </div>
+
+                <div class="time">
+                    <span id="seconds">00</span>
+                    <small>Seconds</small>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- PHOTO -->
+    <section class="section">
+
+        <h2>📸 My Favorite Person</h2>
+
+        <div class="photo">
+            <img src="photo1.jpg" alt="My Love">
+        </div>
+
+        <p>
+            Out of all the people in this world,
+            somehow I got lucky enough to call you mine. 🥹❤️
+        </p>
+
+    </section>
+
+
+    <!-- MEMORIES -->
+    <section class="section">
+
+        <h2>💭 Little Things I Love About You</h2>
+
+        <div class="memory">
+            <h3>🥰 Your Smile</h3>
+            <p>
+                Your smile can instantly make my worst day better.
+            </p>
+        </div>
+
+        <div class="memory">
+            <h3>😂 Your Laugh</h3>
+            <p>
+                I could listen to your laugh forever and never get tired of it.
+            </p>
+        </div>
+
+        <div class="memory">
+            <h3>🤗 Your Hugs</h3>
+            <p>
+                Somehow your arms make everything feel okay.
+            </p>
+        </div>
+
+        <div class="memory">
+            <h3>❤️ Just You</h3>
+            <p>
+                I love you not because of one thing,
+                but because of every little thing that makes you YOU.
+            </p>
+        </div>
+
+    </section>
+
+
+    <!-- SECOND PHOTO -->
+    <section class="section">
+
+        <h2>🌹 One More Memory...</h2>
+
+        <div class="photo">
+            <img src="photo2.jpg" alt="Our Memory">
+        </div>
+
+        <p>
+            Some pictures are just pictures...
+            but pictures with you become memories I want to keep forever. 💖
+        </p>
+
+    </section>
+
+
+    <!-- LOVE LETTER -->
+    <section class="section">
+
+        <h2>💌 A Letter For You</h2>
+
+        <div class="letter">
+
+            <h3>To My Birthday Boy ❤️</h3>
+
+            <p>
+                Happy Birthday to the person who means more to me
+                than words can ever explain.
+            </p>
+
+            <br>
+
+            <p>
+                I hope this new year of your life brings you happiness,
+                success, peace, and everything your heart wishes for.
+            </p>
+
+            <br>
+
+            <p>
+                I promise to be there for your happy days,
+                your difficult days, your crazy moments,
+                and all the little moments in between.
+            </p>
+
+            <br>
+
+            <p>
+                Thank you for being you.
+                Thank you for making me smile.
+                And thank you for becoming such a beautiful part of my life.
+            </p>
+
+            <br>
+
+            <p style="text-align:center;font-weight:bold;color:#d41468;">
+                I love you more than you know. ❤️
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- SURPRISE -->
+    <section class="section">
+
+        <h2>🎁 One Last Surprise...</h2>
+
+        <p>
+            There's something waiting for you.
+            But you have to press the button... 👀❤️
+        </p>
+
+        <button class="surprise-btn" onclick="showFinal()">
+            Open My Final Surprise 🎁
+        </button>
+
+    </section>
+
 </div>
 
-<!-- Background Music -->
-<audio id="bgMusic" src="music.mp3" loop></audio>
+
+<!-- FINAL POPUP -->
+<div id="finalMessage">
+
+    <div class="final-box">
+
+        <div class="big-heart">❤️</div>
+
+        <h1>Happy Birthday, My Love! 🎂</h1>
+
+        <p>
+            May your smile always stay this beautiful,
+            may your dreams come true,
+            and may I get to celebrate
+            many, many more birthdays with you. 🥹❤️
+        </p>
+
+        <br>
+
+        <p>
+            You are my favorite person,
+            my safe place,
+            and my happiest memory. 💕
+        </p>
+
+        <br>
+
+        <h2>Forever Yours ❤️</h2>
+
+        <button class="surprise-btn" onclick="closeFinal()">
+            Back to Our Memories 💖
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- MUSIC -->
+<audio id="music" loop>
+    <source src="birthday-song.mp3" type="audio/mpeg">
+</audio>
+
 
 <script>
-let currentPhase=1;
 
-function enterSite(){
-  document.getElementById('intro').style.display='none';
-  document.getElementById('main').style.display='flex';
-  document.getElementById('bgMusic').play();
+/* ================= STARS ================= */
+
+for(let i=0;i<180;i++){
+
+    const star=document.createElement("div");
+
+    star.className="star";
+
+    star.style.left=Math.random()*100+"vw";
+    star.style.top=Math.random()*100+"vh";
+
+    star.style.animationDelay=Math.random()*3+"s";
+
+    document.getElementById("stars").appendChild(star);
 }
 
-function nextPhase(phase){
-  document.getElementById(`phase${phase}`).style.display='none';
-  if(phase<17) document.getElementById(`phase${phase+1}`).style.display='block';
-  else if(phase===17) document.getElementById('phase18').style.display='block';
-  currentPhase++;
+
+/* ================= START ================= */
+
+function startJourney(){
+
+    document.getElementById("intro").style.display="none";
+    document.getElementById("main").style.display="block";
+
+    const music=document.getElementById("music");
+
+    music.play().catch(()=>{
+        console.log("Music requires user interaction.");
+    });
+
+    createHearts();
+
 }
 
-function openVideo(type){
-  let video=document.getElementById('loveVideo');
-  if(type==='navratri'){
-    video.src='WhatsApp Video 2026-02-13 at 11.04.25 PM.mp4';
-    startConfetti();
-  }
-  else if(type==='special') video.src='WhatsApp Video 2026-02-13 at 11.42.23 PM.mp4';
-  document.getElementById('videoModal').style.display='flex';
-  video.play();
+
+/* ================= HEARTS ================= */
+
+function createHearts(){
+
+    setInterval(()=>{
+
+        const heart=document.createElement("div");
+
+        heart.className="heart";
+
+        const hearts=["❤️","💖","💕","💗","💓","💘","💝"];
+
+        heart.innerHTML=
+            hearts[Math.floor(Math.random()*hearts.length)];
+
+        heart.style.left=Math.random()*100+"vw";
+
+        heart.style.animationDuration=
+            (3+Math.random()*4)+"s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(()=>{
+            heart.remove();
+        },7000);
+
+    },500);
+
 }
 
-function closeVideo(){
-  let video=document.getElementById('loveVideo');
-  video.pause();
-  video.currentTime=0;
-  document.getElementById('videoModal').style.display='none';
-  if(currentPhase===18){document.getElementById('phase19').style.display='block'; currentPhase++;}
-  else if(currentPhase===19){document.getElementById('proposalSlide').style.display='block'; currentPhase++;}
+
+/* ================= COUNTDOWN ================= */
+
+/*
+   IMPORTANT:
+   Change this date to his birthday.
+
+   Example:
+   "2027-09-25T00:00:00"
+*/
+
+const birthdayDate = new Date("2027-09-25T00:00:00");
+
+function updateCountdown(){
+
+    const now=new Date();
+
+    let difference=birthdayDate-now;
+
+    if(difference<0){
+        difference=0;
+    }
+
+    const days=Math.floor(
+        difference/(1000*60*60*24)
+    );
+
+    const hours=Math.floor(
+        (difference/(1000*60*60))%24
+    );
+
+    const minutes=Math.floor(
+        (difference/(1000*60))%60
+    );
+
+    const seconds=Math.floor(
+        (difference/1000)%60
+    );
+
+    document.getElementById("days").innerText=
+        String(days).padStart(2,"0");
+
+    document.getElementById("hours").innerText=
+        String(hours).padStart(2,"0");
+
+    document.getElementById("minutes").innerText=
+        String(minutes).padStart(2,"0");
+
+    document.getElementById("seconds").innerText=
+        String(seconds).padStart(2,"0");
 }
 
-// Final Proposal Confetti
-function finalLove(){
-  alert("Yayyy ❤️ I Love You Forever!");
-  for(let i=0;i<200;i++){
-    let c=document.createElement('div');
-    c.className='confetti';
-    c.style.left=Math.random()*window.innerWidth+'px';
-    c.style.background=`hsl(${Math.random()*360},100%,70%)`;
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),4000);
-  }
+setInterval(updateCountdown,1000);
+
+updateCountdown();
+
+
+/* ================= FINAL SURPRISE ================= */
+
+function showFinal(){
+
+    document.getElementById("finalMessage").style.display="flex";
+
+    createConfetti();
+
 }
 
-/* HEART TRAIL */
-document.addEventListener('mousemove',function(e){
-  let heart=document.createElement('div');
-  heart.className='heart';
-  heart.style.left=e.clientX+'px';
-  heart.style.top=e.clientY+'px';
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),4000);
-});
 
-/* HEART RAIN */
-function startHeartRain(){
-  setInterval(()=>{
-    let h=document.createElement('div');
-    h.className='heart';
-    h.style.left=Math.random()*window.innerWidth+'px';
-    document.body.appendChild(h);
-    setTimeout(()=>h.remove(),5000);
-  },600);
-}
-startHeartRain();
+/* ================= CLOSE ================= */
 
-/* NAVRATRI CONFETTI */
-function startConfetti(){
-  for(let i=0;i<100;i++){
-    let c=document.createElement('div');
-    c.className='confetti';
-    c.style.left=Math.random()*window.innerWidth+'px';
-    c.style.background=`hsl(${Math.random()*360},100%,70%)`;
-    document.body.appendChild(c);
-    setTimeout(()=>c.remove(),4000);
-  }
+function closeFinal(){
+
+    document.getElementById("finalMessage").style.display="none";
+
 }
+
+
+/* ================= CONFETTI ================= */
+
+function createConfetti(){
+
+    const colors=[
+        "#ff1493",
+        "#ff69b4",
+        "#ffd700",
+        "#00ffff",
+        "#ffffff",
+        "#9b59ff"
+    ];
+
+    for(let i=0;i<180;i++){
+
+        const c=document.createElement("div");
+
+        c.className="confetti";
+
+        c.style.left=Math.random()*100+"vw";
+
+        c.style.background=
+            colors[Math.floor(Math.random()*colors.length)];
+
+        c.style.animationDuration=
+            (2+Math.random()*3)+"s";
+
+        c.style.animationDelay=
+            Math.random()*1.5+"s";
+
+        document.body.appendChild(c);
+
+        setTimeout(()=>{
+            c.remove();
+        },6000);
+
+    }
+
+}
+
 </script>
 
 </body>
