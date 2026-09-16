@@ -10,6 +10,7 @@ content="width=device-width, initial-scale=1.0">
 
 <title>Happy Birthday My Rider 🏍️❤️</title>
 
+
 <style>
 
 /* =====================================================
@@ -27,19 +28,38 @@ html{
 }
 
 body{
+
     background:#070707;
+
     color:#f5eee4;
-    font-family:Arial,Helvetica,sans-serif;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
     overflow-x:hidden;
 }
 
+
+/* =====================================================
+   COLORS
+===================================================== */
+
 :root{
+
     --gold:#d8a85b;
+
     --gold-light:#f2d08d;
+
     --cream:#f5eee4;
+
     --dark:#070707;
+
     --brown:#30231b;
+
     --red:#9d3838;
+
 }
 
 
@@ -48,17 +68,23 @@ body{
 ===================================================== */
 
 #intro{
+
     position:fixed;
+
     inset:0;
+
     z-index:9999;
 
     display:flex;
+
     justify-content:center;
+
     align-items:center;
 
     text-align:center;
 
     background:
+
     radial-gradient(
         circle at center,
         #30251d 0%,
@@ -67,15 +93,20 @@ body{
     );
 
     padding:25px;
+
     overflow:hidden;
+
 }
 
+
 #intro::before{
+
     content:"";
 
     position:absolute;
 
     width:500px;
+
     height:500px;
 
     border-radius:50%;
@@ -85,31 +116,23 @@ body{
     filter:blur(160px);
 
     opacity:.12;
+
 }
+
 
 .intro-content{
+
     position:relative;
+
     z-index:2;
+
     max-width:700px;
 
-    animation:introAppear 1.5s ease;
 }
 
-@keyframes introAppear{
-
-    from{
-        opacity:0;
-        transform:translateY(35px) scale(.95);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0) scale(1);
-    }
-
-}
 
 .intro-bike{
+
     font-size:90px;
 
     filter:
@@ -120,25 +143,33 @@ body{
 
     animation:
     bikeFloat 2s ease-in-out infinite;
+
 }
+
 
 @keyframes bikeFloat{
 
     0%,100%{
+
         transform:
         translateY(0)
         rotate(-1deg);
+
     }
 
     50%{
+
         transform:
         translateY(-13px)
         rotate(1deg);
+
     }
 
 }
 
+
 .intro-tag{
+
     margin-top:25px;
 
     color:var(--gold);
@@ -148,9 +179,12 @@ body{
     font-size:11px;
 
     text-transform:uppercase;
+
 }
 
+
 #intro h1{
+
     margin-top:18px;
 
     font-family:Georgia,serif;
@@ -161,13 +195,19 @@ body{
     line-height:.95;
 
     color:white;
+
 }
+
 
 #intro h1 span{
+
     color:var(--gold);
+
 }
 
+
 #intro p{
+
     margin-top:22px;
 
     color:#aaa;
@@ -175,9 +215,12 @@ body{
     font-size:17px;
 
     line-height:1.7;
+
 }
 
+
 .start-btn{
+
     margin-top:35px;
 
     padding:16px 40px;
@@ -196,21 +239,23 @@ body{
 
     cursor:pointer;
 
-    transition:
-    .4s ease;
+    transition:.4s;
+
 }
 
+
 .start-btn:hover{
+
     background:var(--gold);
 
     color:#111;
 
-    transform:
-    scale(1.06);
+    transform:scale(1.06);
 
     box-shadow:
     0 0 40px
     rgba(216,168,91,.4);
+
 }
 
 
@@ -219,36 +264,45 @@ body{
 ===================================================== */
 
 #main{
+
     display:none;
+
 }
 
 
 /* =====================================================
-   HERO
+   HERO VIDEO
 ===================================================== */
 
 .hero{
+
     position:relative;
 
     height:100vh;
+
     min-height:650px;
 
     display:flex;
 
     justify-content:center;
+
     align-items:center;
 
     text-align:center;
 
     overflow:hidden;
+
 }
 
+
 .hero video{
+
     position:absolute;
 
     inset:0;
 
     width:100%;
+
     height:100%;
 
     object-fit:cover;
@@ -259,9 +313,12 @@ body{
     saturate(.75);
 
     transform:scale(1.03);
+
 }
 
+
 .hero::after{
+
     content:"";
 
     position:absolute;
@@ -284,9 +341,12 @@ body{
     );
 
     z-index:1;
+
 }
 
+
 .hero-content{
+
     position:relative;
 
     z-index:2;
@@ -295,25 +355,11 @@ body{
 
     max-width:900px;
 
-    animation:
-    heroText 1.5s ease;
 }
 
-@keyframes heroText{
-
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-
-}
 
 .hero-tag{
+
     color:var(--gold);
 
     font-size:12px;
@@ -323,9 +369,12 @@ body{
     text-transform:uppercase;
 
     margin-bottom:25px;
+
 }
 
+
 .hero h1{
+
     font-family:Georgia,serif;
 
     font-size:
@@ -335,13 +384,19 @@ body{
 
     text-shadow:
     0 8px 40px black;
+
 }
+
 
 .hero h1 span{
+
     color:var(--gold);
+
 }
 
+
 .hero-description{
+
     max-width:650px;
 
     margin:30px auto 0;
@@ -351,9 +406,12 @@ body{
     font-size:18px;
 
     line-height:1.8;
+
 }
 
+
 .scroll-down{
+
     margin-top:50px;
 
     color:var(--gold);
@@ -364,13 +422,19 @@ body{
 
     animation:
     scrollPulse 2s infinite;
+
 }
+
 
 @keyframes scrollPulse{
 
     50%{
+
         opacity:.25;
-        transform:translateY(8px);
+
+        transform:
+        translateY(8px);
+
     }
 
 }
@@ -381,17 +445,20 @@ body{
 ===================================================== */
 
 .gold-line{
+
     width:100%;
 
     height:1px;
 
     background:
+
     linear-gradient(
         90deg,
         transparent,
         var(--gold),
         transparent
     );
+
 }
 
 
@@ -400,14 +467,18 @@ body{
 ===================================================== */
 
 .section{
-    width:min(1000px,92%);
+
+    width:min(1100px,92%);
 
     margin:120px auto;
 
     text-align:center;
+
 }
 
+
 .small-title{
+
     color:var(--gold);
 
     font-size:11px;
@@ -417,9 +488,12 @@ body{
     text-transform:uppercase;
 
     margin-bottom:18px;
+
 }
 
+
 .section h2{
+
     font-family:Georgia,serif;
 
     font-size:
@@ -428,13 +502,19 @@ body{
     line-height:1.05;
 
     margin-bottom:25px;
+
 }
+
 
 .section h2 span{
+
     color:var(--gold);
+
 }
 
+
 .section-description{
+
     max-width:700px;
 
     margin:auto;
@@ -444,350 +524,462 @@ body{
     font-size:17px;
 
     line-height:1.9;
+
 }
 
 
 /* =====================================================
-   PHOTO GALLERY
+   BIRTHDAY PHOTO GALLERY
 ===================================================== */
 
-.gallery{
+.birthday-memories{
 
-    margin-top:55px;
+    max-width:1100px;
+
+}
+
+
+.birthday-gallery{
+
+    margin-top:65px;
 
     display:grid;
 
     grid-template-columns:
     repeat(2,1fr);
 
-    gap:25px;
+    gap:35px;
+
 }
 
 
 /* =====================================================
-   GALLERY CARD
+   PHOTO CARD
 ===================================================== */
 
-.gallery-card{
+.birthday-card{
 
-    position:relative;
+    background:
 
-    background:#111;
-
-    padding:8px;
+    linear-gradient(
+        145deg,
+        #151515,
+        #0b0b0b
+    );
 
     border:1px solid #292929;
 
     overflow:hidden;
 
-    min-height:320px;
+    position:relative;
 
     opacity:0;
 
     transform:
-    translateY(45px)
-    scale(.96);
+    translateY(50px);
 
     animation:
-    galleryReveal .9s ease forwards;
+    memoryReveal .9s ease forwards;
 
     transition:
-    transform .6s cubic-bezier(.2,.8,.2,1),
+    transform .6s ease,
     border-color .5s ease,
-    box-shadow .5s ease;
+    box-shadow .6s ease;
+
 }
 
 
-/* Different delay for every photo */
-
-.gallery-card:nth-child(1){
+.birthday-card:nth-child(1){
     animation-delay:.1s;
-    grid-row:span 2;
 }
 
-.gallery-card:nth-child(2){
+.birthday-card:nth-child(2){
     animation-delay:.25s;
 }
 
-.gallery-card:nth-child(3){
+.birthday-card:nth-child(3){
     animation-delay:.4s;
 }
 
-.gallery-card:nth-child(4){
+.birthday-card:nth-child(4){
     animation-delay:.55s;
 }
 
-.gallery-card:nth-child(5){
+.birthday-card:nth-child(5){
     animation-delay:.7s;
 }
 
-.gallery-card:nth-child(6){
+.birthday-card:nth-child(6){
     animation-delay:.85s;
 }
 
 
-@keyframes galleryReveal{
+@keyframes memoryReveal{
 
     to{
+
         opacity:1;
 
         transform:
-        translateY(0)
-        scale(1);
+        translateY(0);
+
     }
 
 }
 
 
-.gallery-card:hover{
+.birthday-card:hover{
 
     transform:
-    translateY(-12px)
-    scale(1.015)
-    rotate(-.6deg);
-
-    border-color:var(--gold);
-
-    box-shadow:
-    0 25px 70px
-    rgba(216,168,91,.18);
-}
-
-
-/* =====================================================
-   IMAGE
-===================================================== */
-
-.gallery-card img{
-
-    display:block;
-
-    width:100%;
-    height:100%;
-
-    min-height:320px;
-
-    object-fit:cover;
-
-    transition:
-    transform 1s cubic-bezier(.2,.8,.2,1),
-    filter .8s ease;
-}
-
-
-.gallery-card:hover img{
-
-    transform:
-    scale(1.08);
-
-    filter:
-    brightness(1.1)
-    contrast(1.05);
-}
-
-
-/* =====================================================
-   IMAGE SHINE EFFECT
-===================================================== */
-
-.gallery-card::before{
-
-    content:"";
-
-    position:absolute;
-
-    top:0;
-    left:-120%;
-
-    width:70%;
-    height:100%;
-
-    background:
-    linear-gradient(
-        90deg,
-        transparent,
-        rgba(255,255,255,.13),
-        transparent
-    );
-
-    transform:skewX(-20deg);
-
-    z-index:2;
-
-    pointer-events:none;
-}
-
-.gallery-card:hover::before{
-
-    left:150%;
-
-    transition:
-    left .9s ease;
-}
-
-
-/* =====================================================
-   CAPTION
-===================================================== */
-
-.gallery-caption{
-
-    position:absolute;
-
-    left:20px;
-    bottom:18px;
-
-    color:white;
-
-    font-family:Georgia,serif;
-
-    font-size:18px;
-
-    text-shadow:
-    0 2px 12px black;
-
-    z-index:4;
-
-    transition:
-    transform .5s ease,
-    color .5s ease;
-}
-
-.gallery-card:hover .gallery-caption{
-
-    transform:
-    translateY(-5px);
-
-    color:var(--gold-light);
-}
-
-
-/* =====================================================
-   YEZDI 69 SPECIAL CARD
-===================================================== */
-
-.bike-card{
-
-    border-color:
-    #4b3820;
-
-    background:
-    radial-gradient(
-        circle at center,
-        #21180e,
-        #090909 70%
-    );
-}
-
-
-/* Golden glow */
-
-.bike-card:hover{
+    translateY(-10px);
 
     border-color:
     var(--gold);
 
     box-shadow:
 
-    0 0 25px
-    rgba(216,168,91,.12),
+    0 25px 70px
+    rgba(216,168,91,.16);
 
-    0 30px 80px
-    rgba(216,168,91,.2);
 }
 
 
-/* Dark overlay */
+.card-big{
 
-.bike-card::after{
+    grid-row:
+    span 2;
+
+}
+
+
+.card-wide{
+
+    grid-column:
+    span 2;
+
+}
+
+
+/* =====================================================
+   PHOTO
+===================================================== */
+
+.photo-wrap{
+
+    height:390px;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:#111;
+
+}
+
+
+.card-big .photo-wrap{
+
+    height:500px;
+
+}
+
+
+.card-wide .photo-wrap{
+
+    height:400px;
+
+}
+
+
+.photo-wrap img{
+
+    width:100%;
+
+    height:100%;
+
+    display:block;
+
+    object-fit:cover;
+
+    transition:
+
+    transform 1s
+    cubic-bezier(.2,.8,.2,1),
+
+    filter .7s ease;
+
+}
+
+
+.birthday-card:hover
+.photo-wrap img{
+
+    transform:
+    scale(1.08);
+
+    filter:
+
+    brightness(1.08)
+    contrast(1.04);
+
+}
+
+
+/* =====================================================
+   PHOTO GRADIENT
+===================================================== */
+
+.photo-wrap::after{
 
     content:"";
 
     position:absolute;
 
-    inset:8px;
+    inset:0;
 
     background:
+
     linear-gradient(
-        to top,
-        rgba(0,0,0,.85),
-        transparent 55%
+        to bottom,
+        transparent 55%,
+        rgba(0,0,0,.65)
     );
 
-    z-index:3;
-
     pointer-events:none;
-}
 
-
-/* Yezdi image */
-
-.bike-card img{
-
-    filter:
-    brightness(.78)
-    contrast(1.18)
-    saturate(.9);
-
-    transition:
-    transform 1.2s cubic-bezier(.2,.8,.2,1),
-    filter .8s ease;
-}
-
-.bike-card:hover img{
-
-    transform:
-    scale(1.1);
-
-    filter:
-    brightness(1)
-    contrast(1.12)
-    saturate(1.05);
 }
 
 
 /* =====================================================
-   YEZDI BADGE
+   PHOTO NUMBER
 ===================================================== */
 
-.bike-badge{
+.photo-number{
 
     position:absolute;
 
-    top:22px;
-    right:22px;
+    top:18px;
 
-    padding:10px 16px;
+    left:18px;
 
-    background:
-    rgba(0,0,0,.78);
+    z-index:4;
+
+    width:42px;
+
+    height:42px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
 
     border:
-    1px solid var(--gold);
+    1px solid
+    rgba(242,208,141,.6);
 
-    color:
-    var(--gold-light);
-
-    font-size:11px;
-
-    letter-spacing:3px;
-
-    font-weight:bold;
+    background:
+    rgba(0,0,0,.55);
 
     backdrop-filter:
     blur(8px);
 
-    z-index:5;
+    color:
+    var(--gold-light);
+
+    font-family:
+    Georgia,serif;
+
+    font-size:13px;
+
+    letter-spacing:1px;
+
+}
+
+
+/* =====================================================
+   BIRTHDAY TEXT
+===================================================== */
+
+.birthday-text{
+
+    padding:
+    30px 28px 35px;
+
+    text-align:left;
+
+}
+
+
+.birthday-text::before{
+
+    content:"";
+
+    display:block;
+
+    width:45px;
+
+    height:1px;
+
+    background:
+    var(--gold);
+
+    margin-bottom:20px;
+
+    opacity:.7;
+
+}
+
+
+.mini-heart{
+
+    font-size:23px;
+
+    margin-bottom:12px;
+
+}
+
+
+.birthday-text h3{
+
+    color:white;
+
+    font-family:
+    Georgia,serif;
+
+    font-size:26px;
+
+    line-height:1.25;
+
+    margin-bottom:14px;
+
+    transition:
+    color .4s ease;
+
+}
+
+
+.birthday-card:hover
+.birthday-text h3{
+
+    color:
+    var(--gold-light);
+
+}
+
+
+.birthday-text p{
+
+    color:#888;
+
+    font-size:15px;
+
+    line-height:1.8;
+
+}
+
+
+/* =====================================================
+   YEZDI CARD
+===================================================== */
+
+.yezdi-card{
+
+    background:
+
+    radial-gradient(
+        circle at center,
+        #241b11,
+        #090909 70%
+    );
+
+    border-color:
+    #4b3820;
+
+}
+
+
+.yezdi-card:hover{
+
+    border-color:
+    var(--gold);
 
     box-shadow:
-    0 0 20px
-    rgba(216,168,91,.12);
+
+    0 0 35px
+    rgba(216,168,91,.15),
+
+    0 30px 80px
+    rgba(216,168,91,.18);
+
+}
+
+
+.yezdi-card img{
+
+    filter:
+
+    brightness(.78)
+    contrast(1.18)
+    saturate(.85);
+
+}
+
+
+.yezdi-card:hover img{
+
+    filter:
+
+    brightness(.98)
+    contrast(1.12)
+    saturate(1);
+
+}
+
+
+.yezdi-label{
+
+    position:absolute;
+
+    right:20px;
+
+    top:20px;
+
+    z-index:5;
+
+    padding:
+
+    10px 15px;
+
+    border:
+
+    1px solid
+    var(--gold);
+
+    background:
+
+    rgba(0,0,0,.75);
+
+    backdrop-filter:
+    blur(8px);
+
+    color:
+    var(--gold-light);
+
+    font-size:10px;
+
+    font-weight:bold;
+
+    letter-spacing:3px;
 
     transition:
     .5s ease;
+
 }
 
-.bike-card:hover .bike-badge{
+
+.yezdi-card:hover
+.yezdi-label{
 
     background:
     var(--gold);
@@ -795,43 +987,8 @@ body{
     color:#111;
 
     transform:
-    scale(1.08);
-}
+    scale(1.06);
 
-
-/* =====================================================
-   YEZDI LABEL
-===================================================== */
-
-.bike-title{
-
-    position:absolute;
-
-    top:22px;
-    left:22px;
-
-    color:white;
-
-    font-family:Georgia,serif;
-
-    font-size:20px;
-
-    text-shadow:
-    0 2px 15px black;
-
-    z-index:5;
-
-    transition:
-    .5s ease;
-}
-
-.bike-card:hover .bike-title{
-
-    color:
-    var(--gold-light);
-
-    transform:
-    translateX(4px);
 }
 
 
@@ -863,7 +1020,9 @@ body{
     text-align:center;
 
     overflow:hidden;
+
 }
+
 
 .quote-section::before{
 
@@ -881,7 +1040,9 @@ body{
 
     transform:
     translateY(-50%);
+
 }
+
 
 .quote-content{
 
@@ -890,7 +1051,9 @@ body{
     max-width:900px;
 
     margin:auto;
+
 }
+
 
 .quote-mark{
 
@@ -901,7 +1064,9 @@ body{
     font-size:90px;
 
     line-height:.4;
+
 }
+
 
 .quote-content h2{
 
@@ -913,11 +1078,16 @@ body{
     clamp(32px,6vw,60px);
 
     line-height:1.3;
+
 }
 
+
 .quote-content h2 span{
+
     color:var(--gold);
+
 }
+
 
 .quote-content p{
 
@@ -926,11 +1096,12 @@ body{
     color:#777;
 
     letter-spacing:2px;
+
 }
 
 
 /* =====================================================
-   MEMORY
+   THINGS I LOVE
 ===================================================== */
 
 .memory-box{
@@ -943,7 +1114,9 @@ body{
     repeat(3,1fr);
 
     gap:20px;
+
 }
+
 
 .memory{
 
@@ -953,30 +1126,33 @@ body{
 
     border:1px solid #242424;
 
-    transition:
-    transform .5s ease,
-    border-color .5s ease,
-    box-shadow .5s ease;
+    transition:.4s;
+
 }
+
 
 .memory:hover{
 
     border-color:var(--gold);
 
     transform:
-    translateY(-8px);
+    translateY(-7px);
 
     box-shadow:
     0 20px 50px
     rgba(216,168,91,.1);
+
 }
+
 
 .memory-icon{
 
     font-size:32px;
 
     margin-bottom:18px;
+
 }
+
 
 .memory h3{
 
@@ -985,7 +1161,9 @@ body{
     color:var(--gold);
 
     margin-bottom:12px;
+
 }
+
 
 .memory p{
 
@@ -994,6 +1172,7 @@ body{
     line-height:1.7;
 
     font-size:14px;
+
 }
 
 
@@ -1019,20 +1198,8 @@ body{
     15px 15px 0
     var(--gold);
 
-    transition:
-    transform .5s ease,
-    box-shadow .5s ease;
 }
 
-.letter:hover{
-
-    transform:
-    translateY(-5px);
-
-    box-shadow:
-    20px 20px 0
-    var(--gold);
-}
 
 .letter::before{
 
@@ -1043,7 +1210,9 @@ body{
     inset:12px;
 
     border:1px solid #a89882;
+
 }
+
 
 .letter h3{
 
@@ -1058,7 +1227,9 @@ body{
     color:#533723;
 
     margin-bottom:30px;
+
 }
+
 
 .letter p{
 
@@ -1069,7 +1240,9 @@ body{
     line-height:1.9;
 
     color:#554c42;
+
 }
+
 
 .signature{
 
@@ -1084,6 +1257,7 @@ body{
     font-family:Georgia,serif;
 
     font-size:21px;
+
 }
 
 
@@ -1112,12 +1286,16 @@ body{
         #30251d,
         #090909 65%
     );
+
 }
+
 
 .final-content{
 
     max-width:800px;
+
 }
+
 
 .final-bike{
 
@@ -1131,7 +1309,9 @@ body{
         0 0 25px
         rgba(216,168,91,.5)
     );
+
 }
+
 
 .final h2{
 
@@ -1141,11 +1321,16 @@ body{
 
     font-size:
     clamp(42px,9vw,80px);
+
 }
 
+
 .final h2 span{
+
     color:var(--gold);
+
 }
+
 
 .final p{
 
@@ -1156,7 +1341,9 @@ body{
     font-size:18px;
 
     line-height:1.8;
+
 }
+
 
 .surprise-btn{
 
@@ -1179,16 +1366,18 @@ body{
     cursor:pointer;
 
     transition:.4s;
+
 }
+
 
 .surprise-btn:hover{
 
-    transform:
-    scale(1.07);
+    transform:scale(1.07);
 
     box-shadow:
     0 0 40px
     rgba(216,168,91,.4);
+
 }
 
 
@@ -1207,11 +1396,12 @@ footer{
     font-size:11px;
 
     letter-spacing:3px;
+
 }
 
 
 /* =====================================================
-   HEARTS
+   FLOATING HEARTS
 ===================================================== */
 
 .heart{
@@ -1226,18 +1416,22 @@ footer{
 
     animation:
     heartRise linear forwards;
+
 }
+
 
 @keyframes heartRise{
 
     to{
 
         transform:
+
         translateY(-110vh)
         translateX(var(--move))
         rotate(360deg);
 
         opacity:0;
+
     }
 
 }
@@ -1258,36 +1452,48 @@ footer{
     z-index:10000;
 
     background:
-    rgba(0,0,0,.92);
+    rgba(0,0,0,.94);
 
     justify-content:center;
 
     align-items:center;
 
     padding:20px;
+
+    backdrop-filter:
+    blur(5px);
+
 }
+
 
 .surprise-box{
 
-    width:min(650px,95%);
+    width:min(700px,95%);
+
+    max-height:92vh;
+
+    overflow-y:auto;
 
     background:#eee5d6;
 
     color:#302a24;
 
-    padding:50px 30px;
+    padding:45px 30px;
 
     text-align:center;
 
     border:2px solid var(--gold);
 
     box-shadow:
+
     0 0 80px
     rgba(216,168,91,.18);
 
     animation:
     pop .5s ease;
+
 }
+
 
 @keyframes pop{
 
@@ -1298,6 +1504,7 @@ footer{
         transform:
         scale(.75)
         translateY(30px);
+
     }
 
     to{
@@ -1307,14 +1514,18 @@ footer{
         transform:
         scale(1)
         translateY(0);
+
     }
 
 }
 
+
 .surprise-bike{
 
     font-size:75px;
+
 }
+
 
 .surprise-box h1{
 
@@ -1326,16 +1537,94 @@ footer{
     clamp(38px,8vw,60px);
 
     color:#593a24;
+
 }
 
-.surprise-box p{
+
+/* =====================================================
+   SURPRISE VIDEO
+===================================================== */
+
+.surprise-video{
+
+    width:100%;
+
+    margin:
+    25px auto;
+
+    border:
+    1px solid
+    rgba(216,168,91,.6);
+
+    background:#050505;
+
+    padding:7px;
+
+    box-shadow:
+
+    0 15px 45px
+    rgba(0,0,0,.35);
+
+    overflow:hidden;
+
+    transition:
+
+    transform .5s ease,
+
+    box-shadow .5s ease;
+
+}
+
+
+.surprise-video:hover{
+
+    transform:
+    translateY(-4px);
+
+    box-shadow:
+
+    0 20px 60px
+    rgba(216,168,91,.22);
+
+}
+
+
+.surprise-video video{
+
+    display:block;
+
+    width:100%;
+
+    max-height:420px;
+
+    object-fit:cover;
+
+    background:#000;
+
+}
+
+
+.surprise-message{
 
     color:#5b5249;
 
     line-height:1.8;
 
     font-size:17px;
+
 }
+
+
+.surprise-submessage{
+
+    margin-top:18px;
+
+    color:#5b5249;
+
+    line-height:1.8;
+
+}
+
 
 .forever{
 
@@ -1346,7 +1635,9 @@ footer{
     font-family:Georgia,serif;
 
     font-size:25px !important;
+
 }
+
 
 .close-btn{
 
@@ -1363,6 +1654,20 @@ footer{
     color:white;
 
     cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+.close-btn:hover{
+
+    background:var(--gold);
+
+    color:#111;
+
+    transform:scale(1.05);
+
 }
 
 
@@ -1372,32 +1677,44 @@ footer{
 
 @media(max-width:700px){
 
-    .gallery{
+    .birthday-gallery{
 
         grid-template-columns:1fr;
+
+        gap:25px;
+
     }
 
-    .gallery-card:nth-child(1){
+
+    .card-big{
 
         grid-row:auto;
+
     }
 
-    .gallery-card{
 
-        min-height:0;
+    .card-wide{
+
+        grid-column:auto;
+
     }
 
-    .gallery-card img{
 
-        height:350px;
+    .photo-wrap,
+    .card-big .photo-wrap,
+    .card-wide .photo-wrap{
 
-        min-height:0;
+        height:360px;
+
     }
+
 
     .memory-box{
 
         grid-template-columns:1fr;
+
     }
+
 
     .letter{
 
@@ -1406,37 +1723,67 @@ footer{
         box-shadow:
         8px 8px 0
         var(--gold);
+
     }
+
 
     .hero{
 
         min-height:600px;
+
     }
+
 
     .hero-description{
 
         font-size:16px;
+
     }
 
-    .bike-badge{
 
-        top:15px;
-        right:15px;
+    .birthday-text{
 
-        font-size:9px;
+        padding:
+        25px 22px 30px;
 
-        padding:7px 10px;
-
-        letter-spacing:2px;
     }
 
-    .bike-title{
 
-        top:15px;
-        left:15px;
+    .birthday-text h3{
 
-        font-size:17px;
+        font-size:23px;
+
     }
+
+
+    .birthday-text p{
+
+        font-size:14px;
+
+    }
+
+
+    .surprise-box{
+
+        padding:
+        35px 20px;
+
+    }
+
+
+    .surprise-video video{
+
+        max-height:300px;
+
+    }
+
+
+    .surprise-bike{
+
+        font-size:55px;
+
+    }
+
 }
 
 
@@ -1445,21 +1792,37 @@ footer{
     .gallery-card img{
 
         height:300px;
+
     }
+
+
+    .photo-wrap,
+    .card-big .photo-wrap,
+    .card-wide .photo-wrap{
+
+        height:310px;
+
+    }
+
 
     .intro-bike{
 
         font-size:65px;
+
     }
+
 
     #intro h1{
 
         font-size:45px;
+
     }
 
-    .hero h1{
 
-        font-size:45px;
+    .birthday-text h3{
+
+        font-size:21px;
+
     }
 
 }
@@ -1519,7 +1882,7 @@ footer{
 
 
 <!-- =====================================================
-     HERO VIDEO
+     HERO
 ===================================================== -->
 
 <section class="hero">
@@ -1533,10 +1896,8 @@ footer{
         preload="auto">
 
         <source
-            src="./MicrosoftTeams-video.mp4"
+            src="MicrosoftTeams-video.mp4"
             type="video/mp4">
-
-        Your browser does not support video.
 
     </video>
 
@@ -1544,7 +1905,7 @@ footer{
     <div class="hero-content">
 
         <div class="hero-tag">
-            ONE SPECIAL DAY • ONE SPECIAL RIDER
+            One Special Day • One Special Rider
         </div>
 
         <h1>
@@ -1559,6 +1920,7 @@ footer{
 
         </h1>
 
+
         <p class="hero-description">
 
             Some people make life beautiful.
@@ -1568,8 +1930,11 @@ footer{
 
         </p>
 
+
         <div class="scroll-down">
+
             ↓ KEEP SCROLLING ↓
+
         </div>
 
     </div>
@@ -1581,100 +1946,250 @@ footer{
 
 
 <!-- =====================================================
-     PHOTO GALLERY
+     BIRTHDAY PHOTO STORY
 ===================================================== -->
 
-<section class="section">
+<section class="section birthday-memories">
 
     <div class="small-title">
-        OUR LITTLE COLLECTION
+        BIRTHDAY MEMORIES
     </div>
 
+
     <h2>
-        Moments I Want To <span>Keep</span> ❤️
+
+        A Little
+        <span>
+            Birthday Story
+        </span>
+
+        ❤️
+
     </h2>
+
 
     <p class="section-description">
 
-        A few beautiful frames of my favourite person
-        and the machine he loves. 🏍️❤️
+        Another year of you,
+        another collection of moments
+        I never want to forget. 🥹❤️
 
     </p>
 
 
-    <div class="gallery">
+    <div class="birthday-gallery">
 
 
-        <!-- IMAGE 4 -->
+        <!-- PHOTO 1 -->
 
-        <div class="gallery-card">
+        <div class="birthday-card card-big">
 
-            <img
-                src="./Image (4).jpg"
-                alt="My favourite memory">
+            <div class="photo-wrap">
 
-            <div class="gallery-caption">
-                My favourite memory ❤️
+                <img
+                    src="./Image (4).jpg"
+                    alt="Birthday memory">
+
+                <div class="photo-number">
+                    01
+                </div>
+
+            </div>
+
+
+            <div class="birthday-text">
+
+                <div class="mini-heart">
+                    ❤️
+                </div>
+
+                <h3>
+
+                    The Day You Became
+                    Even More Special
+
+                </h3>
+
+                <p>
+
+                    Some people make ordinary moments
+                    feel special. Somehow, you're one
+                    of those people.
+
+                </p>
+
             </div>
 
         </div>
 
 
-        <!-- IMAGE 5 -->
+        <!-- PHOTO 2 -->
 
-        <div class="gallery-card">
+        <div class="birthday-card">
 
-            <img
-                src="./Image (5).jpg"
-                alt="Beautiful moment">
+            <div class="photo-wrap">
 
-            <div class="gallery-caption">
-                Just you. ✨
+                <img
+                    src="./Image (5).jpg"
+                    alt="Beautiful birthday memory">
+
+                <div class="photo-number">
+                    02
+                </div>
+
+            </div>
+
+
+            <div class="birthday-text">
+
+                <div class="mini-heart">
+                    ✨
+                </div>
+
+                <h3>
+
+                    Another Year,
+                    Same Beautiful Smile
+
+                </h3>
+
+                <p>
+
+                    I hope this smile stays exactly
+                    the same through every chapter
+                    that comes next.
+
+                </p>
+
             </div>
 
         </div>
 
 
-        <!-- IMAGE 7 -->
+        <!-- PHOTO 3 -->
 
-        <div class="gallery-card">
+        <div class="birthday-card">
 
-            <img
-                src="./Image (7).jpg"
-                alt="Another beautiful moment">
+            <div class="photo-wrap">
 
-            <div class="gallery-caption">
-                Another beautiful moment. ❤️
+                <img
+                    src="./Image (7).jpg"
+                    alt="Birthday moment">
+
+                <div class="photo-number">
+                    03
+                </div>
+
+            </div>
+
+
+            <div class="birthday-text">
+
+                <div class="mini-heart">
+                    🥹
+                </div>
+
+                <h3>
+
+                    More Memories
+                    Like This
+
+                </h3>
+
+                <p>
+
+                    If I could ask for one thing
+                    this birthday, it would be
+                    many more moments with you.
+
+                </p>
+
             </div>
 
         </div>
 
 
-        <!-- IMAGE 8 -->
+        <!-- PHOTO 4 -->
 
-        <div class="gallery-card">
+        <div class="birthday-card">
 
-            <img
-                src="./Image (8).jpg"
-                alt="Special memory">
+            <div class="photo-wrap">
 
-            <div class="gallery-caption">
-                One for the memories. ✨
+                <img
+                    src="./Image (8).jpg"
+                    alt="Special birthday memory">
+
+                <div class="photo-number">
+                    04
+                </div>
+
+            </div>
+
+
+            <div class="birthday-text">
+
+                <div class="mini-heart">
+                    💫
+                </div>
+
+                <h3>
+
+                    Here's To
+                    Everything Ahead
+
+                </h3>
+
+                <p>
+
+                    New dreams, new adventures,
+                    new roads and countless reasons
+                    to smile.
+
+                </p>
+
             </div>
 
         </div>
 
 
-        <!-- IMAGE 9 -->
+        <!-- PHOTO 5 -->
 
-        <div class="gallery-card">
+        <div class="birthday-card card-wide">
 
-            <img
-                src="./Image (9).jpg"
-                alt="My favourite person">
+            <div class="photo-wrap">
 
-            <div class="gallery-caption">
-                My favourite person. ❤️
+                <img
+                    src="./Image (9).jpg"
+                    alt="Favourite person birthday">
+
+                <div class="photo-number">
+                    05
+                </div>
+
+            </div>
+
+
+            <div class="birthday-text">
+
+                <div class="mini-heart">
+                    ❤️
+                </div>
+
+                <h3>
+
+                    My Favourite Part
+                    Of This Journey
+
+                </h3>
+
+                <p>
+
+                    Out of all the places life could
+                    take us, I'm just happy that
+                    our paths crossed.
+
+                </p>
+
             </div>
 
         </div>
@@ -1682,22 +2197,48 @@ footer{
 
         <!-- YEZDI 69 -->
 
-        <div class="gallery-card bike-card">
+        <div class="birthday-card yezdi-card card-wide">
 
-            <div class="bike-title">
-                HIS FAVOURITE RIDE 🏍️
+            <div class="photo-wrap">
+
+                <img
+                    src="./download.jpg"
+                    alt="Yezdi 69">
+
+                <div class="photo-number">
+                    06
+                </div>
+
+                <div class="yezdi-label">
+                    YEZDI 69 🏍️
+                </div>
+
             </div>
 
-            <div class="bike-badge">
-                YEZDI 69
-            </div>
 
-            <img
-                src="./download.jpg"
-                alt="Yezdi 69">
+            <div class="birthday-text">
 
-            <div class="gallery-caption">
-                The machine he loves. 🏍️
+                <div class="mini-heart">
+                    🏍️
+                </div>
+
+                <h3>
+
+                    Another Year.
+                    Another Ride.
+
+                </h3>
+
+                <p>
+
+                    May every road ahead bring you
+                    closer to your dreams, every ride
+                    give you a new memory, and every
+                    destination give you another reason
+                    to smile.
+
+                </p>
+
             </div>
 
         </div>
@@ -1737,7 +2278,9 @@ footer{
         </h2>
 
         <p>
+
             Wherever the road takes us.
+
         </p>
 
     </div>
@@ -1752,11 +2295,19 @@ footer{
 <section class="section">
 
     <div class="small-title">
-        WHY YOU'RE SPECIAL
+        Why You're Special
     </div>
 
+
     <h2>
-        Things I <span>Love</span> About You
+
+        Things I
+        <span>
+            Love
+        </span>
+
+        About You
+
     </h2>
 
 
@@ -1774,8 +2325,10 @@ footer{
             </h3>
 
             <p>
+
                 Somehow it can make even
                 an ordinary day feel special.
+
             </p>
 
         </div>
@@ -1792,8 +2345,10 @@ footer{
             </h3>
 
             <p>
+
                 I love seeing you happy
                 doing what you love.
+
             </p>
 
         </div>
@@ -1810,8 +2365,10 @@ footer{
             </h3>
 
             <p>
+
                 The reason this journey
                 means so much to me.
+
             </p>
 
         </div>
@@ -1829,11 +2386,17 @@ footer{
 <section class="section">
 
     <div class="small-title">
-        FROM MY HEART
+        From My Heart
     </div>
 
+
     <h2>
-        A Letter For <span>You</span>
+
+        A Letter For
+        <span>
+            You
+        </span>
+
     </h2>
 
 
@@ -1843,31 +2406,43 @@ footer{
             To My Favourite Rider 🏍️❤️
         </h3>
 
+
         <p>
             Happy Birthday, baby! 🎂❤️
         </p>
 
+
         <br>
 
+
         <p>
+
             I hope this new year of your life
             brings you happiness, success,
             peace and everything you've
             been wishing for.
+
         </p>
+
 
         <br>
 
+
         <p>
+
             Keep chasing your dreams,
             keep exploring new roads,
             keep smiling and keep being
             the amazing person you are.
+
         </p>
+
 
         <br>
 
+
         <p>
+
             Life isn't always a straight road.
             There will be turns, unexpected
             stops and crazy adventures.
@@ -1875,19 +2450,28 @@ footer{
             But if I get to choose,
             I'd love to be there beside you
             through all of them.
+
         </p>
+
 
         <br>
 
+
         <p>
+
             Because the best part of any journey
             isn't really the destination...
 
             it's the person riding beside you. ❤️
+
         </p>
 
+
         <div class="signature">
-            Happy Birthday, My Love ❤️
+
+            Happy Birthday,
+            My Love ❤️
+
         </div>
 
     </div>
@@ -1907,6 +2491,7 @@ footer{
             🏍️
         </div>
 
+
         <h2>
 
             Ready For The
@@ -1919,6 +2504,7 @@ footer{
 
         </h2>
 
+
         <p>
 
             Another year.
@@ -1928,6 +2514,7 @@ footer{
             ❤️
 
         </p>
+
 
         <button
             class="surprise-btn"
@@ -1960,15 +2547,39 @@ footer{
 
     <div class="surprise-box">
 
+
         <div class="surprise-bike">
             🏍️❤️
         </div>
+
 
         <h1>
             HAPPY BIRTHDAY!
         </h1>
 
-        <p>
+
+        <!-- SAME VIDEO IN SURPRISE -->
+
+        <div class="surprise-video">
+
+            <video
+                id="surpriseVideo"
+                controls
+                playsinline
+                preload="metadata">
+
+                <source
+                    src="MicrosoftTeams-video.mp4"
+                    type="video/mp4">
+
+                Your browser does not support video.
+
+            </video>
+
+        </div>
+
+
+        <p class="surprise-message">
 
             You're not just my favourite rider...
 
@@ -1978,14 +2589,16 @@ footer{
 
         </p>
 
-        <p style="margin-top:18px;">
+
+        <p class="surprise-submessage">
 
             Here's to more laughs,
             more adventures,
             more memories
-            and many beautiful roads ahead.
+            and many beautiful roads ahead. ❤️
 
         </p>
+
 
         <p class="forever">
 
@@ -1999,6 +2612,7 @@ footer{
 
         </p>
 
+
         <button
             class="close-btn"
             onclick="closeSurprise()">
@@ -2007,23 +2621,28 @@ footer{
 
         </button>
 
+
     </div>
 
 </div>
 
 
 <!-- =====================================================
-     MUSIC
+     OPTIONAL MUSIC
 ===================================================== -->
 
-<audio id="music" loop>
+<audio
+    id="music"
+    loop>
 
     <!--
-    Agar song hai to yahan add karo:
+
+    Song add karna ho:
 
     <source
-        src="./birthday-song.mp3"
+        src="birthday-song.mp3"
         type="audio/mpeg">
+
     -->
 
 </audio>
@@ -2031,42 +2650,36 @@ footer{
 
 <script>
 
-
 /* =====================================================
    START RIDE
 ===================================================== */
 
 function startRide(){
 
-    document
-    .getElementById("intro")
-    .style.display="none";
+    const intro =
+    document.getElementById("intro");
 
+    const main =
+    document.getElementById("main");
 
-    document
-    .getElementById("main")
-    .style.display="block";
+    intro.style.display="none";
+
+    main.style.display="block";
 
 
     const video =
     document.getElementById("birthdayVideo");
 
 
-    video.play().catch(()=>{
+    if(video){
 
-        video.muted=true;
+        video.play().catch(()=>{
 
-        video.play().catch(()=>{});
+            video.muted=true;
 
-    });
+            video.play().catch(()=>{});
 
-
-    const music =
-    document.getElementById("music");
-
-    if(music.src){
-
-        music.play().catch(()=>{});
+        });
 
     }
 
@@ -2083,14 +2696,7 @@ function startRide(){
    FLOATING HEARTS
 ===================================================== */
 
-let heartsStarted=false;
-
 function startHearts(){
-
-    if(heartsStarted) return;
-
-    heartsStarted=true;
-
 
     setInterval(()=>{
 
@@ -2162,15 +2768,57 @@ function startHearts(){
 
 
 /* =====================================================
-   SURPRISE
+   SHOW SURPRISE
 ===================================================== */
 
 function showSurprise(){
 
-    document
-    .getElementById("surprise")
-    .style.display="flex";
+    const surprise =
+    document.getElementById("surprise");
 
+
+    const surpriseVideo =
+    document.getElementById("surpriseVideo");
+
+
+    const mainVideo =
+    document.getElementById("birthdayVideo");
+
+
+    /*
+       Popup show
+    */
+
+    surprise.style.display="flex";
+
+
+    /*
+       Main hero video pause
+    */
+
+    if(mainVideo){
+
+        mainVideo.pause();
+
+    }
+
+
+    /*
+       Surprise video start
+    */
+
+    if(surpriseVideo){
+
+        surpriseVideo.currentTime=0;
+
+        surpriseVideo.play().catch(()=>{});
+
+    }
+
+
+    /*
+       Confetti
+    */
 
     createConfetti();
 
@@ -2178,14 +2826,52 @@ function showSurprise(){
 
 
 /* =====================================================
-   CLOSE
+   CLOSE SURPRISE
 ===================================================== */
 
 function closeSurprise(){
 
-    document
-    .getElementById("surprise")
-    .style.display="none";
+    const surprise =
+    document.getElementById("surprise");
+
+
+    const surpriseVideo =
+    document.getElementById("surpriseVideo");
+
+
+    const mainVideo =
+    document.getElementById("birthdayVideo");
+
+
+    /*
+       Stop surprise video
+    */
+
+    if(surpriseVideo){
+
+        surpriseVideo.pause();
+
+        surpriseVideo.currentTime=0;
+
+    }
+
+
+    /*
+       Hide popup
+    */
+
+    surprise.style.display="none";
+
+
+    /*
+       Resume hero video
+    */
+
+    if(mainVideo){
+
+        mainVideo.play().catch(()=>{});
+
+    }
 
 }
 
@@ -2227,6 +2913,7 @@ function createConfetti(){
 
 
         c.style.background =
+
         colors[
             Math.floor(
                 Math.random()*
@@ -2239,12 +2926,18 @@ function createConfetti(){
 
 
         c.style.transform =
-        `rotate(${Math.random()*360}deg)`;
+
+        `rotate(
+            ${Math.random()*360}deg
+        )`;
 
 
         c.style.transition =
-        `top ${2+Math.random()*2}s linear,
-         transform ${2+Math.random()*2}s linear`;
+
+        `top ${2+
+        Math.random()*2}s linear,
+        transform ${2+
+        Math.random()*2}s linear`;
 
 
         document.body.appendChild(c);
@@ -2255,7 +2948,10 @@ function createConfetti(){
             c.style.top="110vh";
 
             c.style.transform =
-            `rotate(${Math.random()*1200}deg)`;
+
+            `rotate(
+                ${Math.random()*1200}deg
+            )`;
 
         },50);
 
@@ -2272,11 +2968,13 @@ function createConfetti(){
 
 
 /* =====================================================
-   ESCAPE
+   ESCAPE KEY
 ===================================================== */
 
 document.addEventListener(
+
     "keydown",
+
     function(e){
 
         if(e.key==="Escape"){
@@ -2286,9 +2984,34 @@ document.addEventListener(
         }
 
     }
+
+);
+
+
+/* =====================================================
+   CLICK OUTSIDE SURPRISE TO CLOSE
+===================================================== */
+
+document
+.getElementById("surprise")
+.addEventListener(
+
+    "click",
+
+    function(e){
+
+        if(e.target === this){
+
+            closeSurprise();
+
+        }
+
+    }
+
 );
 
 </script>
+
 
 </body>
 
