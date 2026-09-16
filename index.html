@@ -10,7 +10,6 @@ content="width=device-width, initial-scale=1.0">
 
 <title>Happy Birthday My Rider 🏍️❤️</title>
 
-
 <style>
 
 /* =====================================================
@@ -34,11 +33,6 @@ body{
     overflow-x:hidden;
 }
 
-
-/* =====================================================
-   COLORS
-===================================================== */
-
 :root{
     --gold:#d8a85b;
     --gold-light:#f2d08d;
@@ -54,17 +48,12 @@ body{
 ===================================================== */
 
 #intro{
-
     position:fixed;
-
     inset:0;
-
     z-index:9999;
 
     display:flex;
-
     justify-content:center;
-
     align-items:center;
 
     text-align:center;
@@ -78,19 +67,14 @@ body{
     );
 
     padding:25px;
-
     overflow:hidden;
 }
 
-
 #intro::before{
-
     content:"";
-
     position:absolute;
 
     width:500px;
-
     height:500px;
 
     border-radius:50%;
@@ -98,23 +82,16 @@ body{
     background:var(--gold);
 
     filter:blur(160px);
-
     opacity:.12;
 }
 
-
 .intro-content{
-
     position:relative;
-
     z-index:2;
-
     max-width:700px;
 }
 
-
 .intro-bike{
-
     font-size:90px;
 
     filter:
@@ -126,7 +103,6 @@ body{
     animation:
     bikeFloat 2s ease-in-out infinite;
 }
-
 
 @keyframes bikeFloat{
 
@@ -144,9 +120,7 @@ body{
 
 }
 
-
 .intro-tag{
-
     margin-top:25px;
 
     color:var(--gold);
@@ -158,9 +132,7 @@ body{
     text-transform:uppercase;
 }
 
-
 #intro h1{
-
     margin-top:18px;
 
     font-family:Georgia,serif;
@@ -173,15 +145,11 @@ body{
     color:white;
 }
 
-
 #intro h1 span{
-
     color:var(--gold);
 }
 
-
 #intro p{
-
     margin-top:22px;
 
     color:#aaa;
@@ -191,9 +159,7 @@ body{
     line-height:1.7;
 }
 
-
 .start-btn{
-
     margin-top:35px;
 
     padding:16px 40px;
@@ -215,15 +181,12 @@ body{
     transition:.4s;
 }
 
-
 .start-btn:hover{
-
     background:var(--gold);
 
     color:#111;
 
-    transform:
-    scale(1.06);
+    transform:scale(1.06);
 
     box-shadow:
     0 0 40px
@@ -241,21 +204,18 @@ body{
 
 
 /* =====================================================
-   VIDEO HERO
+   HERO
 ===================================================== */
 
 .hero{
-
     position:relative;
 
     height:100vh;
-
     min-height:650px;
 
     display:flex;
 
     justify-content:center;
-
     align-items:center;
 
     text-align:center;
@@ -263,15 +223,12 @@ body{
     overflow:hidden;
 }
 
-
 .hero video{
-
     position:absolute;
 
     inset:0;
 
     width:100%;
-
     height:100%;
 
     object-fit:cover;
@@ -284,9 +241,7 @@ body{
     transform:scale(1.03);
 }
 
-
 .hero::after{
-
     content:"";
 
     position:absolute;
@@ -311,9 +266,7 @@ body{
     z-index:1;
 }
 
-
 .hero-content{
-
     position:relative;
 
     z-index:2;
@@ -323,9 +276,7 @@ body{
     max-width:900px;
 }
 
-
 .hero-tag{
-
     color:var(--gold);
 
     font-size:12px;
@@ -337,9 +288,7 @@ body{
     margin-bottom:25px;
 }
 
-
 .hero h1{
-
     font-family:Georgia,serif;
 
     font-size:
@@ -351,15 +300,11 @@ body{
     0 8px 40px black;
 }
 
-
 .hero h1 span{
-
     color:var(--gold);
 }
 
-
 .hero-description{
-
     max-width:650px;
 
     margin:30px auto 0;
@@ -371,9 +316,7 @@ body{
     line-height:1.8;
 }
 
-
 .scroll-down{
-
     margin-top:50px;
 
     color:var(--gold);
@@ -385,7 +328,6 @@ body{
     animation:
     scrollPulse 2s infinite;
 }
-
 
 @keyframes scrollPulse{
 
@@ -402,9 +344,7 @@ body{
 ===================================================== */
 
 .gold-line{
-
     width:100%;
-
     height:1px;
 
     background:
@@ -422,7 +362,6 @@ body{
 ===================================================== */
 
 .section{
-
     width:min(1000px,92%);
 
     margin:120px auto;
@@ -430,9 +369,7 @@ body{
     text-align:center;
 }
 
-
 .small-title{
-
     color:var(--gold);
 
     font-size:11px;
@@ -444,9 +381,7 @@ body{
     margin-bottom:18px;
 }
 
-
 .section h2{
-
     font-family:Georgia,serif;
 
     font-size:
@@ -457,15 +392,11 @@ body{
     margin-bottom:25px;
 }
 
-
 .section h2 span{
-
     color:var(--gold);
 }
 
-
 .section-description{
-
     max-width:700px;
 
     margin:auto;
@@ -483,7 +414,6 @@ body{
 ===================================================== */
 
 .gallery{
-
     margin-top:55px;
 
     display:grid;
@@ -494,9 +424,7 @@ body{
     gap:25px;
 }
 
-
 .gallery-card{
-
     position:relative;
 
     background:#111;
@@ -507,21 +435,19 @@ body{
 
     overflow:hidden;
 
+    min-height:300px;
+
     transition:
     transform .5s ease,
     border-color .5s ease,
     box-shadow .5s ease;
 }
 
-
 .gallery-card:nth-child(1){
-
     grid-row:span 2;
 }
 
-
 .gallery-card:hover{
-
     transform:
     translateY(-10px)
     rotate(-1deg);
@@ -533,16 +459,13 @@ body{
     rgba(216,168,91,.15);
 }
 
-
 .gallery-card img{
-
     display:block;
 
     width:100%;
-
     height:100%;
 
-    min-height:240px;
+    min-height:300px;
 
     object-fit:cover;
 
@@ -551,22 +474,17 @@ body{
     filter .7s ease;
 }
 
-
 .gallery-card:hover img{
-
     transform:scale(1.06);
 
     filter:
     brightness(1.08);
 }
 
-
 .gallery-caption{
-
     position:absolute;
 
     left:20px;
-
     bottom:18px;
 
     color:white;
@@ -577,6 +495,99 @@ body{
 
     text-shadow:
     0 2px 10px black;
+
+    z-index:2;
+}
+
+
+/* =====================================================
+   YEZDI 69 CARD
+===================================================== */
+
+.bike-card{
+    border:1px solid #49351f;
+
+    background:
+    linear-gradient(
+        145deg,
+        #17120e,
+        #080808
+    );
+}
+
+.bike-card::after{
+    content:"";
+
+    position:absolute;
+
+    inset:8px;
+
+    background:
+    linear-gradient(
+        to top,
+        rgba(0,0,0,.75),
+        transparent 55%
+    );
+
+    pointer-events:none;
+}
+
+.bike-card img{
+    filter:
+    brightness(.82)
+    contrast(1.15)
+    saturate(.9);
+}
+
+.bike-card:hover img{
+    filter:
+    brightness(1)
+    contrast(1.1)
+    saturate(1);
+}
+
+.bike-badge{
+    position:absolute;
+
+    top:20px;
+    right:20px;
+
+    padding:9px 15px;
+
+    background:
+    rgba(0,0,0,.78);
+
+    border:1px solid var(--gold);
+
+    color:var(--gold-light);
+
+    font-size:11px;
+
+    letter-spacing:3px;
+
+    font-weight:bold;
+
+    backdrop-filter:blur(6px);
+
+    z-index:3;
+}
+
+.bike-title{
+    position:absolute;
+
+    left:20px;
+    top:20px;
+
+    color:#fff;
+
+    font-family:Georgia,serif;
+
+    font-size:20px;
+
+    text-shadow:
+    0 2px 10px black;
+
+    z-index:3;
 }
 
 
@@ -585,7 +596,6 @@ body{
 ===================================================== */
 
 .quote-section{
-
     position:relative;
 
     padding:130px 25px;
@@ -610,9 +620,7 @@ body{
     overflow:hidden;
 }
 
-
 .quote-section::before{
-
     content:"🏍️";
 
     position:absolute;
@@ -622,16 +630,13 @@ body{
     opacity:.025;
 
     left:-50px;
-
     top:50%;
 
     transform:
     translateY(-50%);
 }
 
-
 .quote-content{
-
     position:relative;
 
     max-width:900px;
@@ -639,9 +644,7 @@ body{
     margin:auto;
 }
 
-
 .quote-mark{
-
     color:var(--gold);
 
     font-family:Georgia,serif;
@@ -651,9 +654,7 @@ body{
     line-height:.4;
 }
 
-
 .quote-content h2{
-
     margin-top:35px;
 
     font-family:Georgia,serif;
@@ -664,15 +665,11 @@ body{
     line-height:1.3;
 }
 
-
 .quote-content h2 span{
-
     color:var(--gold);
 }
 
-
 .quote-content p{
-
     margin-top:25px;
 
     color:#777;
@@ -682,11 +679,10 @@ body{
 
 
 /* =====================================================
-   MEMORY TEXT
+   MEMORY
 ===================================================== */
 
 .memory-box{
-
     margin-top:60px;
 
     display:grid;
@@ -697,9 +693,7 @@ body{
     gap:20px;
 }
 
-
 .memory{
-
     padding:35px 20px;
 
     background:#101010;
@@ -709,26 +703,19 @@ body{
     transition:.4s;
 }
 
-
 .memory:hover{
-
     border-color:var(--gold);
 
-    transform:
-    translateY(-7px);
+    transform:translateY(-7px);
 }
 
-
 .memory-icon{
-
     font-size:32px;
 
     margin-bottom:18px;
 }
 
-
 .memory h3{
-
     font-family:Georgia,serif;
 
     color:var(--gold);
@@ -736,9 +723,7 @@ body{
     margin-bottom:12px;
 }
 
-
 .memory p{
-
     color:#888;
 
     line-height:1.7;
@@ -752,7 +737,6 @@ body{
 ===================================================== */
 
 .letter{
-
     margin-top:55px;
 
     padding:50px 40px;
@@ -770,9 +754,7 @@ body{
     var(--gold);
 }
 
-
 .letter::before{
-
     content:"";
 
     position:absolute;
@@ -782,9 +764,7 @@ body{
     border:1px solid #a89882;
 }
 
-
 .letter h3{
-
     position:relative;
 
     text-align:center;
@@ -798,9 +778,7 @@ body{
     margin-bottom:30px;
 }
 
-
 .letter p{
-
     position:relative;
 
     font-size:17px;
@@ -810,9 +788,7 @@ body{
     color:#554c42;
 }
 
-
 .signature{
-
     position:relative;
 
     text-align:right;
@@ -832,7 +808,6 @@ body{
 ===================================================== */
 
 .final{
-
     min-height:80vh;
 
     display:flex;
@@ -854,15 +829,11 @@ body{
     );
 }
 
-
 .final-content{
-
     max-width:800px;
 }
 
-
 .final-bike{
-
     font-size:80px;
 
     animation:
@@ -875,9 +846,7 @@ body{
     );
 }
 
-
 .final h2{
-
     margin-top:25px;
 
     font-family:Georgia,serif;
@@ -886,15 +855,11 @@ body{
     clamp(42px,9vw,80px);
 }
 
-
 .final h2 span{
-
     color:var(--gold);
 }
 
-
 .final p{
-
     margin-top:25px;
 
     color:#999;
@@ -904,9 +869,7 @@ body{
     line-height:1.8;
 }
 
-
 .surprise-btn{
-
     margin-top:40px;
 
     padding:17px 38px;
@@ -928,9 +891,7 @@ body{
     transition:.4s;
 }
 
-
 .surprise-btn:hover{
-
     transform:scale(1.07);
 
     box-shadow:
@@ -944,7 +905,6 @@ body{
 ===================================================== */
 
 footer{
-
     padding:35px;
 
     text-align:center;
@@ -962,7 +922,6 @@ footer{
 ===================================================== */
 
 .heart{
-
     position:fixed;
 
     bottom:-30px;
@@ -975,11 +934,9 @@ footer{
     heartRise linear forwards;
 }
 
-
 @keyframes heartRise{
 
     to{
-
         transform:
         translateY(-110vh)
         translateX(var(--move))
@@ -992,11 +949,10 @@ footer{
 
 
 /* =====================================================
-   SURPRISE POPUP
+   SURPRISE
 ===================================================== */
 
 #surprise{
-
     display:none;
 
     position:fixed;
@@ -1015,9 +971,7 @@ footer{
     padding:20px;
 }
 
-
 .surprise-box{
-
     width:min(650px,95%);
 
     background:#eee5d6;
@@ -1038,11 +992,9 @@ footer{
     pop .5s ease;
 }
 
-
 @keyframes pop{
 
     from{
-
         opacity:0;
 
         transform:
@@ -1051,7 +1003,6 @@ footer{
     }
 
     to{
-
         opacity:1;
 
         transform:
@@ -1061,15 +1012,11 @@ footer{
 
 }
 
-
 .surprise-bike{
-
     font-size:75px;
 }
 
-
 .surprise-box h1{
-
     margin:20px 0;
 
     font-family:Georgia,serif;
@@ -1080,9 +1027,7 @@ footer{
     color:#593a24;
 }
 
-
 .surprise-box p{
-
     color:#5b5249;
 
     line-height:1.8;
@@ -1090,9 +1035,7 @@ footer{
     font-size:17px;
 }
 
-
 .forever{
-
     margin-top:20px;
 
     color:#986829 !important;
@@ -1102,9 +1045,7 @@ footer{
     font-size:25px !important;
 }
 
-
 .close-btn{
-
     margin-top:30px;
 
     padding:13px 28px;
@@ -1128,33 +1069,28 @@ footer{
 @media(max-width:700px){
 
     .gallery{
-
         grid-template-columns:1fr;
     }
 
-
     .gallery-card:nth-child(1){
-
         grid-row:auto;
     }
 
+    .gallery-card{
+        min-height:0;
+    }
 
     .gallery-card img{
-
         height:350px;
 
         min-height:0;
     }
 
-
     .memory-box{
-
         grid-template-columns:1fr;
     }
 
-
     .letter{
-
         padding:40px 25px;
 
         box-shadow:
@@ -1162,40 +1098,43 @@ footer{
         var(--gold);
     }
 
-
     .hero{
-
         min-height:600px;
     }
 
-
     .hero-description{
-
         font-size:16px;
     }
 
-}
+    .bike-badge{
+        top:15px;
+        right:15px;
 
+        font-size:9px;
+
+        padding:7px 10px;
+
+        letter-spacing:2px;
+    }
+}
 
 @media(max-width:450px){
 
     .gallery-card img{
-
         height:300px;
     }
 
-
     .intro-bike{
-
         font-size:65px;
     }
 
-
     #intro h1{
-
         font-size:45px;
     }
 
+    .hero h1{
+        font-size:45px;
+    }
 }
 
 </style>
@@ -1267,8 +1206,10 @@ footer{
         preload="auto">
 
         <source
-            src="MicrosoftTeams-video.mp4"
+            src="./MicrosoftTeams-video.mp4"
             type="video/mp4">
+
+        Your browser does not support video.
 
     </video>
 
@@ -1276,18 +1217,20 @@ footer{
     <div class="hero-content">
 
         <div class="hero-tag">
-            One Special Day • One Special Rider
+            ONE SPECIAL DAY • ONE SPECIAL RIDER
         </div>
 
         <h1>
+
             Happy Birthday<br>
 
             <span>
                 My Favourite Rider
             </span>
-            ❤️
-        </h1>
 
+            ❤️
+
+        </h1>
 
         <p class="hero-description">
 
@@ -1297,7 +1240,6 @@ footer{
             And then there's you. 🏍️❤️
 
         </p>
-
 
         <div class="scroll-down">
             ↓ KEEP SCROLLING ↓
@@ -1318,7 +1260,7 @@ footer{
 <section class="section">
 
     <div class="small-title">
-        Our Little Collection
+        OUR LITTLE COLLECTION
     </div>
 
     <h2>
@@ -1327,9 +1269,8 @@ footer{
 
     <p class="section-description">
 
-        A few frames from the journey...
-        because some memories deserve
-        their own little place in the world.
+        A few beautiful frames of my favourite person
+        and his favourite machine. 🏍️❤️
 
     </p>
 
@@ -1337,11 +1278,15 @@ footer{
     <div class="gallery">
 
 
+        <!-- PHOTO 1 -->
+
         <div class="gallery-card">
 
             <img
-                src="Image (4).jpg"
-                alt="Memory">
+                src="./images/photo1.jpg"
+                alt="Our favourite memory"
+                loading="lazy"
+                onerror="imageError(this,'PHOTO 1')">
 
             <div class="gallery-caption">
                 My favourite memory ❤️
@@ -1350,11 +1295,15 @@ footer{
         </div>
 
 
+        <!-- PHOTO 2 -->
+
         <div class="gallery-card">
 
             <img
-                src="Image (5).jpg"
-                alt="Memory">
+                src="./images/photo2.jpg"
+                alt="Beautiful memory"
+                loading="lazy"
+                onerror="imageError(this,'PHOTO 2')">
 
             <div class="gallery-caption">
                 Just you. ✨
@@ -1363,53 +1312,77 @@ footer{
         </div>
 
 
+        <!-- PHOTO 3 -->
+
         <div class="gallery-card">
 
             <img
-                src="Image (7).jpg"
-                alt="Memory">
+                src="./images/photo3.jpg"
+                alt="Special moment"
+                loading="lazy"
+                onerror="imageError(this,'PHOTO 3')">
 
             <div class="gallery-caption">
-                Another beautiful moment.
+                One beautiful moment. ❤️
             </div>
 
         </div>
 
 
+        <!-- PHOTO 4 -->
+
         <div class="gallery-card">
 
             <img
-                src="Image (8).jpg"
-                alt="Memory">
+                src="./images/photo4.jpg"
+                alt="Special memory"
+                loading="lazy"
+                onerror="imageError(this,'PHOTO 4')">
 
             <div class="gallery-caption">
-                One for the memories. ❤️
+                A memory worth keeping. ✨
             </div>
 
         </div>
 
 
+        <!-- PHOTO 5 -->
+
         <div class="gallery-card">
 
             <img
-                src="Image (9).jpg"
-                alt="Memory">
+                src="./images/photo5.jpg"
+                alt="Favourite person"
+                loading="lazy"
+                onerror="imageError(this,'PHOTO 5')">
 
             <div class="gallery-caption">
-                My favourite person.
+                My favourite person. ❤️
             </div>
 
         </div>
 
 
-        <div class="gallery-card">
+        <!-- YEZDI 69 -->
+
+        <div class="gallery-card bike-card">
+
+            <div class="bike-title">
+                HIS RIDE 🏍️
+            </div>
+
+            <div class="bike-badge">
+                YEZDI 69
+            </div>
 
             <img
-                src="61-qJABL20L._AC_SL1100_.jpg"
-                alt="Bike">
+                src="./images/yezdi69.jpg"
+                alt="Yezdi 69"
+                loading="lazy"
+                onerror="imageError(this,'YEZDI 69')">
 
             <div class="gallery-caption">
-                The machine. 🏍️
+                The machine he loves. 🏍️
             </div>
 
         </div>
@@ -1464,7 +1437,7 @@ footer{
 <section class="section">
 
     <div class="small-title">
-        Why You're Special
+        WHY YOU'RE SPECIAL
     </div>
 
     <h2>
@@ -1541,7 +1514,7 @@ footer{
 <section class="section">
 
     <div class="small-title">
-        From My Heart
+        FROM MY HEART
     </div>
 
     <h2>
@@ -1749,10 +1722,10 @@ footer{
 <audio id="music" loop>
 
     <!--
-    Agar song add karna ho:
+    Song add karna ho:
 
     <source
-        src="birthday-song.mp3"
+        src="./birthday-song.mp3"
         type="audio/mpeg">
     -->
 
@@ -1761,9 +1734,26 @@ footer{
 
 <script>
 
+/* =====================================================
+   IMAGE ERROR HANDLER
+===================================================== */
+
+function imageError(img, name){
+
+    img.onerror = null;
+
+    img.style.objectFit = "contain";
+    img.style.background = "#111";
+
+    img.src =
+    "https://placehold.co/900x700/111111/d8a85b?text="
+    + encodeURIComponent(name);
+
+}
+
 
 /* =====================================================
-   START
+   START RIDE
 ===================================================== */
 
 function startRide(){
@@ -1786,9 +1776,17 @@ function startRide(){
 
         video.muted=true;
 
-        video.play();
+        video.play().catch(()=>{});
 
     });
+
+
+    const music =
+    document.getElementById("music");
+
+    if(music.src){
+        music.play().catch(()=>{});
+    }
 
 
     startHearts();
@@ -1803,7 +1801,14 @@ function startRide(){
    FLOATING HEARTS
 ===================================================== */
 
+let heartsStarted = false;
+
 function startHearts(){
+
+    if(heartsStarted) return;
+
+    heartsStarted = true;
+
 
     setInterval(()=>{
 
@@ -1891,7 +1896,7 @@ function showSurprise(){
 
 
 /* =====================================================
-   CLOSE
+   CLOSE SURPRISE
 ===================================================== */
 
 function closeSurprise(){
@@ -1995,7 +2000,7 @@ function createConfetti(){
 
 
 /* =====================================================
-   ESCAPE
+   ESCAPE KEY
 ===================================================== */
 
 document.addEventListener(
